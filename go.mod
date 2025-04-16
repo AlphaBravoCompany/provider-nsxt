@@ -1,4 +1,4 @@
-module github.com/ankasoftco/provider-nsxt
+module github.com/AlphaBravoCompany/provider-nsxt
 
 go 1.19
 

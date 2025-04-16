@@ -2,7 +2,7 @@
 # Setup Project
 
 PROJECT_NAME ?= provider-nsxt
-PROJECT_REPO ?= github.com/ankasoftco/$(PROJECT_NAME)
+PROJECT_REPO ?= github.com/AlphaBravoCompany/$(PROJECT_NAME)
 
 export TERRAFORM_VERSION ?= 1.5.5
 
@@ -59,17 +59,17 @@ UPTEST_VERSION = v0.5.0
 # ====================================================================================
 # Setup Images
 
-REGISTRY_ORGS ?= xpkg.upbound.io/ankasoftco
+REGISTRY_ORGS ?= xpkg.upbound.io/AlphaBravoCompany
 IMAGES = $(PROJECT_NAME)
 -include build/makelib/imagelight.mk
 
 # ====================================================================================
 # Setup XPKG
 
-XPKG_REG_ORGS ?= xpkg.upbound.io/ankasoftco
+XPKG_REG_ORGS ?= xpkg.upbound.io/AlphaBravoCompany
 # NOTE(hasheddan): skip promoting on xpkg.upbound.io as channel tags are
 # inferred.
-XPKG_REG_ORGS_NO_PROMOTE ?= xpkg.upbound.io/ankasoftco
+XPKG_REG_ORGS_NO_PROMOTE ?= xpkg.upbound.io/AlphaBravoCompany
 XPKGS = $(PROJECT_NAME)
 -include build/makelib/xpkg.mk
 

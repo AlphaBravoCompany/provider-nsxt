@@ -25,12 +25,12 @@ import (
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
-	"github.com/ankasoftco/provider-nsxt/apis"
-	"github.com/ankasoftco/provider-nsxt/apis/v1alpha1"
-	"github.com/ankasoftco/provider-nsxt/config"
-	"github.com/ankasoftco/provider-nsxt/internal/clients"
-	"github.com/ankasoftco/provider-nsxt/internal/controller"
-	"github.com/ankasoftco/provider-nsxt/internal/features"
+	"github.com/AlphaBravoCompany/provider-nsxt/apis"
+	"github.com/AlphaBravoCompany/provider-nsxt/apis/v1alpha1"
+	"github.com/AlphaBravoCompany/provider-nsxt/config"
+	"github.com/AlphaBravoCompany/provider-nsxt/internal/clients"
+	"github.com/AlphaBravoCompany/provider-nsxt/internal/controller"
+	"github.com/AlphaBravoCompany/provider-nsxt/internal/features"
 )
 
 func main() {

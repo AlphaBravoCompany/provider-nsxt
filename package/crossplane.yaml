@@ -4,7 +4,7 @@ metadata:
   name: provider-nsxt
   annotations:
     meta.crossplane.io/maintainer: Crossplane Maintainers <support@ankasoft.co>
-    meta.crossplane.io/source: github.com/ankasoftco/provider-nsxt
+    meta.crossplane.io/source: github.com/AlphaBravoCompany/provider-nsxt
     meta.crossplane.io/license: Apache-2.0
     meta.crossplane.io/description: |
       VMware NSXT Crossplane provider adds support for
@@ -15,5 +15,5 @@ metadata:
       If you encounter an issue please reach out on
       [slack.crossplane.io](https://slack.crossplane.io) and create an issue in
       the
-      [ankasoftco/provider-nsxt](https://github.com/ankasoftco/provider-nsxt)
+      [AlphaBravoCompany/provider-nsxt](https://github.com/AlphaBravoCompany/provider-nsxt)
       repo.

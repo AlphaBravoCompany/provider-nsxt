@@ -11,7 +11,7 @@ import (
 
 	"github.com/upbound/upjet/pkg/pipeline"
 
-	"github.com/ankasoftco/provider-nsxt/config"
+	"github.com/AlphaBravoCompany/provider-nsxt/config"
 )
 
 func main() {

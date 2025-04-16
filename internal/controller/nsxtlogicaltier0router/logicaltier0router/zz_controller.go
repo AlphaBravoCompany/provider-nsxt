@@ -18,8 +18,8 @@ import (
 	"github.com/upbound/upjet/pkg/terraform"
 	ctrl "sigs.k8s.io/controller-runtime"
 
-	v1alpha1 "github.com/ankasoftco/provider-nsxt/apis/nsxtlogicaltier0router/v1alpha1"
-	features "github.com/ankasoftco/provider-nsxt/internal/features"
+	v1alpha1 "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtlogicaltier0router/v1alpha1"
+	features "github.com/AlphaBravoCompany/provider-nsxt/internal/features"
 )
 
 // Setup adds a controller that reconciles LogicalTier0Router managed resources.

@@ -3,4 +3,4 @@ kind: Provider
 metadata:
   name: provider-nsxt
 spec:
-  package: ankasoftco/provider-nsxt:v0.1.0
+  package: AlphaBravoCompany/provider-nsxt:v0.1.0

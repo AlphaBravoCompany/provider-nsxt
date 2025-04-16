@@ -10,25 +10,25 @@ import (
 
 	ujconfig "github.com/upbound/upjet/pkg/config"
 
-	beta "github.com/ankasoftco/provider-nsxt/config/beta"
-	deprecated "github.com/ankasoftco/provider-nsxt/config/deprecated"
-	dhcp "github.com/ankasoftco/provider-nsxt/config/dhcp"
-	dns "github.com/ankasoftco/provider-nsxt/config/dns"
-	evpn "github.com/ankasoftco/provider-nsxt/config/evpn"
-	firewall "github.com/ankasoftco/provider-nsxt/config/firewall"
-	gatewaysandrouting "github.com/ankasoftco/provider-nsxt/config/gateways_and_routing"
-	groupingandtagging "github.com/ankasoftco/provider-nsxt/config/grouping_and_tagging"
-	ipam "github.com/ankasoftco/provider-nsxt/config/ipam"
-	loadbalancer "github.com/ankasoftco/provider-nsxt/config/load_balancer"
-	multitenancy "github.com/ankasoftco/provider-nsxt/config/multitenancy"
-	ospf "github.com/ankasoftco/provider-nsxt/config/ospf"
-	segments "github.com/ankasoftco/provider-nsxt/config/segments"
-	vpn "github.com/ankasoftco/provider-nsxt/config/vpn"
+	beta "github.com/AlphaBravoCompany/provider-nsxt/config/beta"
+	deprecated "github.com/AlphaBravoCompany/provider-nsxt/config/deprecated"
+	dhcp "github.com/AlphaBravoCompany/provider-nsxt/config/dhcp"
+	dns "github.com/AlphaBravoCompany/provider-nsxt/config/dns"
+	evpn "github.com/AlphaBravoCompany/provider-nsxt/config/evpn"
+	firewall "github.com/AlphaBravoCompany/provider-nsxt/config/firewall"
+	gatewaysandrouting "github.com/AlphaBravoCompany/provider-nsxt/config/gateways_and_routing"
+	groupingandtagging "github.com/AlphaBravoCompany/provider-nsxt/config/grouping_and_tagging"
+	ipam "github.com/AlphaBravoCompany/provider-nsxt/config/ipam"
+	loadbalancer "github.com/AlphaBravoCompany/provider-nsxt/config/load_balancer"
+	multitenancy "github.com/AlphaBravoCompany/provider-nsxt/config/multitenancy"
+	ospf "github.com/AlphaBravoCompany/provider-nsxt/config/ospf"
+	segments "github.com/AlphaBravoCompany/provider-nsxt/config/segments"
+	vpn "github.com/AlphaBravoCompany/provider-nsxt/config/vpn"
 )
 
 const (
 	resourcePrefix = "nsxt"
-	modulePath     = "github.com/ankasoftco/provider-nsxt"
+	modulePath     = "github.com/AlphaBravoCompany/provider-nsxt"
 )
 
 //go:embed schema.json
