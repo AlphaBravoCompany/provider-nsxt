@@ -27,6 +27,38 @@ const (
 	errUnmarshalCredentials = "cannot unmarshal nsxt credentials as JSON"
 )
 
+var reqFields = []string{
+	"host",
+	"username",
+	"password",
+}
+
+var optFields = []string{
+	"client_auth_cert_file",
+	"client_auth_key_file",
+	"client_auth_cert",
+	"client_auth_key",
+	"allow_unverified_ssl",
+	"ca_file",
+	"ca",
+	"max_retries",
+	"retry_min_delay",
+	"retry_max_delay",
+	"retry_on_status_codes",
+	"remote_auth",
+	"session_auth",
+	"tolerate_partial_success",
+	"vmc_token",
+	"vmc_client_id",
+	"vmc_client_secret",
+	"vmc_auth_host",
+	"vmc_auth_mode",
+	"enforcement_point",
+	"global_manager",
+	"license_keys",
+	"on_demand_connection",
+}
+
 // TerraformSetupBuilder builds Terraform a terraform.SetupFn function which
 // returns Terraform provider setup configuration
 func TerraformSetupBuilder(version, providerSource, providerVersion string) terraform.SetupFn {
@@ -62,11 +94,18 @@ func TerraformSetupBuilder(version, providerSource, providerVersion string) terr
 			return ps, errors.Wrap(err, errUnmarshalCredentials)
 		}
 
-		// Set credentials in Terraform provider configuration.
-		/*ps.Configuration = map[string]any{
-			"username": creds["username"],
-			"password": creds["password"],
-		}*/
+		ps.Configuration = map[string]any{}
+		// Required fields
+		for _, req := range reqFields {
+			ps.Configuration[req] = creds[req]
+		}
+		// Optional fields
+		for _, opt := range optFields {
+			if v, ok := creds[opt]; ok {
+				ps.Configuration[opt] = v
+			}
+		}
+
 		return ps, nil
 	}
 }
