@@ -5,7 +5,7 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.11.3
   creationTimestamp: null
-  name: policyinstrusionserviceprofiles.firewall.crossplane.io
+  name: policysecuritypolicyrules.firewall.crossplane.io
 spec:
   group: firewall.crossplane.io
   names:
@@ -13,10 +13,10 @@ spec:
     - crossplane
     - managed
     - nsxt
-    kind: PolicyInstrusionServiceProfile
-    listKind: PolicyInstrusionServiceProfileList
-    plural: policyinstrusionserviceprofiles
-    singular: policyinstrusionserviceprofile
+    kind: PolicySecurityPolicyRule
+    listKind: PolicySecurityPolicyRuleList
+    plural: policysecuritypolicyrules
+    singular: policysecuritypolicyrule
   scope: Cluster
   versions:
   - additionalPrinterColumns:
@@ -35,7 +35,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: PolicyInstrusionServiceProfile is the Schema for the PolicyInstrusionServiceProfiles
+        description: PolicySecurityPolicyRule is the Schema for the PolicySecurityPolicyRules
           API. <no value>
         properties:
           apiVersion:
@@ -51,8 +51,8 @@ spec:
           metadata:
             type: object
           spec:
-            description: PolicyInstrusionServiceProfileSpec defines the desired state
-              of PolicyInstrusionServiceProfile
+            description: PolicySecurityPolicyRuleSpec defines the desired state of
+              PolicySecurityPolicyRule
             properties:
               deletionPolicy:
                 default: Delete
@@ -69,6 +69,9 @@ spec:
                 type: string
               forProvider:
                 properties:
+                  action:
+                    description: Action
+                    type: string
                   context:
                     description: Resource context
                     items:
@@ -81,62 +84,71 @@ spec:
                       - projectId
                       type: object
                     type: array
-                  criteria:
-                    description: Filtering criteria for the IDS Profile
-                    items:
-                      properties:
-                        attackTargets:
-                          description: List of attack target criteria
-                          items:
-                            type: string
-                          type: array
-                        attackTypes:
-                          description: List of attack type criteria
-                          items:
-                            type: string
-                          type: array
-                        cvss:
-                          description: Common Vulnerability Scoring System Ranges
-                          items:
-                            type: string
-                          type: array
-                        productsAffected:
-                          description: List of products affected
-                          items:
-                            type: string
-                          type: array
-                      type: object
-                    type: array
                   description:
                     description: Description for this resource
                     type: string
+                  destinationGroups:
+                    description: List of destination groups
+                    items:
+                      type: string
+                    type: array
+                  destinationsExcluded:
+                    description: Negation of destination groups
+                    type: boolean
+                  direction:
+                    description: Traffic direction
+                    type: string
+                  disabled:
+                    description: Flag to disable the rule
+                    type: boolean
                   displayName:
                     description: Display name for this resource
+                    type: string
+                  ipVersion:
+                    description: IP version
+                    type: string
+                  logLabel:
+                    description: Additional information (string) which will be propagated
+                      to the rule syslog
+                    type: string
+                  logged:
+                    description: Flag to enable packet logging
+                    type: boolean
+                  notes:
+                    description: Text for additional notes on changes
                     type: string
                   nsxId:
                     description: NSX ID for this resource
                     type: string
-                  overriddenSignature:
-                    description: Signatures that has been overridden for this Profile
-                    items:
-                      properties:
-                        action:
-                          description: This will take precedence over IDS signature
-                            action
-                          type: string
-                        enabled:
-                          type: boolean
-                        signatureId:
-                          type: string
-                      required:
-                      - signatureId
-                      type: object
-                    type: array
-                  severities:
-                    description: Severities of signatures which are part of this profile
+                  policyPath:
+                    description: Security Policy path
+                    type: string
+                  profiles:
+                    description: List of profiles
                     items:
                       type: string
                     type: array
+                  scope:
+                    description: List of policy paths where the rule is applied
+                    items:
+                      type: string
+                    type: array
+                  sequenceNumber:
+                    description: Sequence number of the this rule
+                    type: number
+                  services:
+                    description: List of services to match
+                    items:
+                      type: string
+                    type: array
+                  sourceGroups:
+                    description: List of source groups
+                    items:
+                      type: string
+                    type: array
+                  sourcesExcluded:
+                    description: Negation of source groups
+                    type: boolean
                   tag:
                     description: Set of opaque identifiers meaningful to the user
                     items:
@@ -337,14 +349,19 @@ spec:
             x-kubernetes-validations:
             - message: displayName is a required parameter
               rule: self.managementPolicy == 'ObserveOnly' || has(self.forProvider.displayName)
-            - message: severities is a required parameter
-              rule: self.managementPolicy == 'ObserveOnly' || has(self.forProvider.severities)
+            - message: policyPath is a required parameter
+              rule: self.managementPolicy == 'ObserveOnly' || has(self.forProvider.policyPath)
+            - message: sequenceNumber is a required parameter
+              rule: self.managementPolicy == 'ObserveOnly' || has(self.forProvider.sequenceNumber)
           status:
-            description: PolicyInstrusionServiceProfileStatus defines the observed
-              state of PolicyInstrusionServiceProfile.
+            description: PolicySecurityPolicyRuleStatus defines the observed state
+              of PolicySecurityPolicyRule.
             properties:
               atProvider:
                 properties:
+                  action:
+                    description: Action
+                    type: string
                   context:
                     description: Resource context
                     items:
@@ -355,60 +372,55 @@ spec:
                           type: string
                       type: object
                     type: array
-                  criteria:
-                    description: Filtering criteria for the IDS Profile
-                    items:
-                      properties:
-                        attackTargets:
-                          description: List of attack target criteria
-                          items:
-                            type: string
-                          type: array
-                        attackTypes:
-                          description: List of attack type criteria
-                          items:
-                            type: string
-                          type: array
-                        cvss:
-                          description: Common Vulnerability Scoring System Ranges
-                          items:
-                            type: string
-                          type: array
-                        productsAffected:
-                          description: List of products affected
-                          items:
-                            type: string
-                          type: array
-                      type: object
-                    type: array
                   description:
                     description: Description for this resource
                     type: string
+                  destinationGroups:
+                    description: List of destination groups
+                    items:
+                      type: string
+                    type: array
+                  destinationsExcluded:
+                    description: Negation of destination groups
+                    type: boolean
+                  direction:
+                    description: Traffic direction
+                    type: string
+                  disabled:
+                    description: Flag to disable the rule
+                    type: boolean
                   displayName:
                     description: Display name for this resource
                     type: string
                   id:
                     type: string
+                  ipVersion:
+                    description: IP version
+                    type: string
+                  logLabel:
+                    description: Additional information (string) which will be propagated
+                      to the rule syslog
+                    type: string
+                  logged:
+                    description: Flag to enable packet logging
+                    type: boolean
+                  notes:
+                    description: Text for additional notes on changes
+                    type: string
                   nsxId:
                     description: NSX ID for this resource
                     type: string
-                  overriddenSignature:
-                    description: Signatures that has been overridden for this Profile
-                    items:
-                      properties:
-                        action:
-                          description: This will take precedence over IDS signature
-                            action
-                          type: string
-                        enabled:
-                          type: boolean
-                        signatureId:
-                          type: string
-                      type: object
-                    type: array
                   path:
                     description: Policy path for this resource
                     type: string
+                  policyPath:
+                    description: Security Policy path
+                    type: string
+                  profiles:
+                    description: List of profiles
+                    items:
+                      type: string
+                    type: array
                   revision:
                     description: The _revision property describes the current revision
                       of the resource. To prevent clients from overwriting each other's
@@ -417,11 +429,31 @@ spec:
                       If the _revision provided in a PUT request is missing or stale,
                       the operation will be rejected
                     type: number
-                  severities:
-                    description: Severities of signatures which are part of this profile
+                  ruleId:
+                    description: Unique positive number that is assigned by the system
+                      and is useful for debugging
+                    type: number
+                  scope:
+                    description: List of policy paths where the rule is applied
                     items:
                       type: string
                     type: array
+                  sequenceNumber:
+                    description: Sequence number of the this rule
+                    type: number
+                  services:
+                    description: List of services to match
+                    items:
+                      type: string
+                    type: array
+                  sourceGroups:
+                    description: List of source groups
+                    items:
+                      type: string
+                    type: array
+                  sourcesExcluded:
+                    description: Negation of source groups
+                    type: boolean
                   tag:
                     description: Set of opaque identifiers meaningful to the user
                     items:

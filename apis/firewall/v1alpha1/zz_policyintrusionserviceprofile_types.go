@@ -70,23 +70,23 @@ type OverriddenSignatureParameters struct {
 	SignatureID *string `json:"signatureId" tf:"signature_id,omitempty"`
 }
 
-type PolicyInstrusionServiceProfileContextObservation struct {
+type PolicyIntrusionServiceProfileContextObservation struct {
 
 	// Id of the project which the resource belongs to.
 	ProjectID *string `json:"projectId,omitempty" tf:"project_id,omitempty"`
 }
 
-type PolicyInstrusionServiceProfileContextParameters struct {
+type PolicyIntrusionServiceProfileContextParameters struct {
 
 	// Id of the project which the resource belongs to.
 	// +kubebuilder:validation:Required
 	ProjectID *string `json:"projectId" tf:"project_id,omitempty"`
 }
 
-type PolicyInstrusionServiceProfileObservation struct {
+type PolicyIntrusionServiceProfileObservation struct {
 
 	// Resource context
-	Context []PolicyInstrusionServiceProfileContextObservation `json:"context,omitempty" tf:"context,omitempty"`
+	Context []PolicyIntrusionServiceProfileContextObservation `json:"context,omitempty" tf:"context,omitempty"`
 
 	// Filtering criteria for the IDS Profile
 	Criteria []CriteriaObservation `json:"criteria,omitempty" tf:"criteria,omitempty"`
@@ -115,14 +115,14 @@ type PolicyInstrusionServiceProfileObservation struct {
 	Severities []*string `json:"severities,omitempty" tf:"severities,omitempty"`
 
 	// Set of opaque identifiers meaningful to the user
-	Tag []PolicyInstrusionServiceProfileTagObservation `json:"tag,omitempty" tf:"tag,omitempty"`
+	Tag []PolicyIntrusionServiceProfileTagObservation `json:"tag,omitempty" tf:"tag,omitempty"`
 }
 
-type PolicyInstrusionServiceProfileParameters struct {
+type PolicyIntrusionServiceProfileParameters struct {
 
 	// Resource context
 	// +kubebuilder:validation:Optional
-	Context []PolicyInstrusionServiceProfileContextParameters `json:"context,omitempty" tf:"context,omitempty"`
+	Context []PolicyIntrusionServiceProfileContextParameters `json:"context,omitempty" tf:"context,omitempty"`
 
 	// Filtering criteria for the IDS Profile
 	// +kubebuilder:validation:Optional
@@ -150,16 +150,16 @@ type PolicyInstrusionServiceProfileParameters struct {
 
 	// Set of opaque identifiers meaningful to the user
 	// +kubebuilder:validation:Optional
-	Tag []PolicyInstrusionServiceProfileTagParameters `json:"tag,omitempty" tf:"tag,omitempty"`
+	Tag []PolicyIntrusionServiceProfileTagParameters `json:"tag,omitempty" tf:"tag,omitempty"`
 }
 
-type PolicyInstrusionServiceProfileTagObservation struct {
+type PolicyIntrusionServiceProfileTagObservation struct {
 	Scope *string `json:"scope,omitempty" tf:"scope,omitempty"`
 
 	Tag *string `json:"tag,omitempty" tf:"tag,omitempty"`
 }
 
-type PolicyInstrusionServiceProfileTagParameters struct {
+type PolicyIntrusionServiceProfileTagParameters struct {
 
 	// +kubebuilder:validation:Optional
 	Scope *string `json:"scope,omitempty" tf:"scope,omitempty"`
@@ -168,53 +168,53 @@ type PolicyInstrusionServiceProfileTagParameters struct {
 	Tag *string `json:"tag,omitempty" tf:"tag,omitempty"`
 }
 
-// PolicyInstrusionServiceProfileSpec defines the desired state of PolicyInstrusionServiceProfile
-type PolicyInstrusionServiceProfileSpec struct {
+// PolicyIntrusionServiceProfileSpec defines the desired state of PolicyIntrusionServiceProfile
+type PolicyIntrusionServiceProfileSpec struct {
 	v1.ResourceSpec `json:",inline"`
-	ForProvider     PolicyInstrusionServiceProfileParameters `json:"forProvider"`
+	ForProvider     PolicyIntrusionServiceProfileParameters `json:"forProvider"`
 }
 
-// PolicyInstrusionServiceProfileStatus defines the observed state of PolicyInstrusionServiceProfile.
-type PolicyInstrusionServiceProfileStatus struct {
+// PolicyIntrusionServiceProfileStatus defines the observed state of PolicyIntrusionServiceProfile.
+type PolicyIntrusionServiceProfileStatus struct {
 	v1.ResourceStatus `json:",inline"`
-	AtProvider        PolicyInstrusionServiceProfileObservation `json:"atProvider,omitempty"`
+	AtProvider        PolicyIntrusionServiceProfileObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true
 
-// PolicyInstrusionServiceProfile is the Schema for the PolicyInstrusionServiceProfiles API. <no value>
+// PolicyIntrusionServiceProfile is the Schema for the PolicyIntrusionServiceProfiles API. <no value>
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"
 // +kubebuilder:printcolumn:name="AGE",type="date",JSONPath=".metadata.creationTimestamp"
 // +kubebuilder:subresource:status
 // +kubebuilder:resource:scope=Cluster,categories={crossplane,managed,nsxt}
-type PolicyInstrusionServiceProfile struct {
+type PolicyIntrusionServiceProfile struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	// +kubebuilder:validation:XValidation:rule="self.managementPolicy == 'ObserveOnly' || has(self.forProvider.displayName)",message="displayName is a required parameter"
 	// +kubebuilder:validation:XValidation:rule="self.managementPolicy == 'ObserveOnly' || has(self.forProvider.severities)",message="severities is a required parameter"
-	Spec   PolicyInstrusionServiceProfileSpec   `json:"spec"`
-	Status PolicyInstrusionServiceProfileStatus `json:"status,omitempty"`
+	Spec   PolicyIntrusionServiceProfileSpec   `json:"spec"`
+	Status PolicyIntrusionServiceProfileStatus `json:"status,omitempty"`
 }
 
 // +kubebuilder:object:root=true
 
-// PolicyInstrusionServiceProfileList contains a list of PolicyInstrusionServiceProfiles
-type PolicyInstrusionServiceProfileList struct {
+// PolicyIntrusionServiceProfileList contains a list of PolicyIntrusionServiceProfiles
+type PolicyIntrusionServiceProfileList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []PolicyInstrusionServiceProfile `json:"items"`
+	Items           []PolicyIntrusionServiceProfile `json:"items"`
 }
 
 // Repository type metadata.
 var (
-	PolicyInstrusionServiceProfile_Kind             = "PolicyInstrusionServiceProfile"
-	PolicyInstrusionServiceProfile_GroupKind        = schema.GroupKind{Group: CRDGroup, Kind: PolicyInstrusionServiceProfile_Kind}.String()
-	PolicyInstrusionServiceProfile_KindAPIVersion   = PolicyInstrusionServiceProfile_Kind + "." + CRDGroupVersion.String()
-	PolicyInstrusionServiceProfile_GroupVersionKind = CRDGroupVersion.WithKind(PolicyInstrusionServiceProfile_Kind)
+	PolicyIntrusionServiceProfile_Kind             = "PolicyIntrusionServiceProfile"
+	PolicyIntrusionServiceProfile_GroupKind        = schema.GroupKind{Group: CRDGroup, Kind: PolicyIntrusionServiceProfile_Kind}.String()
+	PolicyIntrusionServiceProfile_KindAPIVersion   = PolicyIntrusionServiceProfile_Kind + "." + CRDGroupVersion.String()
+	PolicyIntrusionServiceProfile_GroupVersionKind = CRDGroupVersion.WithKind(PolicyIntrusionServiceProfile_Kind)
 )
 
 func init() {
-	SchemeBuilder.Register(&PolicyInstrusionServiceProfile{}, &PolicyInstrusionServiceProfileList{})
+	SchemeBuilder.Register(&PolicyIntrusionServiceProfile{}, &PolicyIntrusionServiceProfileList{})
 }

@@ -161,6 +161,80 @@ func (tr *PolicyContextProfileCustomAttribute) GetTerraformSchemaVersion() int {
 	return 0
 }
 
+// GetTerraformResourceType returns Terraform resource type for this PolicyFirewallExcludeListMember
+func (mg *PolicyFirewallExcludeListMember) GetTerraformResourceType() string {
+	return "nsxt_policy_firewall_exclude_list_member"
+}
+
+// GetConnectionDetailsMapping for this PolicyFirewallExcludeListMember
+func (tr *PolicyFirewallExcludeListMember) GetConnectionDetailsMapping() map[string]string {
+	return nil
+}
+
+// GetObservation of this PolicyFirewallExcludeListMember
+func (tr *PolicyFirewallExcludeListMember) GetObservation() (map[string]any, error) {
+	o, err := json.TFParser.Marshal(tr.Status.AtProvider)
+	if err != nil {
+		return nil, err
+	}
+	base := map[string]any{}
+	return base, json.TFParser.Unmarshal(o, &base)
+}
+
+// SetObservation for this PolicyFirewallExcludeListMember
+func (tr *PolicyFirewallExcludeListMember) SetObservation(obs map[string]any) error {
+	p, err := json.TFParser.Marshal(obs)
+	if err != nil {
+		return err
+	}
+	return json.TFParser.Unmarshal(p, &tr.Status.AtProvider)
+}
+
+// GetID returns ID of underlying Terraform resource of this PolicyFirewallExcludeListMember
+func (tr *PolicyFirewallExcludeListMember) GetID() string {
+	if tr.Status.AtProvider.ID == nil {
+		return ""
+	}
+	return *tr.Status.AtProvider.ID
+}
+
+// GetParameters of this PolicyFirewallExcludeListMember
+func (tr *PolicyFirewallExcludeListMember) GetParameters() (map[string]any, error) {
+	p, err := json.TFParser.Marshal(tr.Spec.ForProvider)
+	if err != nil {
+		return nil, err
+	}
+	base := map[string]any{}
+	return base, json.TFParser.Unmarshal(p, &base)
+}
+
+// SetParameters for this PolicyFirewallExcludeListMember
+func (tr *PolicyFirewallExcludeListMember) SetParameters(params map[string]any) error {
+	p, err := json.TFParser.Marshal(params)
+	if err != nil {
+		return err
+	}
+	return json.TFParser.Unmarshal(p, &tr.Spec.ForProvider)
+}
+
+// LateInitialize this PolicyFirewallExcludeListMember using its observed tfState.
+// returns True if there are any spec changes for the resource.
+func (tr *PolicyFirewallExcludeListMember) LateInitialize(attrs []byte) (bool, error) {
+	params := &PolicyFirewallExcludeListMemberParameters{}
+	if err := json.TFParser.Unmarshal(attrs, params); err != nil {
+		return false, errors.Wrap(err, "failed to unmarshal Terraform state parameters for late-initialization")
+	}
+	opts := []resource.GenericLateInitializerOption{resource.WithZeroValueJSONOmitEmptyFilter(resource.CNameWildcard)}
+
+	li := resource.NewGenericLateInitializer(opts...)
+	return li.LateInitialize(&tr.Spec.ForProvider, params)
+}
+
+// GetTerraformSchemaVersion returns the associated Terraform schema version
+func (tr *PolicyFirewallExcludeListMember) GetTerraformSchemaVersion() int {
+	return 0
+}
+
 // GetTerraformResourceType returns Terraform resource type for this PolicyGatewayPolicy
 func (mg *PolicyGatewayPolicy) GetTerraformResourceType() string {
 	return "nsxt_policy_gateway_policy"
@@ -235,18 +309,18 @@ func (tr *PolicyGatewayPolicy) GetTerraformSchemaVersion() int {
 	return 0
 }
 
-// GetTerraformResourceType returns Terraform resource type for this PolicyInstrusionServicePolicy
-func (mg *PolicyInstrusionServicePolicy) GetTerraformResourceType() string {
+// GetTerraformResourceType returns Terraform resource type for this PolicyIntrusionServicePolicy
+func (mg *PolicyIntrusionServicePolicy) GetTerraformResourceType() string {
 	return "nsxt_policy_intrusion_service_policy"
 }
 
-// GetConnectionDetailsMapping for this PolicyInstrusionServicePolicy
-func (tr *PolicyInstrusionServicePolicy) GetConnectionDetailsMapping() map[string]string {
+// GetConnectionDetailsMapping for this PolicyIntrusionServicePolicy
+func (tr *PolicyIntrusionServicePolicy) GetConnectionDetailsMapping() map[string]string {
 	return nil
 }
 
-// GetObservation of this PolicyInstrusionServicePolicy
-func (tr *PolicyInstrusionServicePolicy) GetObservation() (map[string]any, error) {
+// GetObservation of this PolicyIntrusionServicePolicy
+func (tr *PolicyIntrusionServicePolicy) GetObservation() (map[string]any, error) {
 	o, err := json.TFParser.Marshal(tr.Status.AtProvider)
 	if err != nil {
 		return nil, err
@@ -255,8 +329,8 @@ func (tr *PolicyInstrusionServicePolicy) GetObservation() (map[string]any, error
 	return base, json.TFParser.Unmarshal(o, &base)
 }
 
-// SetObservation for this PolicyInstrusionServicePolicy
-func (tr *PolicyInstrusionServicePolicy) SetObservation(obs map[string]any) error {
+// SetObservation for this PolicyIntrusionServicePolicy
+func (tr *PolicyIntrusionServicePolicy) SetObservation(obs map[string]any) error {
 	p, err := json.TFParser.Marshal(obs)
 	if err != nil {
 		return err
@@ -264,16 +338,16 @@ func (tr *PolicyInstrusionServicePolicy) SetObservation(obs map[string]any) erro
 	return json.TFParser.Unmarshal(p, &tr.Status.AtProvider)
 }
 
-// GetID returns ID of underlying Terraform resource of this PolicyInstrusionServicePolicy
-func (tr *PolicyInstrusionServicePolicy) GetID() string {
+// GetID returns ID of underlying Terraform resource of this PolicyIntrusionServicePolicy
+func (tr *PolicyIntrusionServicePolicy) GetID() string {
 	if tr.Status.AtProvider.ID == nil {
 		return ""
 	}
 	return *tr.Status.AtProvider.ID
 }
 
-// GetParameters of this PolicyInstrusionServicePolicy
-func (tr *PolicyInstrusionServicePolicy) GetParameters() (map[string]any, error) {
+// GetParameters of this PolicyIntrusionServicePolicy
+func (tr *PolicyIntrusionServicePolicy) GetParameters() (map[string]any, error) {
 	p, err := json.TFParser.Marshal(tr.Spec.ForProvider)
 	if err != nil {
 		return nil, err
@@ -282,8 +356,8 @@ func (tr *PolicyInstrusionServicePolicy) GetParameters() (map[string]any, error)
 	return base, json.TFParser.Unmarshal(p, &base)
 }
 
-// SetParameters for this PolicyInstrusionServicePolicy
-func (tr *PolicyInstrusionServicePolicy) SetParameters(params map[string]any) error {
+// SetParameters for this PolicyIntrusionServicePolicy
+func (tr *PolicyIntrusionServicePolicy) SetParameters(params map[string]any) error {
 	p, err := json.TFParser.Marshal(params)
 	if err != nil {
 		return err
@@ -291,10 +365,10 @@ func (tr *PolicyInstrusionServicePolicy) SetParameters(params map[string]any) er
 	return json.TFParser.Unmarshal(p, &tr.Spec.ForProvider)
 }
 
-// LateInitialize this PolicyInstrusionServicePolicy using its observed tfState.
+// LateInitialize this PolicyIntrusionServicePolicy using its observed tfState.
 // returns True if there are any spec changes for the resource.
-func (tr *PolicyInstrusionServicePolicy) LateInitialize(attrs []byte) (bool, error) {
-	params := &PolicyInstrusionServicePolicyParameters{}
+func (tr *PolicyIntrusionServicePolicy) LateInitialize(attrs []byte) (bool, error) {
+	params := &PolicyIntrusionServicePolicyParameters{}
 	if err := json.TFParser.Unmarshal(attrs, params); err != nil {
 		return false, errors.Wrap(err, "failed to unmarshal Terraform state parameters for late-initialization")
 	}
@@ -305,22 +379,22 @@ func (tr *PolicyInstrusionServicePolicy) LateInitialize(attrs []byte) (bool, err
 }
 
 // GetTerraformSchemaVersion returns the associated Terraform schema version
-func (tr *PolicyInstrusionServicePolicy) GetTerraformSchemaVersion() int {
+func (tr *PolicyIntrusionServicePolicy) GetTerraformSchemaVersion() int {
 	return 0
 }
 
-// GetTerraformResourceType returns Terraform resource type for this PolicyInstrusionServiceProfile
-func (mg *PolicyInstrusionServiceProfile) GetTerraformResourceType() string {
+// GetTerraformResourceType returns Terraform resource type for this PolicyIntrusionServiceProfile
+func (mg *PolicyIntrusionServiceProfile) GetTerraformResourceType() string {
 	return "nsxt_policy_intrusion_service_profile"
 }
 
-// GetConnectionDetailsMapping for this PolicyInstrusionServiceProfile
-func (tr *PolicyInstrusionServiceProfile) GetConnectionDetailsMapping() map[string]string {
+// GetConnectionDetailsMapping for this PolicyIntrusionServiceProfile
+func (tr *PolicyIntrusionServiceProfile) GetConnectionDetailsMapping() map[string]string {
 	return nil
 }
 
-// GetObservation of this PolicyInstrusionServiceProfile
-func (tr *PolicyInstrusionServiceProfile) GetObservation() (map[string]any, error) {
+// GetObservation of this PolicyIntrusionServiceProfile
+func (tr *PolicyIntrusionServiceProfile) GetObservation() (map[string]any, error) {
 	o, err := json.TFParser.Marshal(tr.Status.AtProvider)
 	if err != nil {
 		return nil, err
@@ -329,8 +403,8 @@ func (tr *PolicyInstrusionServiceProfile) GetObservation() (map[string]any, erro
 	return base, json.TFParser.Unmarshal(o, &base)
 }
 
-// SetObservation for this PolicyInstrusionServiceProfile
-func (tr *PolicyInstrusionServiceProfile) SetObservation(obs map[string]any) error {
+// SetObservation for this PolicyIntrusionServiceProfile
+func (tr *PolicyIntrusionServiceProfile) SetObservation(obs map[string]any) error {
 	p, err := json.TFParser.Marshal(obs)
 	if err != nil {
 		return err
@@ -338,16 +412,16 @@ func (tr *PolicyInstrusionServiceProfile) SetObservation(obs map[string]any) err
 	return json.TFParser.Unmarshal(p, &tr.Status.AtProvider)
 }
 
-// GetID returns ID of underlying Terraform resource of this PolicyInstrusionServiceProfile
-func (tr *PolicyInstrusionServiceProfile) GetID() string {
+// GetID returns ID of underlying Terraform resource of this PolicyIntrusionServiceProfile
+func (tr *PolicyIntrusionServiceProfile) GetID() string {
 	if tr.Status.AtProvider.ID == nil {
 		return ""
 	}
 	return *tr.Status.AtProvider.ID
 }
 
-// GetParameters of this PolicyInstrusionServiceProfile
-func (tr *PolicyInstrusionServiceProfile) GetParameters() (map[string]any, error) {
+// GetParameters of this PolicyIntrusionServiceProfile
+func (tr *PolicyIntrusionServiceProfile) GetParameters() (map[string]any, error) {
 	p, err := json.TFParser.Marshal(tr.Spec.ForProvider)
 	if err != nil {
 		return nil, err
@@ -356,8 +430,8 @@ func (tr *PolicyInstrusionServiceProfile) GetParameters() (map[string]any, error
 	return base, json.TFParser.Unmarshal(p, &base)
 }
 
-// SetParameters for this PolicyInstrusionServiceProfile
-func (tr *PolicyInstrusionServiceProfile) SetParameters(params map[string]any) error {
+// SetParameters for this PolicyIntrusionServiceProfile
+func (tr *PolicyIntrusionServiceProfile) SetParameters(params map[string]any) error {
 	p, err := json.TFParser.Marshal(params)
 	if err != nil {
 		return err
@@ -365,10 +439,10 @@ func (tr *PolicyInstrusionServiceProfile) SetParameters(params map[string]any) e
 	return json.TFParser.Unmarshal(p, &tr.Spec.ForProvider)
 }
 
-// LateInitialize this PolicyInstrusionServiceProfile using its observed tfState.
+// LateInitialize this PolicyIntrusionServiceProfile using its observed tfState.
 // returns True if there are any spec changes for the resource.
-func (tr *PolicyInstrusionServiceProfile) LateInitialize(attrs []byte) (bool, error) {
-	params := &PolicyInstrusionServiceProfileParameters{}
+func (tr *PolicyIntrusionServiceProfile) LateInitialize(attrs []byte) (bool, error) {
+	params := &PolicyIntrusionServiceProfileParameters{}
 	if err := json.TFParser.Unmarshal(attrs, params); err != nil {
 		return false, errors.Wrap(err, "failed to unmarshal Terraform state parameters for late-initialization")
 	}
@@ -379,7 +453,81 @@ func (tr *PolicyInstrusionServiceProfile) LateInitialize(attrs []byte) (bool, er
 }
 
 // GetTerraformSchemaVersion returns the associated Terraform schema version
-func (tr *PolicyInstrusionServiceProfile) GetTerraformSchemaVersion() int {
+func (tr *PolicyIntrusionServiceProfile) GetTerraformSchemaVersion() int {
+	return 0
+}
+
+// GetTerraformResourceType returns Terraform resource type for this PolicyParentSecurityPolicy
+func (mg *PolicyParentSecurityPolicy) GetTerraformResourceType() string {
+	return "nsxt_policy_parent_security_policy"
+}
+
+// GetConnectionDetailsMapping for this PolicyParentSecurityPolicy
+func (tr *PolicyParentSecurityPolicy) GetConnectionDetailsMapping() map[string]string {
+	return nil
+}
+
+// GetObservation of this PolicyParentSecurityPolicy
+func (tr *PolicyParentSecurityPolicy) GetObservation() (map[string]any, error) {
+	o, err := json.TFParser.Marshal(tr.Status.AtProvider)
+	if err != nil {
+		return nil, err
+	}
+	base := map[string]any{}
+	return base, json.TFParser.Unmarshal(o, &base)
+}
+
+// SetObservation for this PolicyParentSecurityPolicy
+func (tr *PolicyParentSecurityPolicy) SetObservation(obs map[string]any) error {
+	p, err := json.TFParser.Marshal(obs)
+	if err != nil {
+		return err
+	}
+	return json.TFParser.Unmarshal(p, &tr.Status.AtProvider)
+}
+
+// GetID returns ID of underlying Terraform resource of this PolicyParentSecurityPolicy
+func (tr *PolicyParentSecurityPolicy) GetID() string {
+	if tr.Status.AtProvider.ID == nil {
+		return ""
+	}
+	return *tr.Status.AtProvider.ID
+}
+
+// GetParameters of this PolicyParentSecurityPolicy
+func (tr *PolicyParentSecurityPolicy) GetParameters() (map[string]any, error) {
+	p, err := json.TFParser.Marshal(tr.Spec.ForProvider)
+	if err != nil {
+		return nil, err
+	}
+	base := map[string]any{}
+	return base, json.TFParser.Unmarshal(p, &base)
+}
+
+// SetParameters for this PolicyParentSecurityPolicy
+func (tr *PolicyParentSecurityPolicy) SetParameters(params map[string]any) error {
+	p, err := json.TFParser.Marshal(params)
+	if err != nil {
+		return err
+	}
+	return json.TFParser.Unmarshal(p, &tr.Spec.ForProvider)
+}
+
+// LateInitialize this PolicyParentSecurityPolicy using its observed tfState.
+// returns True if there are any spec changes for the resource.
+func (tr *PolicyParentSecurityPolicy) LateInitialize(attrs []byte) (bool, error) {
+	params := &PolicyParentSecurityPolicyParameters{}
+	if err := json.TFParser.Unmarshal(attrs, params); err != nil {
+		return false, errors.Wrap(err, "failed to unmarshal Terraform state parameters for late-initialization")
+	}
+	opts := []resource.GenericLateInitializerOption{resource.WithZeroValueJSONOmitEmptyFilter(resource.CNameWildcard)}
+
+	li := resource.NewGenericLateInitializer(opts...)
+	return li.LateInitialize(&tr.Spec.ForProvider, params)
+}
+
+// GetTerraformSchemaVersion returns the associated Terraform schema version
+func (tr *PolicyParentSecurityPolicy) GetTerraformSchemaVersion() int {
 	return 0
 }
 
@@ -602,6 +750,80 @@ func (tr *PolicySecurityPolicy) LateInitialize(attrs []byte) (bool, error) {
 
 // GetTerraformSchemaVersion returns the associated Terraform schema version
 func (tr *PolicySecurityPolicy) GetTerraformSchemaVersion() int {
+	return 0
+}
+
+// GetTerraformResourceType returns Terraform resource type for this PolicySecurityPolicyRule
+func (mg *PolicySecurityPolicyRule) GetTerraformResourceType() string {
+	return "nsxt_policy_security_policy_rule"
+}
+
+// GetConnectionDetailsMapping for this PolicySecurityPolicyRule
+func (tr *PolicySecurityPolicyRule) GetConnectionDetailsMapping() map[string]string {
+	return nil
+}
+
+// GetObservation of this PolicySecurityPolicyRule
+func (tr *PolicySecurityPolicyRule) GetObservation() (map[string]any, error) {
+	o, err := json.TFParser.Marshal(tr.Status.AtProvider)
+	if err != nil {
+		return nil, err
+	}
+	base := map[string]any{}
+	return base, json.TFParser.Unmarshal(o, &base)
+}
+
+// SetObservation for this PolicySecurityPolicyRule
+func (tr *PolicySecurityPolicyRule) SetObservation(obs map[string]any) error {
+	p, err := json.TFParser.Marshal(obs)
+	if err != nil {
+		return err
+	}
+	return json.TFParser.Unmarshal(p, &tr.Status.AtProvider)
+}
+
+// GetID returns ID of underlying Terraform resource of this PolicySecurityPolicyRule
+func (tr *PolicySecurityPolicyRule) GetID() string {
+	if tr.Status.AtProvider.ID == nil {
+		return ""
+	}
+	return *tr.Status.AtProvider.ID
+}
+
+// GetParameters of this PolicySecurityPolicyRule
+func (tr *PolicySecurityPolicyRule) GetParameters() (map[string]any, error) {
+	p, err := json.TFParser.Marshal(tr.Spec.ForProvider)
+	if err != nil {
+		return nil, err
+	}
+	base := map[string]any{}
+	return base, json.TFParser.Unmarshal(p, &base)
+}
+
+// SetParameters for this PolicySecurityPolicyRule
+func (tr *PolicySecurityPolicyRule) SetParameters(params map[string]any) error {
+	p, err := json.TFParser.Marshal(params)
+	if err != nil {
+		return err
+	}
+	return json.TFParser.Unmarshal(p, &tr.Spec.ForProvider)
+}
+
+// LateInitialize this PolicySecurityPolicyRule using its observed tfState.
+// returns True if there are any spec changes for the resource.
+func (tr *PolicySecurityPolicyRule) LateInitialize(attrs []byte) (bool, error) {
+	params := &PolicySecurityPolicyRuleParameters_2{}
+	if err := json.TFParser.Unmarshal(attrs, params); err != nil {
+		return false, errors.Wrap(err, "failed to unmarshal Terraform state parameters for late-initialization")
+	}
+	opts := []resource.GenericLateInitializerOption{resource.WithZeroValueJSONOmitEmptyFilter(resource.CNameWildcard)}
+
+	li := resource.NewGenericLateInitializer(opts...)
+	return li.LateInitialize(&tr.Spec.ForProvider, params)
+}
+
+// GetTerraformSchemaVersion returns the associated Terraform schema version
+func (tr *PolicySecurityPolicyRule) GetTerraformSchemaVersion() int {
 	return 0
 }
 

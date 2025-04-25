@@ -21,12 +21,15 @@ import (
 	policyvnipool "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/evpn/policyvnipool"
 	policycontextprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/firewall/policycontextprofile"
 	policycontextprofilecustomattribute "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/firewall/policycontextprofilecustomattribute"
+	policyfirewallexcludelistmember "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/firewall/policyfirewallexcludelistmember"
 	policygatewaypolicy "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/firewall/policygatewaypolicy"
-	policyinstrusionservicepolicy "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/firewall/policyinstrusionservicepolicy"
-	policyinstrusionserviceprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/firewall/policyinstrusionserviceprofile"
+	policyintrusionservicepolicy "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/firewall/policyintrusionservicepolicy"
+	policyintrusionserviceprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/firewall/policyintrusionserviceprofile"
+	policyparentsecuritypolicy "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/firewall/policyparentsecuritypolicy"
 	policypredefinedgatewaypolicy "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/firewall/policypredefinedgatewaypolicy"
 	policypredefinedsecuritypolicy "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/firewall/policypredefinedsecuritypolicy"
 	policysecuritypolicy "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/firewall/policysecuritypolicy"
+	policysecuritypolicyrule "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/firewall/policysecuritypolicyrule"
 	policyservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/firewall/policyservice"
 	policybgpconfig "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/gatewaysandrouting/policybgpconfig"
 	policybgpmeighbor "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/gatewaysandrouting/policybgpmeighbor"
@@ -119,6 +122,7 @@ import (
 	policyipsecvpnlocalendpoint "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtpolicyipsecvpnlocalendpoint/policyipsecvpnlocalendpoint"
 	policyipsecvpnservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtpolicyipsecvpnservice/policyipsecvpnservice"
 	policyipsecvpnsession "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtpolicyipsecvpnsession/policyipsecvpnsession"
+	policyipsecvpntunnelprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtpolicyipsecvpntunnelprofile/policyipsecvpntunnelprofile"
 	policyl2vpnsession "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtpolicyl2vpnsession/policyl2vpnsession"
 	policytransportzone "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtpolicytransportzone/policytransportzone"
 	qosswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtqosswitchingprofile/qosswitchingprofile"
@@ -154,12 +158,15 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		policyvnipool.Setup,
 		policycontextprofile.Setup,
 		policycontextprofilecustomattribute.Setup,
+		policyfirewallexcludelistmember.Setup,
 		policygatewaypolicy.Setup,
-		policyinstrusionservicepolicy.Setup,
-		policyinstrusionserviceprofile.Setup,
+		policyintrusionservicepolicy.Setup,
+		policyintrusionserviceprofile.Setup,
+		policyparentsecuritypolicy.Setup,
 		policypredefinedgatewaypolicy.Setup,
 		policypredefinedsecuritypolicy.Setup,
 		policysecuritypolicy.Setup,
+		policysecuritypolicyrule.Setup,
 		policyservice.Setup,
 		policybgpconfig.Setup,
 		policybgpmeighbor.Setup,
@@ -252,6 +259,7 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		policyipsecvpnlocalendpoint.Setup,
 		policyipsecvpnservice.Setup,
 		policyipsecvpnsession.Setup,
+		policyipsecvpntunnelprofile.Setup,
 		policyl2vpnsession.Setup,
 		policytransportzone.Setup,
 		qosswitchingprofile.Setup,

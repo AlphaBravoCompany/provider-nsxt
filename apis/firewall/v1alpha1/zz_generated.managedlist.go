@@ -25,6 +25,15 @@ func (l *PolicyContextProfileList) GetItems() []resource.Managed {
 	return items
 }
 
+// GetItems of this PolicyFirewallExcludeListMemberList.
+func (l *PolicyFirewallExcludeListMemberList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
 // GetItems of this PolicyGatewayPolicyList.
 func (l *PolicyGatewayPolicyList) GetItems() []resource.Managed {
 	items := make([]resource.Managed, len(l.Items))
@@ -34,8 +43,8 @@ func (l *PolicyGatewayPolicyList) GetItems() []resource.Managed {
 	return items
 }
 
-// GetItems of this PolicyInstrusionServicePolicyList.
-func (l *PolicyInstrusionServicePolicyList) GetItems() []resource.Managed {
+// GetItems of this PolicyIntrusionServicePolicyList.
+func (l *PolicyIntrusionServicePolicyList) GetItems() []resource.Managed {
 	items := make([]resource.Managed, len(l.Items))
 	for i := range l.Items {
 		items[i] = &l.Items[i]
@@ -43,8 +52,17 @@ func (l *PolicyInstrusionServicePolicyList) GetItems() []resource.Managed {
 	return items
 }
 
-// GetItems of this PolicyInstrusionServiceProfileList.
-func (l *PolicyInstrusionServiceProfileList) GetItems() []resource.Managed {
+// GetItems of this PolicyIntrusionServiceProfileList.
+func (l *PolicyIntrusionServiceProfileList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
+// GetItems of this PolicyParentSecurityPolicyList.
+func (l *PolicyParentSecurityPolicyList) GetItems() []resource.Managed {
 	items := make([]resource.Managed, len(l.Items))
 	for i := range l.Items {
 		items[i] = &l.Items[i]
@@ -72,6 +90,15 @@ func (l *PolicyPredefinedSecurityPolicyList) GetItems() []resource.Managed {
 
 // GetItems of this PolicySecurityPolicyList.
 func (l *PolicySecurityPolicyList) GetItems() []resource.Managed {
+	items := make([]resource.Managed, len(l.Items))
+	for i := range l.Items {
+		items[i] = &l.Items[i]
+	}
+	return items
+}
+
+// GetItems of this PolicySecurityPolicyRuleList.
+func (l *PolicySecurityPolicyRuleList) GetItems() []resource.Managed {
 	items := make([]resource.Managed, len(l.Items))
 	for i := range l.Items {
 		items[i] = &l.Items[i]

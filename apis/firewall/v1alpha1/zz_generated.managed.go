@@ -159,6 +159,82 @@ func (mg *PolicyContextProfileCustomAttribute) SetWriteConnectionSecretToReferen
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
+// GetCondition of this PolicyFirewallExcludeListMember.
+func (mg *PolicyFirewallExcludeListMember) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this PolicyFirewallExcludeListMember.
+func (mg *PolicyFirewallExcludeListMember) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicy of this PolicyFirewallExcludeListMember.
+func (mg *PolicyFirewallExcludeListMember) GetManagementPolicy() xpv1.ManagementPolicy {
+	return mg.Spec.ManagementPolicy
+}
+
+// GetProviderConfigReference of this PolicyFirewallExcludeListMember.
+func (mg *PolicyFirewallExcludeListMember) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+/*
+GetProviderReference of this PolicyFirewallExcludeListMember.
+Deprecated: Use GetProviderConfigReference.
+*/
+func (mg *PolicyFirewallExcludeListMember) GetProviderReference() *xpv1.Reference {
+	return mg.Spec.ProviderReference
+}
+
+// GetPublishConnectionDetailsTo of this PolicyFirewallExcludeListMember.
+func (mg *PolicyFirewallExcludeListMember) GetPublishConnectionDetailsTo() *xpv1.PublishConnectionDetailsTo {
+	return mg.Spec.PublishConnectionDetailsTo
+}
+
+// GetWriteConnectionSecretToReference of this PolicyFirewallExcludeListMember.
+func (mg *PolicyFirewallExcludeListMember) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this PolicyFirewallExcludeListMember.
+func (mg *PolicyFirewallExcludeListMember) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this PolicyFirewallExcludeListMember.
+func (mg *PolicyFirewallExcludeListMember) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicy of this PolicyFirewallExcludeListMember.
+func (mg *PolicyFirewallExcludeListMember) SetManagementPolicy(r xpv1.ManagementPolicy) {
+	mg.Spec.ManagementPolicy = r
+}
+
+// SetProviderConfigReference of this PolicyFirewallExcludeListMember.
+func (mg *PolicyFirewallExcludeListMember) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+/*
+SetProviderReference of this PolicyFirewallExcludeListMember.
+Deprecated: Use SetProviderConfigReference.
+*/
+func (mg *PolicyFirewallExcludeListMember) SetProviderReference(r *xpv1.Reference) {
+	mg.Spec.ProviderReference = r
+}
+
+// SetPublishConnectionDetailsTo of this PolicyFirewallExcludeListMember.
+func (mg *PolicyFirewallExcludeListMember) SetPublishConnectionDetailsTo(r *xpv1.PublishConnectionDetailsTo) {
+	mg.Spec.PublishConnectionDetailsTo = r
+}
+
+// SetWriteConnectionSecretToReference of this PolicyFirewallExcludeListMember.
+func (mg *PolicyFirewallExcludeListMember) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
 // GetCondition of this PolicyGatewayPolicy.
 func (mg *PolicyGatewayPolicy) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
 	return mg.Status.GetCondition(ct)
@@ -235,155 +311,231 @@ func (mg *PolicyGatewayPolicy) SetWriteConnectionSecretToReference(r *xpv1.Secre
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
-// GetCondition of this PolicyInstrusionServicePolicy.
-func (mg *PolicyInstrusionServicePolicy) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+// GetCondition of this PolicyIntrusionServicePolicy.
+func (mg *PolicyIntrusionServicePolicy) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
-// GetDeletionPolicy of this PolicyInstrusionServicePolicy.
-func (mg *PolicyInstrusionServicePolicy) GetDeletionPolicy() xpv1.DeletionPolicy {
+// GetDeletionPolicy of this PolicyIntrusionServicePolicy.
+func (mg *PolicyIntrusionServicePolicy) GetDeletionPolicy() xpv1.DeletionPolicy {
 	return mg.Spec.DeletionPolicy
 }
 
-// GetManagementPolicy of this PolicyInstrusionServicePolicy.
-func (mg *PolicyInstrusionServicePolicy) GetManagementPolicy() xpv1.ManagementPolicy {
+// GetManagementPolicy of this PolicyIntrusionServicePolicy.
+func (mg *PolicyIntrusionServicePolicy) GetManagementPolicy() xpv1.ManagementPolicy {
 	return mg.Spec.ManagementPolicy
 }
 
-// GetProviderConfigReference of this PolicyInstrusionServicePolicy.
-func (mg *PolicyInstrusionServicePolicy) GetProviderConfigReference() *xpv1.Reference {
+// GetProviderConfigReference of this PolicyIntrusionServicePolicy.
+func (mg *PolicyIntrusionServicePolicy) GetProviderConfigReference() *xpv1.Reference {
 	return mg.Spec.ProviderConfigReference
 }
 
 /*
-GetProviderReference of this PolicyInstrusionServicePolicy.
+GetProviderReference of this PolicyIntrusionServicePolicy.
 Deprecated: Use GetProviderConfigReference.
 */
-func (mg *PolicyInstrusionServicePolicy) GetProviderReference() *xpv1.Reference {
+func (mg *PolicyIntrusionServicePolicy) GetProviderReference() *xpv1.Reference {
 	return mg.Spec.ProviderReference
 }
 
-// GetPublishConnectionDetailsTo of this PolicyInstrusionServicePolicy.
-func (mg *PolicyInstrusionServicePolicy) GetPublishConnectionDetailsTo() *xpv1.PublishConnectionDetailsTo {
+// GetPublishConnectionDetailsTo of this PolicyIntrusionServicePolicy.
+func (mg *PolicyIntrusionServicePolicy) GetPublishConnectionDetailsTo() *xpv1.PublishConnectionDetailsTo {
 	return mg.Spec.PublishConnectionDetailsTo
 }
 
-// GetWriteConnectionSecretToReference of this PolicyInstrusionServicePolicy.
-func (mg *PolicyInstrusionServicePolicy) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+// GetWriteConnectionSecretToReference of this PolicyIntrusionServicePolicy.
+func (mg *PolicyIntrusionServicePolicy) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
-// SetConditions of this PolicyInstrusionServicePolicy.
-func (mg *PolicyInstrusionServicePolicy) SetConditions(c ...xpv1.Condition) {
+// SetConditions of this PolicyIntrusionServicePolicy.
+func (mg *PolicyIntrusionServicePolicy) SetConditions(c ...xpv1.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
-// SetDeletionPolicy of this PolicyInstrusionServicePolicy.
-func (mg *PolicyInstrusionServicePolicy) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+// SetDeletionPolicy of this PolicyIntrusionServicePolicy.
+func (mg *PolicyIntrusionServicePolicy) SetDeletionPolicy(r xpv1.DeletionPolicy) {
 	mg.Spec.DeletionPolicy = r
 }
 
-// SetManagementPolicy of this PolicyInstrusionServicePolicy.
-func (mg *PolicyInstrusionServicePolicy) SetManagementPolicy(r xpv1.ManagementPolicy) {
+// SetManagementPolicy of this PolicyIntrusionServicePolicy.
+func (mg *PolicyIntrusionServicePolicy) SetManagementPolicy(r xpv1.ManagementPolicy) {
 	mg.Spec.ManagementPolicy = r
 }
 
-// SetProviderConfigReference of this PolicyInstrusionServicePolicy.
-func (mg *PolicyInstrusionServicePolicy) SetProviderConfigReference(r *xpv1.Reference) {
+// SetProviderConfigReference of this PolicyIntrusionServicePolicy.
+func (mg *PolicyIntrusionServicePolicy) SetProviderConfigReference(r *xpv1.Reference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 /*
-SetProviderReference of this PolicyInstrusionServicePolicy.
+SetProviderReference of this PolicyIntrusionServicePolicy.
 Deprecated: Use SetProviderConfigReference.
 */
-func (mg *PolicyInstrusionServicePolicy) SetProviderReference(r *xpv1.Reference) {
+func (mg *PolicyIntrusionServicePolicy) SetProviderReference(r *xpv1.Reference) {
 	mg.Spec.ProviderReference = r
 }
 
-// SetPublishConnectionDetailsTo of this PolicyInstrusionServicePolicy.
-func (mg *PolicyInstrusionServicePolicy) SetPublishConnectionDetailsTo(r *xpv1.PublishConnectionDetailsTo) {
+// SetPublishConnectionDetailsTo of this PolicyIntrusionServicePolicy.
+func (mg *PolicyIntrusionServicePolicy) SetPublishConnectionDetailsTo(r *xpv1.PublishConnectionDetailsTo) {
 	mg.Spec.PublishConnectionDetailsTo = r
 }
 
-// SetWriteConnectionSecretToReference of this PolicyInstrusionServicePolicy.
-func (mg *PolicyInstrusionServicePolicy) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+// SetWriteConnectionSecretToReference of this PolicyIntrusionServicePolicy.
+func (mg *PolicyIntrusionServicePolicy) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
-// GetCondition of this PolicyInstrusionServiceProfile.
-func (mg *PolicyInstrusionServiceProfile) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+// GetCondition of this PolicyIntrusionServiceProfile.
+func (mg *PolicyIntrusionServiceProfile) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
-// GetDeletionPolicy of this PolicyInstrusionServiceProfile.
-func (mg *PolicyInstrusionServiceProfile) GetDeletionPolicy() xpv1.DeletionPolicy {
+// GetDeletionPolicy of this PolicyIntrusionServiceProfile.
+func (mg *PolicyIntrusionServiceProfile) GetDeletionPolicy() xpv1.DeletionPolicy {
 	return mg.Spec.DeletionPolicy
 }
 
-// GetManagementPolicy of this PolicyInstrusionServiceProfile.
-func (mg *PolicyInstrusionServiceProfile) GetManagementPolicy() xpv1.ManagementPolicy {
+// GetManagementPolicy of this PolicyIntrusionServiceProfile.
+func (mg *PolicyIntrusionServiceProfile) GetManagementPolicy() xpv1.ManagementPolicy {
 	return mg.Spec.ManagementPolicy
 }
 
-// GetProviderConfigReference of this PolicyInstrusionServiceProfile.
-func (mg *PolicyInstrusionServiceProfile) GetProviderConfigReference() *xpv1.Reference {
+// GetProviderConfigReference of this PolicyIntrusionServiceProfile.
+func (mg *PolicyIntrusionServiceProfile) GetProviderConfigReference() *xpv1.Reference {
 	return mg.Spec.ProviderConfigReference
 }
 
 /*
-GetProviderReference of this PolicyInstrusionServiceProfile.
+GetProviderReference of this PolicyIntrusionServiceProfile.
 Deprecated: Use GetProviderConfigReference.
 */
-func (mg *PolicyInstrusionServiceProfile) GetProviderReference() *xpv1.Reference {
+func (mg *PolicyIntrusionServiceProfile) GetProviderReference() *xpv1.Reference {
 	return mg.Spec.ProviderReference
 }
 
-// GetPublishConnectionDetailsTo of this PolicyInstrusionServiceProfile.
-func (mg *PolicyInstrusionServiceProfile) GetPublishConnectionDetailsTo() *xpv1.PublishConnectionDetailsTo {
+// GetPublishConnectionDetailsTo of this PolicyIntrusionServiceProfile.
+func (mg *PolicyIntrusionServiceProfile) GetPublishConnectionDetailsTo() *xpv1.PublishConnectionDetailsTo {
 	return mg.Spec.PublishConnectionDetailsTo
 }
 
-// GetWriteConnectionSecretToReference of this PolicyInstrusionServiceProfile.
-func (mg *PolicyInstrusionServiceProfile) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+// GetWriteConnectionSecretToReference of this PolicyIntrusionServiceProfile.
+func (mg *PolicyIntrusionServiceProfile) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
-// SetConditions of this PolicyInstrusionServiceProfile.
-func (mg *PolicyInstrusionServiceProfile) SetConditions(c ...xpv1.Condition) {
+// SetConditions of this PolicyIntrusionServiceProfile.
+func (mg *PolicyIntrusionServiceProfile) SetConditions(c ...xpv1.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
-// SetDeletionPolicy of this PolicyInstrusionServiceProfile.
-func (mg *PolicyInstrusionServiceProfile) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+// SetDeletionPolicy of this PolicyIntrusionServiceProfile.
+func (mg *PolicyIntrusionServiceProfile) SetDeletionPolicy(r xpv1.DeletionPolicy) {
 	mg.Spec.DeletionPolicy = r
 }
 
-// SetManagementPolicy of this PolicyInstrusionServiceProfile.
-func (mg *PolicyInstrusionServiceProfile) SetManagementPolicy(r xpv1.ManagementPolicy) {
+// SetManagementPolicy of this PolicyIntrusionServiceProfile.
+func (mg *PolicyIntrusionServiceProfile) SetManagementPolicy(r xpv1.ManagementPolicy) {
 	mg.Spec.ManagementPolicy = r
 }
 
-// SetProviderConfigReference of this PolicyInstrusionServiceProfile.
-func (mg *PolicyInstrusionServiceProfile) SetProviderConfigReference(r *xpv1.Reference) {
+// SetProviderConfigReference of this PolicyIntrusionServiceProfile.
+func (mg *PolicyIntrusionServiceProfile) SetProviderConfigReference(r *xpv1.Reference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 /*
-SetProviderReference of this PolicyInstrusionServiceProfile.
+SetProviderReference of this PolicyIntrusionServiceProfile.
 Deprecated: Use SetProviderConfigReference.
 */
-func (mg *PolicyInstrusionServiceProfile) SetProviderReference(r *xpv1.Reference) {
+func (mg *PolicyIntrusionServiceProfile) SetProviderReference(r *xpv1.Reference) {
 	mg.Spec.ProviderReference = r
 }
 
-// SetPublishConnectionDetailsTo of this PolicyInstrusionServiceProfile.
-func (mg *PolicyInstrusionServiceProfile) SetPublishConnectionDetailsTo(r *xpv1.PublishConnectionDetailsTo) {
+// SetPublishConnectionDetailsTo of this PolicyIntrusionServiceProfile.
+func (mg *PolicyIntrusionServiceProfile) SetPublishConnectionDetailsTo(r *xpv1.PublishConnectionDetailsTo) {
 	mg.Spec.PublishConnectionDetailsTo = r
 }
 
-// SetWriteConnectionSecretToReference of this PolicyInstrusionServiceProfile.
-func (mg *PolicyInstrusionServiceProfile) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+// SetWriteConnectionSecretToReference of this PolicyIntrusionServiceProfile.
+func (mg *PolicyIntrusionServiceProfile) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this PolicyParentSecurityPolicy.
+func (mg *PolicyParentSecurityPolicy) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this PolicyParentSecurityPolicy.
+func (mg *PolicyParentSecurityPolicy) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicy of this PolicyParentSecurityPolicy.
+func (mg *PolicyParentSecurityPolicy) GetManagementPolicy() xpv1.ManagementPolicy {
+	return mg.Spec.ManagementPolicy
+}
+
+// GetProviderConfigReference of this PolicyParentSecurityPolicy.
+func (mg *PolicyParentSecurityPolicy) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+/*
+GetProviderReference of this PolicyParentSecurityPolicy.
+Deprecated: Use GetProviderConfigReference.
+*/
+func (mg *PolicyParentSecurityPolicy) GetProviderReference() *xpv1.Reference {
+	return mg.Spec.ProviderReference
+}
+
+// GetPublishConnectionDetailsTo of this PolicyParentSecurityPolicy.
+func (mg *PolicyParentSecurityPolicy) GetPublishConnectionDetailsTo() *xpv1.PublishConnectionDetailsTo {
+	return mg.Spec.PublishConnectionDetailsTo
+}
+
+// GetWriteConnectionSecretToReference of this PolicyParentSecurityPolicy.
+func (mg *PolicyParentSecurityPolicy) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this PolicyParentSecurityPolicy.
+func (mg *PolicyParentSecurityPolicy) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this PolicyParentSecurityPolicy.
+func (mg *PolicyParentSecurityPolicy) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicy of this PolicyParentSecurityPolicy.
+func (mg *PolicyParentSecurityPolicy) SetManagementPolicy(r xpv1.ManagementPolicy) {
+	mg.Spec.ManagementPolicy = r
+}
+
+// SetProviderConfigReference of this PolicyParentSecurityPolicy.
+func (mg *PolicyParentSecurityPolicy) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+/*
+SetProviderReference of this PolicyParentSecurityPolicy.
+Deprecated: Use SetProviderConfigReference.
+*/
+func (mg *PolicyParentSecurityPolicy) SetProviderReference(r *xpv1.Reference) {
+	mg.Spec.ProviderReference = r
+}
+
+// SetPublishConnectionDetailsTo of this PolicyParentSecurityPolicy.
+func (mg *PolicyParentSecurityPolicy) SetPublishConnectionDetailsTo(r *xpv1.PublishConnectionDetailsTo) {
+	mg.Spec.PublishConnectionDetailsTo = r
+}
+
+// SetWriteConnectionSecretToReference of this PolicyParentSecurityPolicy.
+func (mg *PolicyParentSecurityPolicy) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
@@ -612,6 +764,82 @@ func (mg *PolicySecurityPolicy) SetPublishConnectionDetailsTo(r *xpv1.PublishCon
 
 // SetWriteConnectionSecretToReference of this PolicySecurityPolicy.
 func (mg *PolicySecurityPolicy) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+	mg.Spec.WriteConnectionSecretToReference = r
+}
+
+// GetCondition of this PolicySecurityPolicyRule.
+func (mg *PolicySecurityPolicyRule) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+	return mg.Status.GetCondition(ct)
+}
+
+// GetDeletionPolicy of this PolicySecurityPolicyRule.
+func (mg *PolicySecurityPolicyRule) GetDeletionPolicy() xpv1.DeletionPolicy {
+	return mg.Spec.DeletionPolicy
+}
+
+// GetManagementPolicy of this PolicySecurityPolicyRule.
+func (mg *PolicySecurityPolicyRule) GetManagementPolicy() xpv1.ManagementPolicy {
+	return mg.Spec.ManagementPolicy
+}
+
+// GetProviderConfigReference of this PolicySecurityPolicyRule.
+func (mg *PolicySecurityPolicyRule) GetProviderConfigReference() *xpv1.Reference {
+	return mg.Spec.ProviderConfigReference
+}
+
+/*
+GetProviderReference of this PolicySecurityPolicyRule.
+Deprecated: Use GetProviderConfigReference.
+*/
+func (mg *PolicySecurityPolicyRule) GetProviderReference() *xpv1.Reference {
+	return mg.Spec.ProviderReference
+}
+
+// GetPublishConnectionDetailsTo of this PolicySecurityPolicyRule.
+func (mg *PolicySecurityPolicyRule) GetPublishConnectionDetailsTo() *xpv1.PublishConnectionDetailsTo {
+	return mg.Spec.PublishConnectionDetailsTo
+}
+
+// GetWriteConnectionSecretToReference of this PolicySecurityPolicyRule.
+func (mg *PolicySecurityPolicyRule) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+	return mg.Spec.WriteConnectionSecretToReference
+}
+
+// SetConditions of this PolicySecurityPolicyRule.
+func (mg *PolicySecurityPolicyRule) SetConditions(c ...xpv1.Condition) {
+	mg.Status.SetConditions(c...)
+}
+
+// SetDeletionPolicy of this PolicySecurityPolicyRule.
+func (mg *PolicySecurityPolicyRule) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+	mg.Spec.DeletionPolicy = r
+}
+
+// SetManagementPolicy of this PolicySecurityPolicyRule.
+func (mg *PolicySecurityPolicyRule) SetManagementPolicy(r xpv1.ManagementPolicy) {
+	mg.Spec.ManagementPolicy = r
+}
+
+// SetProviderConfigReference of this PolicySecurityPolicyRule.
+func (mg *PolicySecurityPolicyRule) SetProviderConfigReference(r *xpv1.Reference) {
+	mg.Spec.ProviderConfigReference = r
+}
+
+/*
+SetProviderReference of this PolicySecurityPolicyRule.
+Deprecated: Use SetProviderConfigReference.
+*/
+func (mg *PolicySecurityPolicyRule) SetProviderReference(r *xpv1.Reference) {
+	mg.Spec.ProviderReference = r
+}
+
+// SetPublishConnectionDetailsTo of this PolicySecurityPolicyRule.
+func (mg *PolicySecurityPolicyRule) SetPublishConnectionDetailsTo(r *xpv1.PublishConnectionDetailsTo) {
+	mg.Spec.PublishConnectionDetailsTo = r
+}
+
+// SetWriteConnectionSecretToReference of this PolicySecurityPolicyRule.
+func (mg *PolicySecurityPolicyRule) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 

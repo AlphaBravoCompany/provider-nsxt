@@ -82,6 +82,7 @@ import (
 	v1alpha1nsxtpolicyipsecvpnlocalendpoint "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtpolicyipsecvpnlocalendpoint/v1alpha1"
 	v1alpha1nsxtpolicyipsecvpnservice "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtpolicyipsecvpnservice/v1alpha1"
 	v1alpha1nsxtpolicyipsecvpnsession "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtpolicyipsecvpnsession/v1alpha1"
+	v1alpha1nsxtpolicyipsecvpntunnelprofile "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtpolicyipsecvpntunnelprofile/v1alpha1"
 	v1alpha1nsxtpolicyl2vpnsession "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtpolicyl2vpnsession/v1alpha1"
 	v1alpha1nsxtpolicytransportzone "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtpolicytransportzone/v1alpha1"
 	v1alpha1nsxtqosswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtqosswitchingprofile/v1alpha1"
@@ -170,6 +171,7 @@ func init() {
 		v1alpha1nsxtpolicyipsecvpnlocalendpoint.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtpolicyipsecvpnservice.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtpolicyipsecvpnsession.SchemeBuilder.AddToScheme,
+		v1alpha1nsxtpolicyipsecvpntunnelprofile.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtpolicyl2vpnsession.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtpolicytransportzone.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtqosswitchingprofile.SchemeBuilder.AddToScheme,
