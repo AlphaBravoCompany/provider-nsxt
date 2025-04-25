@@ -86,3 +86,151 @@ func (tr *PolicyProject) LateInitialize(attrs []byte) (bool, error) {
 func (tr *PolicyProject) GetTerraformSchemaVersion() int {
 	return 0
 }
+
+// GetTerraformResourceType returns Terraform resource type for this PolicyShare
+func (mg *PolicyShare) GetTerraformResourceType() string {
+	return "nsxt_policy_share"
+}
+
+// GetConnectionDetailsMapping for this PolicyShare
+func (tr *PolicyShare) GetConnectionDetailsMapping() map[string]string {
+	return nil
+}
+
+// GetObservation of this PolicyShare
+func (tr *PolicyShare) GetObservation() (map[string]any, error) {
+	o, err := json.TFParser.Marshal(tr.Status.AtProvider)
+	if err != nil {
+		return nil, err
+	}
+	base := map[string]any{}
+	return base, json.TFParser.Unmarshal(o, &base)
+}
+
+// SetObservation for this PolicyShare
+func (tr *PolicyShare) SetObservation(obs map[string]any) error {
+	p, err := json.TFParser.Marshal(obs)
+	if err != nil {
+		return err
+	}
+	return json.TFParser.Unmarshal(p, &tr.Status.AtProvider)
+}
+
+// GetID returns ID of underlying Terraform resource of this PolicyShare
+func (tr *PolicyShare) GetID() string {
+	if tr.Status.AtProvider.ID == nil {
+		return ""
+	}
+	return *tr.Status.AtProvider.ID
+}
+
+// GetParameters of this PolicyShare
+func (tr *PolicyShare) GetParameters() (map[string]any, error) {
+	p, err := json.TFParser.Marshal(tr.Spec.ForProvider)
+	if err != nil {
+		return nil, err
+	}
+	base := map[string]any{}
+	return base, json.TFParser.Unmarshal(p, &base)
+}
+
+// SetParameters for this PolicyShare
+func (tr *PolicyShare) SetParameters(params map[string]any) error {
+	p, err := json.TFParser.Marshal(params)
+	if err != nil {
+		return err
+	}
+	return json.TFParser.Unmarshal(p, &tr.Spec.ForProvider)
+}
+
+// LateInitialize this PolicyShare using its observed tfState.
+// returns True if there are any spec changes for the resource.
+func (tr *PolicyShare) LateInitialize(attrs []byte) (bool, error) {
+	params := &PolicyShareParameters{}
+	if err := json.TFParser.Unmarshal(attrs, params); err != nil {
+		return false, errors.Wrap(err, "failed to unmarshal Terraform state parameters for late-initialization")
+	}
+	opts := []resource.GenericLateInitializerOption{resource.WithZeroValueJSONOmitEmptyFilter(resource.CNameWildcard)}
+
+	li := resource.NewGenericLateInitializer(opts...)
+	return li.LateInitialize(&tr.Spec.ForProvider, params)
+}
+
+// GetTerraformSchemaVersion returns the associated Terraform schema version
+func (tr *PolicyShare) GetTerraformSchemaVersion() int {
+	return 0
+}
+
+// GetTerraformResourceType returns Terraform resource type for this PolicySharedResource
+func (mg *PolicySharedResource) GetTerraformResourceType() string {
+	return "nsxt_policy_shared_resource"
+}
+
+// GetConnectionDetailsMapping for this PolicySharedResource
+func (tr *PolicySharedResource) GetConnectionDetailsMapping() map[string]string {
+	return nil
+}
+
+// GetObservation of this PolicySharedResource
+func (tr *PolicySharedResource) GetObservation() (map[string]any, error) {
+	o, err := json.TFParser.Marshal(tr.Status.AtProvider)
+	if err != nil {
+		return nil, err
+	}
+	base := map[string]any{}
+	return base, json.TFParser.Unmarshal(o, &base)
+}
+
+// SetObservation for this PolicySharedResource
+func (tr *PolicySharedResource) SetObservation(obs map[string]any) error {
+	p, err := json.TFParser.Marshal(obs)
+	if err != nil {
+		return err
+	}
+	return json.TFParser.Unmarshal(p, &tr.Status.AtProvider)
+}
+
+// GetID returns ID of underlying Terraform resource of this PolicySharedResource
+func (tr *PolicySharedResource) GetID() string {
+	if tr.Status.AtProvider.ID == nil {
+		return ""
+	}
+	return *tr.Status.AtProvider.ID
+}
+
+// GetParameters of this PolicySharedResource
+func (tr *PolicySharedResource) GetParameters() (map[string]any, error) {
+	p, err := json.TFParser.Marshal(tr.Spec.ForProvider)
+	if err != nil {
+		return nil, err
+	}
+	base := map[string]any{}
+	return base, json.TFParser.Unmarshal(p, &base)
+}
+
+// SetParameters for this PolicySharedResource
+func (tr *PolicySharedResource) SetParameters(params map[string]any) error {
+	p, err := json.TFParser.Marshal(params)
+	if err != nil {
+		return err
+	}
+	return json.TFParser.Unmarshal(p, &tr.Spec.ForProvider)
+}
+
+// LateInitialize this PolicySharedResource using its observed tfState.
+// returns True if there are any spec changes for the resource.
+func (tr *PolicySharedResource) LateInitialize(attrs []byte) (bool, error) {
+	params := &PolicySharedResourceParameters{}
+	if err := json.TFParser.Unmarshal(attrs, params); err != nil {
+		return false, errors.Wrap(err, "failed to unmarshal Terraform state parameters for late-initialization")
+	}
+	opts := []resource.GenericLateInitializerOption{resource.WithZeroValueJSONOmitEmptyFilter(resource.CNameWildcard)}
+
+	li := resource.NewGenericLateInitializer(opts...)
+	return li.LateInitialize(&tr.Spec.ForProvider, params)
+}
+
+// GetTerraformSchemaVersion returns the associated Terraform schema version
+func (tr *PolicySharedResource) GetTerraformSchemaVersion() int {
+	return 0
+}

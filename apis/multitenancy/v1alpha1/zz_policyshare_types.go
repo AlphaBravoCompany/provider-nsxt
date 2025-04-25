@@ -13,22 +13,29 @@ import (
 	v1 "github.com/crossplane/crossplane-runtime/apis/common/v1"
 )
 
-type StaticRouteBfdPeerObservation struct {
+type ContextObservation struct {
 
-	// Policy path for BFD Profile
-	BfdProfilePath *string `json:"bfdProfilePath,omitempty" tf:"bfd_profile_path,omitempty"`
+	// Id of the project which the resource belongs to.
+	ProjectID *string `json:"projectId,omitempty" tf:"project_id,omitempty"`
+}
+
+type ContextParameters struct {
+
+	// Id of the project which the resource belongs to.
+	// +kubebuilder:validation:Required
+	ProjectID *string `json:"projectId" tf:"project_id,omitempty"`
+}
+
+type PolicyShareObservation struct {
+
+	// Resource context
+	Context []ContextObservation `json:"context,omitempty" tf:"context,omitempty"`
 
 	// Description for this resource
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
 	// Display name for this resource
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
-
-	// Flag to enable/disable this peer
-	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
-
-	// Policy path for Tier0 gateway
-	GatewayPath *string `json:"gatewayPath,omitempty" tf:"gateway_path,omitempty"`
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
@@ -38,24 +45,24 @@ type StaticRouteBfdPeerObservation struct {
 	// Policy path for this resource
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
-	// IPv4 Address of the peer
-	PeerAddress *string `json:"peerAddress,omitempty" tf:"peer_address,omitempty"`
-
 	// The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected
 	Revision *float64 `json:"revision,omitempty" tf:"revision,omitempty"`
 
-	// Array of Tier0 external interface IP addresses
-	SourceAddresses []*string `json:"sourceAddresses,omitempty" tf:"source_addresses,omitempty"`
+	// Path of the context
+	SharedWith []*string `json:"sharedWith,omitempty" tf:"shared_with,omitempty"`
+
+	// Sharing Strategy
+	SharingStrategy *string `json:"sharingStrategy,omitempty" tf:"sharing_strategy,omitempty"`
 
 	// Set of opaque identifiers meaningful to the user
-	Tag []TagObservation `json:"tag,omitempty" tf:"tag,omitempty"`
+	Tag []PolicyShareTagObservation `json:"tag,omitempty" tf:"tag,omitempty"`
 }
 
-type StaticRouteBfdPeerParameters struct {
+type PolicyShareParameters struct {
 
-	// Policy path for BFD Profile
+	// Resource context
 	// +kubebuilder:validation:Optional
-	BfdProfilePath *string `json:"bfdProfilePath,omitempty" tf:"bfd_profile_path,omitempty"`
+	Context []ContextParameters `json:"context,omitempty" tf:"context,omitempty"`
 
 	// Description for this resource
 	// +kubebuilder:validation:Optional
@@ -65,38 +72,30 @@ type StaticRouteBfdPeerParameters struct {
 	// +kubebuilder:validation:Optional
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
-	// Flag to enable/disable this peer
-	// +kubebuilder:validation:Optional
-	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
-
-	// Policy path for Tier0 gateway
-	// +kubebuilder:validation:Optional
-	GatewayPath *string `json:"gatewayPath,omitempty" tf:"gateway_path,omitempty"`
-
 	// NSX ID for this resource
 	// +kubebuilder:validation:Optional
 	NsxID *string `json:"nsxId,omitempty" tf:"nsx_id,omitempty"`
 
-	// IPv4 Address of the peer
+	// Path of the context
 	// +kubebuilder:validation:Optional
-	PeerAddress *string `json:"peerAddress,omitempty" tf:"peer_address,omitempty"`
+	SharedWith []*string `json:"sharedWith,omitempty" tf:"shared_with,omitempty"`
 
-	// Array of Tier0 external interface IP addresses
+	// Sharing Strategy
 	// +kubebuilder:validation:Optional
-	SourceAddresses []*string `json:"sourceAddresses,omitempty" tf:"source_addresses,omitempty"`
+	SharingStrategy *string `json:"sharingStrategy,omitempty" tf:"sharing_strategy,omitempty"`
 
 	// Set of opaque identifiers meaningful to the user
 	// +kubebuilder:validation:Optional
-	Tag []TagParameters `json:"tag,omitempty" tf:"tag,omitempty"`
+	Tag []PolicyShareTagParameters `json:"tag,omitempty" tf:"tag,omitempty"`
 }
 
-type TagObservation struct {
+type PolicyShareTagObservation struct {
 	Scope *string `json:"scope,omitempty" tf:"scope,omitempty"`
 
 	Tag *string `json:"tag,omitempty" tf:"tag,omitempty"`
 }
 
-type TagParameters struct {
+type PolicyShareTagParameters struct {
 
 	// +kubebuilder:validation:Optional
 	Scope *string `json:"scope,omitempty" tf:"scope,omitempty"`
@@ -105,55 +104,53 @@ type TagParameters struct {
 	Tag *string `json:"tag,omitempty" tf:"tag,omitempty"`
 }
 
-// StaticRouteBfdPeerSpec defines the desired state of StaticRouteBfdPeer
-type StaticRouteBfdPeerSpec struct {
+// PolicyShareSpec defines the desired state of PolicyShare
+type PolicyShareSpec struct {
 	v1.ResourceSpec `json:",inline"`
-	ForProvider     StaticRouteBfdPeerParameters `json:"forProvider"`
+	ForProvider     PolicyShareParameters `json:"forProvider"`
 }
 
-// StaticRouteBfdPeerStatus defines the observed state of StaticRouteBfdPeer.
-type StaticRouteBfdPeerStatus struct {
+// PolicyShareStatus defines the observed state of PolicyShare.
+type PolicyShareStatus struct {
 	v1.ResourceStatus `json:",inline"`
-	AtProvider        StaticRouteBfdPeerObservation `json:"atProvider,omitempty"`
+	AtProvider        PolicyShareObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true
 
-// StaticRouteBfdPeer is the Schema for the StaticRouteBfdPeers API. <no value>
+// PolicyShare is the Schema for the PolicyShares API. <no value>
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"
 // +kubebuilder:printcolumn:name="AGE",type="date",JSONPath=".metadata.creationTimestamp"
 // +kubebuilder:subresource:status
 // +kubebuilder:resource:scope=Cluster,categories={crossplane,managed,nsxt}
-type StaticRouteBfdPeer struct {
+type PolicyShare struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	// +kubebuilder:validation:XValidation:rule="self.managementPolicy == 'ObserveOnly' || has(self.forProvider.bfdProfilePath)",message="bfdProfilePath is a required parameter"
 	// +kubebuilder:validation:XValidation:rule="self.managementPolicy == 'ObserveOnly' || has(self.forProvider.displayName)",message="displayName is a required parameter"
-	// +kubebuilder:validation:XValidation:rule="self.managementPolicy == 'ObserveOnly' || has(self.forProvider.gatewayPath)",message="gatewayPath is a required parameter"
-	// +kubebuilder:validation:XValidation:rule="self.managementPolicy == 'ObserveOnly' || has(self.forProvider.peerAddress)",message="peerAddress is a required parameter"
-	Spec   StaticRouteBfdPeerSpec   `json:"spec"`
-	Status StaticRouteBfdPeerStatus `json:"status,omitempty"`
+	// +kubebuilder:validation:XValidation:rule="self.managementPolicy == 'ObserveOnly' || has(self.forProvider.sharedWith)",message="sharedWith is a required parameter"
+	Spec   PolicyShareSpec   `json:"spec"`
+	Status PolicyShareStatus `json:"status,omitempty"`
 }
 
 // +kubebuilder:object:root=true
 
-// StaticRouteBfdPeerList contains a list of StaticRouteBfdPeers
-type StaticRouteBfdPeerList struct {
+// PolicyShareList contains a list of PolicyShares
+type PolicyShareList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []StaticRouteBfdPeer `json:"items"`
+	Items           []PolicyShare `json:"items"`
 }
 
 // Repository type metadata.
 var (
-	StaticRouteBfdPeer_Kind             = "StaticRouteBfdPeer"
-	StaticRouteBfdPeer_GroupKind        = schema.GroupKind{Group: CRDGroup, Kind: StaticRouteBfdPeer_Kind}.String()
-	StaticRouteBfdPeer_KindAPIVersion   = StaticRouteBfdPeer_Kind + "." + CRDGroupVersion.String()
-	StaticRouteBfdPeer_GroupVersionKind = CRDGroupVersion.WithKind(StaticRouteBfdPeer_Kind)
+	PolicyShare_Kind             = "PolicyShare"
+	PolicyShare_GroupKind        = schema.GroupKind{Group: CRDGroup, Kind: PolicyShare_Kind}.String()
+	PolicyShare_KindAPIVersion   = PolicyShare_Kind + "." + CRDGroupVersion.String()
+	PolicyShare_GroupVersionKind = CRDGroupVersion.WithKind(PolicyShare_Kind)
 )
 
 func init() {
-	SchemeBuilder.Register(&StaticRouteBfdPeer{}, &StaticRouteBfdPeerList{})
+	SchemeBuilder.Register(&PolicyShare{}, &PolicyShareList{})
 }

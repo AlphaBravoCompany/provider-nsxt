@@ -58,6 +58,8 @@ import (
 	policylbservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/loadbalancer/policylbservice"
 	policylbvirtualserver "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/loadbalancer/policylbvirtualserver"
 	policyproject "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/multitenancy/policyproject"
+	policyshare "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/multitenancy/policyshare"
+	policysharedresource "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/multitenancy/policysharedresource"
 	algorithmtypensservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtalgorithmtypensservice/algorithmtypensservice"
 	clustervirtualip "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtclustervirtualip/clustervirtualip"
 	computemanager "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtcomputemanager/computemanager"
@@ -130,7 +132,6 @@ import (
 	switchsecurityswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtswitchsecurityswitchingprofile/switchsecurityswitchingprofile"
 	vlanlogicalswitch "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtvlanlogicalswitch/vlanlogicalswitch"
 	vmtags "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtvmtags/vmtags"
-	staticroutebfdpeer "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/policy/staticroutebfdpeer"
 	providerconfig "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/providerconfig"
 	policyfixedsegment "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/segments/policyfixedsegment"
 	policyipdiscoveryprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/segments/policyipdiscoveryprofile"
@@ -195,6 +196,8 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		policylbservice.Setup,
 		policylbvirtualserver.Setup,
 		policyproject.Setup,
+		policyshare.Setup,
+		policysharedresource.Setup,
 		algorithmtypensservice.Setup,
 		clustervirtualip.Setup,
 		computemanager.Setup,
@@ -267,7 +270,6 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		switchsecurityswitchingprofile.Setup,
 		vlanlogicalswitch.Setup,
 		vmtags.Setup,
-		staticroutebfdpeer.Setup,
 		providerconfig.Setup,
 		policyfixedsegment.Setup,
 		policyipdiscoveryprofile.Setup,

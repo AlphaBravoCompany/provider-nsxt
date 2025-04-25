@@ -5,18 +5,18 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.11.3
   creationTimestamp: null
-  name: staticroutebfdpeers.policy.crossplane.io
+  name: policysharedresources.multitenancy.crossplane.io
 spec:
-  group: policy.crossplane.io
+  group: multitenancy.crossplane.io
   names:
     categories:
     - crossplane
     - managed
     - nsxt
-    kind: StaticRouteBfdPeer
-    listKind: StaticRouteBfdPeerList
-    plural: staticroutebfdpeers
-    singular: staticroutebfdpeer
+    kind: PolicySharedResource
+    listKind: PolicySharedResourceList
+    plural: policysharedresources
+    singular: policysharedresource
   scope: Cluster
   versions:
   - additionalPrinterColumns:
@@ -35,7 +35,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: StaticRouteBfdPeer is the Schema for the StaticRouteBfdPeers
+        description: PolicySharedResource is the Schema for the PolicySharedResources
           API. <no value>
         properties:
           apiVersion:
@@ -51,7 +51,7 @@ spec:
           metadata:
             type: object
           spec:
-            description: StaticRouteBfdPeerSpec defines the desired state of StaticRouteBfdPeer
+            description: PolicySharedResourceSpec defines the desired state of PolicySharedResource
             properties:
               deletionPolicy:
                 default: Delete
@@ -68,32 +68,33 @@ spec:
                 type: string
               forProvider:
                 properties:
-                  bfdProfilePath:
-                    description: Policy path for BFD Profile
-                    type: string
                   description:
                     description: Description for this resource
                     type: string
                   displayName:
                     description: Display name for this resource
                     type: string
-                  enabled:
-                    description: Flag to enable/disable this peer
-                    type: boolean
-                  gatewayPath:
-                    description: Policy path for Tier0 gateway
-                    type: string
                   nsxId:
                     description: NSX ID for this resource
                     type: string
-                  peerAddress:
-                    description: IPv4 Address of the peer
-                    type: string
-                  sourceAddresses:
-                    description: Array of Tier0 external interface IP addresses
+                  resourceObject:
+                    description: List of resources to be shared
                     items:
-                      type: string
+                      properties:
+                        includeChildren:
+                          description: Denotes if the children of the shared path
+                            are also shared
+                          type: boolean
+                        resourcePath:
+                          description: Path of the resource to be shared
+                          type: string
+                      required:
+                      - resourcePath
+                      type: object
                     type: array
+                  sharePath:
+                    description: Share ID to associate the resource to
+                    type: string
                   tag:
                     description: Set of opaque identifiers meaningful to the user
                     items:
@@ -292,33 +293,23 @@ spec:
             - forProvider
             type: object
             x-kubernetes-validations:
-            - message: bfdProfilePath is a required parameter
-              rule: self.managementPolicy == 'ObserveOnly' || has(self.forProvider.bfdProfilePath)
             - message: displayName is a required parameter
               rule: self.managementPolicy == 'ObserveOnly' || has(self.forProvider.displayName)
-            - message: gatewayPath is a required parameter
-              rule: self.managementPolicy == 'ObserveOnly' || has(self.forProvider.gatewayPath)
-            - message: peerAddress is a required parameter
-              rule: self.managementPolicy == 'ObserveOnly' || has(self.forProvider.peerAddress)
+            - message: resourceObject is a required parameter
+              rule: self.managementPolicy == 'ObserveOnly' || has(self.forProvider.resourceObject)
+            - message: sharePath is a required parameter
+              rule: self.managementPolicy == 'ObserveOnly' || has(self.forProvider.sharePath)
           status:
-            description: StaticRouteBfdPeerStatus defines the observed state of StaticRouteBfdPeer.
+            description: PolicySharedResourceStatus defines the observed state of
+              PolicySharedResource.
             properties:
               atProvider:
                 properties:
-                  bfdProfilePath:
-                    description: Policy path for BFD Profile
-                    type: string
                   description:
                     description: Description for this resource
                     type: string
                   displayName:
                     description: Display name for this resource
-                    type: string
-                  enabled:
-                    description: Flag to enable/disable this peer
-                    type: boolean
-                  gatewayPath:
-                    description: Policy path for Tier0 gateway
                     type: string
                   id:
                     type: string
@@ -328,9 +319,19 @@ spec:
                   path:
                     description: Policy path for this resource
                     type: string
-                  peerAddress:
-                    description: IPv4 Address of the peer
-                    type: string
+                  resourceObject:
+                    description: List of resources to be shared
+                    items:
+                      properties:
+                        includeChildren:
+                          description: Denotes if the children of the shared path
+                            are also shared
+                          type: boolean
+                        resourcePath:
+                          description: Path of the resource to be shared
+                          type: string
+                      type: object
+                    type: array
                   revision:
                     description: The _revision property describes the current revision
                       of the resource. To prevent clients from overwriting each other's
@@ -339,11 +340,9 @@ spec:
                       If the _revision provided in a PUT request is missing or stale,
                       the operation will be rejected
                     type: number
-                  sourceAddresses:
-                    description: Array of Tier0 external interface IP addresses
-                    items:
-                      type: string
-                    type: array
+                  sharePath:
+                    description: Share ID to associate the resource to
+                    type: string
                   tag:
                     description: Set of opaque identifiers meaningful to the user
                     items:
