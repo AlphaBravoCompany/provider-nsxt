@@ -41,9 +41,6 @@ type HostSwitchConfigOptionIPAssignmentObservation struct {
 	// IP assignment specification for Static IP List.
 	StaticIP []IPAssignmentStaticIPObservation `json:"staticIp,omitempty" tf:"static_ip,omitempty"`
 
-	// IP and MAC assignment specification for Static IP List
-	StaticIPMac []IPAssignmentStaticIPMacObservation `json:"staticIpMac,omitempty" tf:"static_ip_mac,omitempty"`
-
 	// IP assignment specification for Static IP Pool
 	StaticIPPool *string `json:"staticIpPool,omitempty" tf:"static_ip_pool,omitempty"`
 }
@@ -57,10 +54,6 @@ type HostSwitchConfigOptionIPAssignmentParameters struct {
 	// IP assignment specification for Static IP List.
 	// +kubebuilder:validation:Optional
 	StaticIP []IPAssignmentStaticIPParameters `json:"staticIp,omitempty" tf:"static_ip,omitempty"`
-
-	// IP and MAC assignment specification for Static IP List
-	// +kubebuilder:validation:Optional
-	StaticIPMac []IPAssignmentStaticIPMacParameters `json:"staticIpMac,omitempty" tf:"static_ip_mac,omitempty"`
 
 	// IP assignment specification for Static IP Pool
 	// +kubebuilder:validation:Optional
@@ -93,8 +86,8 @@ type HostSwitchConfigOptionParameters struct {
 	HostSwitchProfile []*string `json:"hostSwitchProfile,omitempty" tf:"host_switch_profile,omitempty"`
 
 	// Specification for IPs to be used with host switch virtual tunnel endpoints
-	// +kubebuilder:validation:Required
-	IPAssignment []HostSwitchConfigOptionIPAssignmentParameters `json:"ipAssignment" tf:"ip_assignment,omitempty"`
+	// +kubebuilder:validation:Optional
+	IPAssignment []HostSwitchConfigOptionIPAssignmentParameters `json:"ipAssignment,omitempty" tf:"ip_assignment,omitempty"`
 
 	// Uplink/LAG of VMware vSphere Distributed Switch connected to the HostSwitch
 	// +kubebuilder:validation:Optional
@@ -108,9 +101,6 @@ type IPAssignmentObservation struct {
 
 	// IP assignment specification for Static IP List.
 	StaticIP []StaticIPObservation `json:"staticIp,omitempty" tf:"static_ip,omitempty"`
-
-	// IP and MAC assignment specification for Static IP List
-	StaticIPMac []StaticIPMacObservation `json:"staticIpMac,omitempty" tf:"static_ip_mac,omitempty"`
 
 	// IP assignment specification for Static IP Pool
 	StaticIPPool *string `json:"staticIpPool,omitempty" tf:"static_ip_pool,omitempty"`
@@ -126,40 +116,9 @@ type IPAssignmentParameters struct {
 	// +kubebuilder:validation:Optional
 	StaticIP []StaticIPParameters `json:"staticIp,omitempty" tf:"static_ip,omitempty"`
 
-	// IP and MAC assignment specification for Static IP List
-	// +kubebuilder:validation:Optional
-	StaticIPMac []StaticIPMacParameters `json:"staticIpMac,omitempty" tf:"static_ip_mac,omitempty"`
-
 	// IP assignment specification for Static IP Pool
 	// +kubebuilder:validation:Optional
 	StaticIPPool *string `json:"staticIpPool,omitempty" tf:"static_ip_pool,omitempty"`
-}
-
-type IPAssignmentStaticIPMacObservation struct {
-
-	// Gateway IP
-	DefaultGateway *string `json:"defaultGateway,omitempty" tf:"default_gateway,omitempty"`
-
-	// List of IPs and MACs for transport node host switch virtual tunnel endpoints
-	IPMacPair []StaticIPMacIPMacPairObservation `json:"ipMacPair,omitempty" tf:"ip_mac_pair,omitempty"`
-
-	// Subnet mask
-	SubnetMask *string `json:"subnetMask,omitempty" tf:"subnet_mask,omitempty"`
-}
-
-type IPAssignmentStaticIPMacParameters struct {
-
-	// Gateway IP
-	// +kubebuilder:validation:Required
-	DefaultGateway *string `json:"defaultGateway" tf:"default_gateway,omitempty"`
-
-	// List of IPs and MACs for transport node host switch virtual tunnel endpoints
-	// +kubebuilder:validation:Required
-	IPMacPair []StaticIPMacIPMacPairParameters `json:"ipMacPair" tf:"ip_mac_pair,omitempty"`
-
-	// Subnet mask
-	// +kubebuilder:validation:Required
-	SubnetMask *string `json:"subnetMask" tf:"subnet_mask,omitempty"`
 }
 
 type IPAssignmentStaticIPObservation struct {
@@ -187,26 +146,6 @@ type IPAssignmentStaticIPParameters struct {
 	// Subnet mask
 	// +kubebuilder:validation:Required
 	SubnetMask *string `json:"subnetMask" tf:"subnet_mask,omitempty"`
-}
-
-type IPMacPairObservation struct {
-
-	// IP address
-	IP *string `json:"ip,omitempty" tf:"ip,omitempty"`
-
-	// MAC address
-	Mac *string `json:"mac,omitempty" tf:"mac,omitempty"`
-}
-
-type IPMacPairParameters struct {
-
-	// IP address
-	// +kubebuilder:validation:Required
-	IP *string `json:"ip" tf:"ip,omitempty"`
-
-	// MAC address
-	// +kubebuilder:validation:Optional
-	Mac *string `json:"mac,omitempty" tf:"mac,omitempty"`
 }
 
 type PnicObservation struct {
@@ -248,9 +187,6 @@ type PolicyHostTransportNodeProfileObservation struct {
 	// Policy path for this resource
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
-	// Preconfigured host switch
-	PreconfiguredHostSwitch []PreconfiguredHostSwitchObservation `json:"preconfiguredHostSwitch,omitempty" tf:"preconfigured_host_switch,omitempty"`
-
 	// The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected
 	Revision *float64 `json:"revision,omitempty" tf:"revision,omitempty"`
 
@@ -279,10 +215,6 @@ type PolicyHostTransportNodeProfileParameters struct {
 	// +kubebuilder:validation:Optional
 	NsxID *string `json:"nsxId,omitempty" tf:"nsx_id,omitempty"`
 
-	// Preconfigured host switch
-	// +kubebuilder:validation:Optional
-	PreconfiguredHostSwitch []PreconfiguredHostSwitchParameters `json:"preconfiguredHostSwitch,omitempty" tf:"preconfigured_host_switch,omitempty"`
-
 	// Standard host switch specification
 	// +kubebuilder:validation:Optional
 	StandardHostSwitch []StandardHostSwitchParameters `json:"standardHostSwitch,omitempty" tf:"standard_host_switch,omitempty"`
@@ -290,33 +222,6 @@ type PolicyHostTransportNodeProfileParameters struct {
 	// Set of opaque identifiers meaningful to the user
 	// +kubebuilder:validation:Optional
 	Tag []TagParameters `json:"tag,omitempty" tf:"tag,omitempty"`
-}
-
-type PreconfiguredHostSwitchObservation struct {
-
-	// Name of the virtual tunnel endpoint
-	Endpoint *string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
-
-	// External Id of the preconfigured host switch
-	HostSwitchID *string `json:"hostSwitchId,omitempty" tf:"host_switch_id,omitempty"`
-
-	// Transport zone endpoints
-	TransportZoneEndpoint []TransportZoneEndpointObservation `json:"transportZoneEndpoint,omitempty" tf:"transport_zone_endpoint,omitempty"`
-}
-
-type PreconfiguredHostSwitchParameters struct {
-
-	// Name of the virtual tunnel endpoint
-	// +kubebuilder:validation:Optional
-	Endpoint *string `json:"endpoint,omitempty" tf:"endpoint,omitempty"`
-
-	// External Id of the preconfigured host switch
-	// +kubebuilder:validation:Required
-	HostSwitchID *string `json:"hostSwitchId" tf:"host_switch_id,omitempty"`
-
-	// Transport zone endpoints
-	// +kubebuilder:validation:Optional
-	TransportZoneEndpoint []TransportZoneEndpointParameters `json:"transportZoneEndpoint,omitempty" tf:"transport_zone_endpoint,omitempty"`
 }
 
 type StandardHostSwitchObservation struct {
@@ -330,11 +235,11 @@ type StandardHostSwitchObservation struct {
 	// Operational mode of a HostSwitch
 	HostSwitchMode *string `json:"hostSwitchMode,omitempty" tf:"host_switch_mode,omitempty"`
 
+	// Host switch name. This name will be used to reference a host switch
+	HostSwitchName *string `json:"hostSwitchName,omitempty" tf:"host_switch_name,omitempty"`
+
 	// Identifiers of host switch profiles to be associated with this host switch
 	HostSwitchProfile []*string `json:"hostSwitchProfile,omitempty" tf:"host_switch_profile,omitempty"`
-
-	// Type of HostSwitch
-	HostSwitchType *string `json:"hostSwitchType,omitempty" tf:"host_switch_type,omitempty"`
 
 	// Specification for IPs to be used with host switch virtual tunnel endpoints
 	IPAssignment []IPAssignmentObservation `json:"ipAssignment,omitempty" tf:"ip_assignment,omitempty"`
@@ -345,14 +250,11 @@ type StandardHostSwitchObservation struct {
 	// Physical NICs connected to the host switch
 	Pnic []PnicObservation `json:"pnic,omitempty" tf:"pnic,omitempty"`
 
-	// Transport Zone ID representing the DVS used in NSX on DVPG
-	PortgroupTransportZone *string `json:"portgroupTransportZone,omitempty" tf:"portgroup_transport_zone,omitempty"`
-
 	// Transport Node Profile sub-configuration Options
 	TransportNodeProfileSubConfig []TransportNodeProfileSubConfigObservation `json:"transportNodeProfileSubConfig,omitempty" tf:"transport_node_profile_sub_config,omitempty"`
 
 	// Transport zone endpoints
-	TransportZoneEndpoint []StandardHostSwitchTransportZoneEndpointObservation `json:"transportZoneEndpoint,omitempty" tf:"transport_zone_endpoint,omitempty"`
+	TransportZoneEndpoint []TransportZoneEndpointObservation `json:"transportZoneEndpoint,omitempty" tf:"transport_zone_endpoint,omitempty"`
 
 	// Uplink/LAG of VMware vSphere Distributed Switch connected to the HostSwitch
 	Uplink []StandardHostSwitchUplinkObservation `json:"uplink,omitempty" tf:"uplink,omitempty"`
@@ -375,13 +277,13 @@ type StandardHostSwitchParameters struct {
 	// +kubebuilder:validation:Optional
 	HostSwitchMode *string `json:"hostSwitchMode,omitempty" tf:"host_switch_mode,omitempty"`
 
+	// Host switch name. This name will be used to reference a host switch
+	// +kubebuilder:validation:Optional
+	HostSwitchName *string `json:"hostSwitchName,omitempty" tf:"host_switch_name,omitempty"`
+
 	// Identifiers of host switch profiles to be associated with this host switch
 	// +kubebuilder:validation:Optional
 	HostSwitchProfile []*string `json:"hostSwitchProfile,omitempty" tf:"host_switch_profile,omitempty"`
-
-	// Type of HostSwitch
-	// +kubebuilder:validation:Optional
-	HostSwitchType *string `json:"hostSwitchType,omitempty" tf:"host_switch_type,omitempty"`
 
 	// Specification for IPs to be used with host switch virtual tunnel endpoints
 	// +kubebuilder:validation:Required
@@ -395,17 +297,13 @@ type StandardHostSwitchParameters struct {
 	// +kubebuilder:validation:Optional
 	Pnic []PnicParameters `json:"pnic,omitempty" tf:"pnic,omitempty"`
 
-	// Transport Zone ID representing the DVS used in NSX on DVPG
-	// +kubebuilder:validation:Optional
-	PortgroupTransportZone *string `json:"portgroupTransportZone,omitempty" tf:"portgroup_transport_zone,omitempty"`
-
 	// Transport Node Profile sub-configuration Options
 	// +kubebuilder:validation:Optional
 	TransportNodeProfileSubConfig []TransportNodeProfileSubConfigParameters `json:"transportNodeProfileSubConfig,omitempty" tf:"transport_node_profile_sub_config,omitempty"`
 
 	// Transport zone endpoints
 	// +kubebuilder:validation:Optional
-	TransportZoneEndpoint []StandardHostSwitchTransportZoneEndpointParameters `json:"transportZoneEndpoint,omitempty" tf:"transport_zone_endpoint,omitempty"`
+	TransportZoneEndpoint []TransportZoneEndpointParameters `json:"transportZoneEndpoint,omitempty" tf:"transport_zone_endpoint,omitempty"`
 
 	// Uplink/LAG of VMware vSphere Distributed Switch connected to the HostSwitch
 	// +kubebuilder:validation:Optional
@@ -414,26 +312,6 @@ type StandardHostSwitchParameters struct {
 	// The vmknic and logical switch mappings
 	// +kubebuilder:validation:Optional
 	VmkInstallMigration []VmkInstallMigrationParameters `json:"vmkInstallMigration,omitempty" tf:"vmk_install_migration,omitempty"`
-}
-
-type StandardHostSwitchTransportZoneEndpointObservation struct {
-
-	// Unique ID identifying the transport zone for this endpoint
-	TransportZone *string `json:"transportZone,omitempty" tf:"transport_zone,omitempty"`
-
-	// Identifiers of the transport zone profiles associated with this transport zone endpoint on this transport node
-	TransportZoneProfile []*string `json:"transportZoneProfile,omitempty" tf:"transport_zone_profile,omitempty"`
-}
-
-type StandardHostSwitchTransportZoneEndpointParameters struct {
-
-	// Unique ID identifying the transport zone for this endpoint
-	// +kubebuilder:validation:Required
-	TransportZone *string `json:"transportZone" tf:"transport_zone,omitempty"`
-
-	// Identifiers of the transport zone profiles associated with this transport zone endpoint on this transport node
-	// +kubebuilder:validation:Optional
-	TransportZoneProfile []*string `json:"transportZoneProfile,omitempty" tf:"transport_zone_profile,omitempty"`
 }
 
 type StandardHostSwitchUplinkObservation struct {
@@ -461,53 +339,6 @@ type StandardHostSwitchUplinkParameters struct {
 	// Uplink name of VMware vSphere Distributed Switch (VDS)
 	// +kubebuilder:validation:Optional
 	VdsUplinkName *string `json:"vdsUplinkName,omitempty" tf:"vds_uplink_name,omitempty"`
-}
-
-type StaticIPMacIPMacPairObservation struct {
-
-	// IP address
-	IP *string `json:"ip,omitempty" tf:"ip,omitempty"`
-
-	// MAC address
-	Mac *string `json:"mac,omitempty" tf:"mac,omitempty"`
-}
-
-type StaticIPMacIPMacPairParameters struct {
-
-	// IP address
-	// +kubebuilder:validation:Required
-	IP *string `json:"ip" tf:"ip,omitempty"`
-
-	// MAC address
-	// +kubebuilder:validation:Optional
-	Mac *string `json:"mac,omitempty" tf:"mac,omitempty"`
-}
-
-type StaticIPMacObservation struct {
-
-	// Gateway IP
-	DefaultGateway *string `json:"defaultGateway,omitempty" tf:"default_gateway,omitempty"`
-
-	// List of IPs and MACs for transport node host switch virtual tunnel endpoints
-	IPMacPair []IPMacPairObservation `json:"ipMacPair,omitempty" tf:"ip_mac_pair,omitempty"`
-
-	// Subnet mask
-	SubnetMask *string `json:"subnetMask,omitempty" tf:"subnet_mask,omitempty"`
-}
-
-type StaticIPMacParameters struct {
-
-	// Gateway IP
-	// +kubebuilder:validation:Required
-	DefaultGateway *string `json:"defaultGateway" tf:"default_gateway,omitempty"`
-
-	// List of IPs and MACs for transport node host switch virtual tunnel endpoints
-	// +kubebuilder:validation:Required
-	IPMacPair []IPMacPairParameters `json:"ipMacPair" tf:"ip_mac_pair,omitempty"`
-
-	// Subnet mask
-	// +kubebuilder:validation:Required
-	SubnetMask *string `json:"subnetMask" tf:"subnet_mask,omitempty"`
 }
 
 type StaticIPObservation struct {
@@ -578,7 +409,7 @@ type TransportZoneEndpointObservation struct {
 	TransportZone *string `json:"transportZone,omitempty" tf:"transport_zone,omitempty"`
 
 	// Identifiers of the transport zone profiles associated with this transport zone endpoint on this transport node
-	TransportZoneProfile []*string `json:"transportZoneProfile,omitempty" tf:"transport_zone_profile,omitempty"`
+	TransportZoneProfiles []*string `json:"transportZoneProfiles,omitempty" tf:"transport_zone_profiles,omitempty"`
 }
 
 type TransportZoneEndpointParameters struct {
@@ -589,7 +420,7 @@ type TransportZoneEndpointParameters struct {
 
 	// Identifiers of the transport zone profiles associated with this transport zone endpoint on this transport node
 	// +kubebuilder:validation:Optional
-	TransportZoneProfile []*string `json:"transportZoneProfile,omitempty" tf:"transport_zone_profile,omitempty"`
+	TransportZoneProfiles []*string `json:"transportZoneProfiles,omitempty" tf:"transport_zone_profiles,omitempty"`
 }
 
 type UplinkObservation struct {
@@ -664,6 +495,7 @@ type PolicyHostTransportNodeProfile struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	// +kubebuilder:validation:XValidation:rule="self.managementPolicy == 'ObserveOnly' || has(self.forProvider.displayName)",message="displayName is a required parameter"
+	// +kubebuilder:validation:XValidation:rule="self.managementPolicy == 'ObserveOnly' || has(self.forProvider.standardHostSwitch)",message="standardHostSwitch is a required parameter"
 	Spec   PolicyHostTransportNodeProfileSpec   `json:"spec"`
 	Status PolicyHostTransportNodeProfileStatus `json:"status,omitempty"`
 }

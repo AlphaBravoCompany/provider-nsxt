@@ -85,6 +85,17 @@ func (in *PolicyProjectObservation) DeepCopyInto(out *PolicyProjectObservation) 
 		*out = new(string)
 		**out = **in
 	}
+	if in.ExternalIPv4Blocks != nil {
+		in, out := &in.ExternalIPv4Blocks, &out.ExternalIPv4Blocks
+		*out = make([]*string, len(*in))
+		for i := range *in {
+			if (*in)[i] != nil {
+				in, out := &(*in)[i], &(*out)[i]
+				*out = new(string)
+				**out = **in
+			}
+		}
+	}
 	if in.ID != nil {
 		in, out := &in.ID, &out.ID
 		*out = new(string)
@@ -159,6 +170,17 @@ func (in *PolicyProjectParameters) DeepCopyInto(out *PolicyProjectParameters) {
 		in, out := &in.DisplayName, &out.DisplayName
 		*out = new(string)
 		**out = **in
+	}
+	if in.ExternalIPv4Blocks != nil {
+		in, out := &in.ExternalIPv4Blocks, &out.ExternalIPv4Blocks
+		*out = make([]*string, len(*in))
+		for i := range *in {
+			if (*in)[i] != nil {
+				in, out := &(*in)[i], &(*out)[i]
+				*out = new(string)
+				**out = **in
+			}
+		}
 	}
 	if in.NsxID != nil {
 		in, out := &in.NsxID, &out.NsxID

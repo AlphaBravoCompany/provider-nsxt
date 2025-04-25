@@ -71,6 +71,13 @@ spec:
                     description: Active healthcheck is disabled by default and can
                       be enabled using this setting
                     type: string
+                  activeMonitorPaths:
+                    description: Used by the load balancer to initiate new connections
+                      to the servers to check their health. Active healthchecks are
+                      deactivated by default and can be activated using this setting
+                    items:
+                      type: string
+                    type: array
                   algorithm:
                     type: string
                   description:
@@ -387,6 +394,13 @@ spec:
                     description: Active healthcheck is disabled by default and can
                       be enabled using this setting
                     type: string
+                  activeMonitorPaths:
+                    description: Used by the load balancer to initiate new connections
+                      to the servers to check their health. Active healthchecks are
+                      deactivated by default and can be activated using this setting
+                    items:
+                      type: string
+                    type: array
                   algorithm:
                     type: string
                   description:

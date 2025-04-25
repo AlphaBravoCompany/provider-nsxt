@@ -102,6 +102,10 @@ spec:
                           type: string
                       type: object
                     type: array
+                  visibility:
+                    description: Visibility of the Ip Block. Cannot be updated once
+                      associated with other resources.
+                    type: string
                 type: object
               managementPolicy:
                 default: FullControl
@@ -345,6 +349,10 @@ spec:
                           type: string
                       type: object
                     type: array
+                  visibility:
+                    description: Visibility of the Ip Block. Cannot be updated once
+                      associated with other resources.
+                    type: string
                 type: object
               conditions:
                 description: Conditions of the resource.

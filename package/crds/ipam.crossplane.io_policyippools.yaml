@@ -317,6 +317,9 @@ spec:
                   path:
                     description: Policy path for this resource
                     type: string
+                  realizedId:
+                    description: The ID of the realized resource
+                    type: string
                   revision:
                     description: The _revision property describes the current revision
                       of the resource. To prevent clients from overwriting each other's

@@ -13,10 +13,26 @@ import (
 	v1 "github.com/crossplane/crossplane-runtime/apis/common/v1"
 )
 
+type PolicyInstrusionServicePolicyContextObservation struct {
+
+	// Id of the project which the resource belongs to.
+	ProjectID *string `json:"projectId,omitempty" tf:"project_id,omitempty"`
+}
+
+type PolicyInstrusionServicePolicyContextParameters struct {
+
+	// Id of the project which the resource belongs to.
+	// +kubebuilder:validation:Required
+	ProjectID *string `json:"projectId" tf:"project_id,omitempty"`
+}
+
 type PolicyInstrusionServicePolicyObservation struct {
 
 	// Comments for security policy lock/unlock
 	Comments *string `json:"comments,omitempty" tf:"comments,omitempty"`
+
+	// Resource context
+	Context []PolicyInstrusionServicePolicyContextObservation `json:"context,omitempty" tf:"context,omitempty"`
 
 	// Description for this resource
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
@@ -59,6 +75,10 @@ type PolicyInstrusionServicePolicyParameters struct {
 	// Comments for security policy lock/unlock
 	// +kubebuilder:validation:Optional
 	Comments *string `json:"comments,omitempty" tf:"comments,omitempty"`
+
+	// Resource context
+	// +kubebuilder:validation:Optional
+	Context []PolicyInstrusionServicePolicyContextParameters `json:"context,omitempty" tf:"context,omitempty"`
 
 	// Description for this resource
 	// +kubebuilder:validation:Optional
@@ -137,6 +157,9 @@ type PolicyInstrusionServicePolicyRuleObservation struct {
 
 	// NSX ID for this resource
 	NsxID *string `json:"nsxId,omitempty" tf:"nsx_id,omitempty"`
+
+	// Policy path for this resource
+	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
 	// List of profiles
 	Profiles []*string `json:"profiles,omitempty" tf:"profiles,omitempty"`

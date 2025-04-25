@@ -8,7 +8,7 @@ export TERRAFORM_VERSION ?= 1.5.5
 
 export TERRAFORM_PROVIDER_SOURCE ?= vmware/nsxt
 export TERRAFORM_PROVIDER_REPO ?= https://github.com/vmware/terraform-provider-nsxt
-export TERRAFORM_PROVIDER_VERSION ?= 3.3.2
+export TERRAFORM_PROVIDER_VERSION ?= 3.8.0
 export TERRAFORM_PROVIDER_DOWNLOAD_NAME ?= terraform-provider-nsxt
 export TERRAFORM_PROVIDER_DOWNLOAD_URL_PREFIX ?= https://releases.hashicorp.com/$(TERRAFORM_PROVIDER_DOWNLOAD_NAME)/$(TERRAFORM_PROVIDER_VERSION)
 export TERRAFORM_NATIVE_PROVIDER_BINARY ?= terraform-provider-nsxt.1.0_x5

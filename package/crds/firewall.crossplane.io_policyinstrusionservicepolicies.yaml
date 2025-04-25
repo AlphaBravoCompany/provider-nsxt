@@ -72,6 +72,18 @@ spec:
                   comments:
                     description: Comments for security policy lock/unlock
                     type: string
+                  context:
+                    description: Resource context
+                    items:
+                      properties:
+                        projectId:
+                          description: Id of the project which the resource belongs
+                            to.
+                          type: string
+                      required:
+                      - projectId
+                      type: object
+                    type: array
                   description:
                     description: Description for this resource
                     type: string
@@ -394,6 +406,16 @@ spec:
                   comments:
                     description: Comments for security policy lock/unlock
                     type: string
+                  context:
+                    description: Resource context
+                    items:
+                      properties:
+                        projectId:
+                          description: Id of the project which the resource belongs
+                            to.
+                          type: string
+                      type: object
+                    type: array
                   description:
                     description: Description for this resource
                     type: string
@@ -472,6 +494,9 @@ spec:
                           type: string
                         nsxId:
                           description: NSX ID for this resource
+                          type: string
+                        path:
+                          description: Policy path for this resource
                           type: string
                         profiles:
                           description: List of profiles

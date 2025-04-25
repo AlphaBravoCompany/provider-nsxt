@@ -45,6 +45,9 @@ type PolicyIpPoolObservation struct {
 	// Policy path for this resource
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
+	// The ID of the realized resource
+	RealizedID *string `json:"realizedId,omitempty" tf:"realized_id,omitempty"`
+
 	// The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected
 	Revision *float64 `json:"revision,omitempty" tf:"revision,omitempty"`
 

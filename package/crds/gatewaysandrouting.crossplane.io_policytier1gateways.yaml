@@ -151,6 +151,9 @@ spec:
                           description: The path of the edge cluster connected to this
                             gateway
                           type: string
+                        nsxId:
+                          description: NSX ID for this resource
+                          type: string
                         preferredEdgePaths:
                           description: Paths of specific edge nodes
                           items:
@@ -498,6 +501,9 @@ spec:
                         edgeClusterPath:
                           description: The path of the edge cluster connected to this
                             gateway
+                          type: string
+                        nsxId:
+                          description: NSX ID for this resource
                           type: string
                         path:
                           description: Policy path for this resource

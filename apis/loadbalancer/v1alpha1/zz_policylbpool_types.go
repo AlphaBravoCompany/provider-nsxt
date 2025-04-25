@@ -114,6 +114,9 @@ type PolicyLbPoolObservation struct {
 	// Active healthcheck is disabled by default and can be enabled using this setting
 	ActiveMonitorPath *string `json:"activeMonitorPath,omitempty" tf:"active_monitor_path,omitempty"`
 
+	// Used by the load balancer to initiate new connections to the servers to check their health. Active healthchecks are deactivated by default and can be activated using this setting
+	ActiveMonitorPaths []*string `json:"activeMonitorPaths,omitempty" tf:"active_monitor_paths,omitempty"`
+
 	Algorithm *string `json:"algorithm,omitempty" tf:"algorithm,omitempty"`
 
 	// Description for this resource
@@ -160,6 +163,10 @@ type PolicyLbPoolParameters struct {
 	// Active healthcheck is disabled by default and can be enabled using this setting
 	// +kubebuilder:validation:Optional
 	ActiveMonitorPath *string `json:"activeMonitorPath,omitempty" tf:"active_monitor_path,omitempty"`
+
+	// Used by the load balancer to initiate new connections to the servers to check their health. Active healthchecks are deactivated by default and can be activated using this setting
+	// +kubebuilder:validation:Optional
+	ActiveMonitorPaths []*string `json:"activeMonitorPaths,omitempty" tf:"active_monitor_paths,omitempty"`
 
 	// +kubebuilder:validation:Optional
 	Algorithm *string `json:"algorithm,omitempty" tf:"algorithm,omitempty"`

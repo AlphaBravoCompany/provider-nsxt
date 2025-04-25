@@ -84,6 +84,9 @@ spec:
                   description:
                     description: Description for this resource
                     type: string
+                  dhcpRelayPath:
+                    description: Policy path for DHCP relay config
+                    type: string
                   displayName:
                     description: Display name for this resource
                     type: string
@@ -339,6 +342,9 @@ spec:
                     type: array
                   description:
                     description: Description for this resource
+                    type: string
+                  dhcpRelayPath:
+                    description: Policy path for DHCP relay config
                     type: string
                   displayName:
                     description: Display name for this resource

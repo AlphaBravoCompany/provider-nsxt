@@ -2260,6 +2260,17 @@ func (in *PolicyLbPoolObservation) DeepCopyInto(out *PolicyLbPoolObservation) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.ActiveMonitorPaths != nil {
+		in, out := &in.ActiveMonitorPaths, &out.ActiveMonitorPaths
+		*out = make([]*string, len(*in))
+		for i := range *in {
+			if (*in)[i] != nil {
+				in, out := &(*in)[i], &(*out)[i]
+				*out = new(string)
+				**out = **in
+			}
+		}
+	}
 	if in.Algorithm != nil {
 		in, out := &in.Algorithm, &out.Algorithm
 		*out = new(string)
@@ -2362,6 +2373,17 @@ func (in *PolicyLbPoolParameters) DeepCopyInto(out *PolicyLbPoolParameters) {
 		in, out := &in.ActiveMonitorPath, &out.ActiveMonitorPath
 		*out = new(string)
 		**out = **in
+	}
+	if in.ActiveMonitorPaths != nil {
+		in, out := &in.ActiveMonitorPaths, &out.ActiveMonitorPaths
+		*out = make([]*string, len(*in))
+		for i := range *in {
+			if (*in)[i] != nil {
+				in, out := &(*in)[i], &(*out)[i]
+				*out = new(string)
+				**out = **in
+			}
+		}
 	}
 	if in.Algorithm != nil {
 		in, out := &in.Algorithm, &out.Algorithm

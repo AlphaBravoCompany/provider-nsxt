@@ -107,6 +107,9 @@ spec:
                           type: string
                       type: object
                     type: array
+                  timeout:
+                    description: Realization timeout in seconds
+                    type: number
                 type: object
               managementPolicy:
                 default: FullControl
@@ -354,6 +357,9 @@ spec:
                           type: string
                       type: object
                     type: array
+                  timeout:
+                    description: Realization timeout in seconds
+                    type: number
                 type: object
               conditions:
                 description: Conditions of the resource.

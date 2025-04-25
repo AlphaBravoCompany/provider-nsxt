@@ -76,6 +76,9 @@ spec:
                   edgeHaProfileId:
                     description: Edge high availability cluster profile Id
                     type: string
+                  failureDomainAllocation:
+                    description: Flag to enable/disable failure domain based allocation
+                    type: string
                   member:
                     description: Edge cluster members
                     items:
@@ -307,6 +310,9 @@ spec:
                     type: string
                   edgeHaProfileId:
                     description: Edge high availability cluster profile Id
+                    type: string
+                  failureDomainAllocation:
+                    description: Flag to enable/disable failure domain based allocation
                     type: string
                   id:
                     type: string

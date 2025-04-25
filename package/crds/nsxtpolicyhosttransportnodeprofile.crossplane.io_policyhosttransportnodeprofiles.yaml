@@ -82,39 +82,6 @@ spec:
                   nsxId:
                     description: NSX ID for this resource
                     type: string
-                  preconfiguredHostSwitch:
-                    description: Preconfigured host switch
-                    items:
-                      properties:
-                        endpoint:
-                          description: Name of the virtual tunnel endpoint
-                          type: string
-                        hostSwitchId:
-                          description: External Id of the preconfigured host switch
-                          type: string
-                        transportZoneEndpoint:
-                          description: Transport zone endpoints
-                          items:
-                            properties:
-                              transportZone:
-                                description: Unique ID identifying the transport zone
-                                  for this endpoint
-                                type: string
-                              transportZoneProfile:
-                                description: Identifiers of the transport zone profiles
-                                  associated with this transport zone endpoint on
-                                  this transport node
-                                items:
-                                  type: string
-                                type: array
-                            required:
-                            - transportZone
-                            type: object
-                          type: array
-                      required:
-                      - hostSwitchId
-                      type: object
-                    type: array
                   standardHostSwitch:
                     description: Standard host switch specification
                     items:
@@ -144,15 +111,16 @@ spec:
                         hostSwitchMode:
                           description: Operational mode of a HostSwitch
                           type: string
+                        hostSwitchName:
+                          description: Host switch name. This name will be used to
+                            reference a host switch
+                          type: string
                         hostSwitchProfile:
                           description: Identifiers of host switch profiles to be associated
                             with this host switch
                           items:
                             type: string
                           type: array
-                        hostSwitchType:
-                          description: Type of HostSwitch
-                          type: string
                         ipAssignment:
                           description: Specification for IPs to be used with host
                             switch virtual tunnel endpoints
@@ -184,38 +152,6 @@ spec:
                                   - subnetMask
                                   type: object
                                 type: array
-                              staticIpMac:
-                                description: IP and MAC assignment specification for
-                                  Static IP List
-                                items:
-                                  properties:
-                                    defaultGateway:
-                                      description: Gateway IP
-                                      type: string
-                                    ipMacPair:
-                                      description: List of IPs and MACs for transport
-                                        node host switch virtual tunnel endpoints
-                                      items:
-                                        properties:
-                                          ip:
-                                            description: IP address
-                                            type: string
-                                          mac:
-                                            description: MAC address
-                                            type: string
-                                        required:
-                                        - ip
-                                        type: object
-                                      type: array
-                                    subnetMask:
-                                      description: Subnet mask
-                                      type: string
-                                  required:
-                                  - defaultGateway
-                                  - ipMacPair
-                                  - subnetMask
-                                  type: object
-                                type: array
                               staticIpPool:
                                 description: IP assignment specification for Static
                                   IP Pool
@@ -240,10 +176,6 @@ spec:
                             - uplinkName
                             type: object
                           type: array
-                        portgroupTransportZone:
-                          description: Transport Zone ID representing the DVS used
-                            in NSX on DVPG
-                          type: string
                         transportNodeProfileSubConfig:
                           description: Transport Node Profile sub-configuration Options
                           items:
@@ -294,39 +226,6 @@ spec:
                                               - subnetMask
                                               type: object
                                             type: array
-                                          staticIpMac:
-                                            description: IP and MAC assignment specification
-                                              for Static IP List
-                                            items:
-                                              properties:
-                                                defaultGateway:
-                                                  description: Gateway IP
-                                                  type: string
-                                                ipMacPair:
-                                                  description: List of IPs and MACs
-                                                    for transport node host switch
-                                                    virtual tunnel endpoints
-                                                  items:
-                                                    properties:
-                                                      ip:
-                                                        description: IP address
-                                                        type: string
-                                                      mac:
-                                                        description: MAC address
-                                                        type: string
-                                                    required:
-                                                    - ip
-                                                    type: object
-                                                  type: array
-                                                subnetMask:
-                                                  description: Subnet mask
-                                                  type: string
-                                              required:
-                                              - defaultGateway
-                                              - ipMacPair
-                                              - subnetMask
-                                              type: object
-                                            type: array
                                           staticIpPool:
                                             description: IP assignment specification
                                               for Static IP Pool
@@ -354,8 +253,6 @@ spec:
                                         - uplinkName
                                         type: object
                                       type: array
-                                  required:
-                                  - ipAssignment
                                   type: object
                                 type: array
                               name:
@@ -375,7 +272,7 @@ spec:
                                 description: Unique ID identifying the transport zone
                                   for this endpoint
                                 type: string
-                              transportZoneProfile:
+                              transportZoneProfiles:
                                 description: Identifiers of the transport zone profiles
                                   associated with this transport zone endpoint on
                                   this transport node
@@ -626,6 +523,8 @@ spec:
             x-kubernetes-validations:
             - message: displayName is a required parameter
               rule: self.managementPolicy == 'ObserveOnly' || has(self.forProvider.displayName)
+            - message: standardHostSwitch is a required parameter
+              rule: self.managementPolicy == 'ObserveOnly' || has(self.forProvider.standardHostSwitch)
           status:
             description: PolicyHostTransportNodeProfileStatus defines the observed
               state of PolicyHostTransportNodeProfile.
@@ -650,35 +549,6 @@ spec:
                   path:
                     description: Policy path for this resource
                     type: string
-                  preconfiguredHostSwitch:
-                    description: Preconfigured host switch
-                    items:
-                      properties:
-                        endpoint:
-                          description: Name of the virtual tunnel endpoint
-                          type: string
-                        hostSwitchId:
-                          description: External Id of the preconfigured host switch
-                          type: string
-                        transportZoneEndpoint:
-                          description: Transport zone endpoints
-                          items:
-                            properties:
-                              transportZone:
-                                description: Unique ID identifying the transport zone
-                                  for this endpoint
-                                type: string
-                              transportZoneProfile:
-                                description: Identifiers of the transport zone profiles
-                                  associated with this transport zone endpoint on
-                                  this transport node
-                                items:
-                                  type: string
-                                type: array
-                            type: object
-                          type: array
-                      type: object
-                    type: array
                   revision:
                     description: The _revision property describes the current revision
                       of the resource. To prevent clients from overwriting each other's
@@ -713,15 +583,16 @@ spec:
                         hostSwitchMode:
                           description: Operational mode of a HostSwitch
                           type: string
+                        hostSwitchName:
+                          description: Host switch name. This name will be used to
+                            reference a host switch
+                          type: string
                         hostSwitchProfile:
                           description: Identifiers of host switch profiles to be associated
                             with this host switch
                           items:
                             type: string
                           type: array
-                        hostSwitchType:
-                          description: Type of HostSwitch
-                          type: string
                         ipAssignment:
                           description: Specification for IPs to be used with host
                             switch virtual tunnel endpoints
@@ -749,32 +620,6 @@ spec:
                                       type: string
                                   type: object
                                 type: array
-                              staticIpMac:
-                                description: IP and MAC assignment specification for
-                                  Static IP List
-                                items:
-                                  properties:
-                                    defaultGateway:
-                                      description: Gateway IP
-                                      type: string
-                                    ipMacPair:
-                                      description: List of IPs and MACs for transport
-                                        node host switch virtual tunnel endpoints
-                                      items:
-                                        properties:
-                                          ip:
-                                            description: IP address
-                                            type: string
-                                          mac:
-                                            description: MAC address
-                                            type: string
-                                        type: object
-                                      type: array
-                                    subnetMask:
-                                      description: Subnet mask
-                                      type: string
-                                  type: object
-                                type: array
                               staticIpPool:
                                 description: IP assignment specification for Static
                                   IP Pool
@@ -796,10 +641,6 @@ spec:
                                 type: string
                             type: object
                           type: array
-                        portgroupTransportZone:
-                          description: Transport Zone ID representing the DVS used
-                            in NSX on DVPG
-                          type: string
                         transportNodeProfileSubConfig:
                           description: Transport Node Profile sub-configuration Options
                           items:
@@ -840,33 +681,6 @@ spec:
                                                     endpoints
                                                   items:
                                                     type: string
-                                                  type: array
-                                                subnetMask:
-                                                  description: Subnet mask
-                                                  type: string
-                                              type: object
-                                            type: array
-                                          staticIpMac:
-                                            description: IP and MAC assignment specification
-                                              for Static IP List
-                                            items:
-                                              properties:
-                                                defaultGateway:
-                                                  description: Gateway IP
-                                                  type: string
-                                                ipMacPair:
-                                                  description: List of IPs and MACs
-                                                    for transport node host switch
-                                                    virtual tunnel endpoints
-                                                  items:
-                                                    properties:
-                                                      ip:
-                                                        description: IP address
-                                                        type: string
-                                                      mac:
-                                                        description: MAC address
-                                                        type: string
-                                                    type: object
                                                   type: array
                                                 subnetMask:
                                                   description: Subnet mask
@@ -914,7 +728,7 @@ spec:
                                 description: Unique ID identifying the transport zone
                                   for this endpoint
                                 type: string
-                              transportZoneProfile:
+                              transportZoneProfiles:
                                 description: Identifiers of the transport zone profiles
                                   associated with this transport zone endpoint on
                                   this transport node

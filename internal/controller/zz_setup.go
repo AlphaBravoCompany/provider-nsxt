@@ -125,8 +125,6 @@ import (
 	spoofguardswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtspoofguardswitchingprofile/spoofguardswitchingprofile"
 	staticroute "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtstaticroute/staticroute"
 	switchsecurityswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtswitchsecurityswitchingprofile/switchsecurityswitchingprofile"
-	transportnode "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxttransportnode/transportnode"
-	uplinkhostswitchprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtuplinkhostswitchprofile/uplinkhostswitchprofile"
 	vlanlogicalswitch "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtvlanlogicalswitch/vlanlogicalswitch"
 	vmtags "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtvmtags/vmtags"
 	providerconfig "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/providerconfig"
@@ -260,8 +258,6 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		spoofguardswitchingprofile.Setup,
 		staticroute.Setup,
 		switchsecurityswitchingprofile.Setup,
-		transportnode.Setup,
-		uplinkhostswitchprofile.Setup,
 		vlanlogicalswitch.Setup,
 		vmtags.Setup,
 		providerconfig.Setup,

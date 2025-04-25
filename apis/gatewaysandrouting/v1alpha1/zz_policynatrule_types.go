@@ -63,6 +63,9 @@ type PolicyNatRuleObservation struct {
 	// Policy path for this resource
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
+	// Policy based vpn mode match flag. DNAT and NO_DNAT only
+	PolicyBasedVPNMode *string `json:"policyBasedVpnMode,omitempty" tf:"policy_based_vpn_mode,omitempty"`
+
 	// The _revision property describes the current revision of the resource. To prevent clients from overwriting each other's changes, PUT operations must include the current _revision of the resource, which clients should obtain by issuing a GET operation. If the _revision provided in a PUT request is missing or stale, the operation will be rejected
 	Revision *float64 `json:"revision,omitempty" tf:"revision,omitempty"`
 
@@ -86,6 +89,9 @@ type PolicyNatRuleObservation struct {
 
 	// Port number or port range. DNAT only
 	TranslatedPorts *string `json:"translatedPorts,omitempty" tf:"translated_ports,omitempty"`
+
+	// NAT Type
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type PolicyNatRuleParameters struct {
@@ -130,6 +136,10 @@ type PolicyNatRuleParameters struct {
 	// +kubebuilder:validation:Optional
 	NsxID *string `json:"nsxId,omitempty" tf:"nsx_id,omitempty"`
 
+	// Policy based vpn mode match flag. DNAT and NO_DNAT only
+	// +kubebuilder:validation:Optional
+	PolicyBasedVPNMode *string `json:"policyBasedVpnMode,omitempty" tf:"policy_based_vpn_mode,omitempty"`
+
 	// The sequence_number decides the rule_priority of a NAT rule. Valid range [0-2147483647]
 	// +kubebuilder:validation:Optional
 	RulePriority *float64 `json:"rulePriority,omitempty" tf:"rule_priority,omitempty"`
@@ -157,6 +167,10 @@ type PolicyNatRuleParameters struct {
 	// Port number or port range. DNAT only
 	// +kubebuilder:validation:Optional
 	TranslatedPorts *string `json:"translatedPorts,omitempty" tf:"translated_ports,omitempty"`
+
+	// NAT Type
+	// +kubebuilder:validation:Optional
+	Type *string `json:"type,omitempty" tf:"type,omitempty"`
 }
 
 type PolicyNatRuleTagObservation struct {

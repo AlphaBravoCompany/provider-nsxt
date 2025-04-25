@@ -13,7 +13,45 @@ import (
 	v1 "github.com/crossplane/crossplane-runtime/apis/common/v1"
 )
 
+type APIProbingObservation struct {
+
+	// Initial delay in seconds before probing connection
+	Delay *float64 `json:"delay,omitempty" tf:"delay,omitempty"`
+
+	// Whether API probing for NSX nodes is enabled
+	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+
+	// Connection probing interval in seconds
+	Interval *float64 `json:"interval,omitempty" tf:"interval,omitempty"`
+
+	// Timeout for connection probing in seconds
+	Timeout *float64 `json:"timeout,omitempty" tf:"timeout,omitempty"`
+}
+
+type APIProbingParameters struct {
+
+	// Initial delay in seconds before probing connection
+	// +kubebuilder:validation:Optional
+	Delay *float64 `json:"delay,omitempty" tf:"delay,omitempty"`
+
+	// Whether API probing for NSX nodes is enabled
+	// +kubebuilder:validation:Optional
+	Enabled *bool `json:"enabled,omitempty" tf:"enabled,omitempty"`
+
+	// Connection probing interval in seconds
+	// +kubebuilder:validation:Optional
+	Interval *float64 `json:"interval,omitempty" tf:"interval,omitempty"`
+
+	// Timeout for connection probing in seconds
+	// +kubebuilder:validation:Optional
+	Timeout *float64 `json:"timeout,omitempty" tf:"timeout,omitempty"`
+}
+
 type ManagerClusterObservation struct {
+
+	// Settings that control initial node connection
+	APIProbing []APIProbingObservation `json:"apiProbing,omitempty" tf:"api_probing,omitempty"`
+
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// Nodes in the cluster
@@ -24,6 +62,10 @@ type ManagerClusterObservation struct {
 }
 
 type ManagerClusterParameters struct {
+
+	// Settings that control initial node connection
+	// +kubebuilder:validation:Optional
+	APIProbing []APIProbingParameters `json:"apiProbing,omitempty" tf:"api_probing,omitempty"`
 
 	// Nodes in the cluster
 	// +kubebuilder:validation:Optional

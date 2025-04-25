@@ -165,6 +165,9 @@ type LocaleServiceObservation struct {
 	// The path of the edge cluster connected to this gateway
 	EdgeClusterPath *string `json:"edgeClusterPath,omitempty" tf:"edge_cluster_path,omitempty"`
 
+	// NSX ID for this resource
+	NsxID *string `json:"nsxId,omitempty" tf:"nsx_id,omitempty"`
+
 	// Policy path for this resource
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
@@ -183,6 +186,10 @@ type LocaleServiceParameters struct {
 	// The path of the edge cluster connected to this gateway
 	// +kubebuilder:validation:Required
 	EdgeClusterPath *string `json:"edgeClusterPath" tf:"edge_cluster_path,omitempty"`
+
+	// NSX ID for this resource
+	// +kubebuilder:validation:Optional
+	NsxID *string `json:"nsxId,omitempty" tf:"nsx_id,omitempty"`
 
 	// Paths of specific edge nodes
 	// +kubebuilder:validation:Optional
@@ -268,6 +275,9 @@ type PolicyTier0GatewayObservation struct {
 
 	// VRF configuration
 	VrfConfig []VrfConfigObservation `json:"vrfConfig,omitempty" tf:"vrf_config,omitempty"`
+
+	// VRF transit subnets in CIDR format
+	VrfTransitSubnets []*string `json:"vrfTransitSubnets,omitempty" tf:"vrf_transit_subnets,omitempty"`
 }
 
 type PolicyTier0GatewayParameters struct {
@@ -355,6 +365,10 @@ type PolicyTier0GatewayParameters struct {
 	// VRF configuration
 	// +kubebuilder:validation:Optional
 	VrfConfig []VrfConfigParameters `json:"vrfConfig,omitempty" tf:"vrf_config,omitempty"`
+
+	// VRF transit subnets in CIDR format
+	// +kubebuilder:validation:Optional
+	VrfTransitSubnets []*string `json:"vrfTransitSubnets,omitempty" tf:"vrf_transit_subnets,omitempty"`
 }
 
 type PolicyTier0GatewayRedistributionConfigObservation struct {

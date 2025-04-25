@@ -242,6 +242,15 @@ type DHCPV6ConfigParameters struct {
 	SntpServers []*string `json:"sntpServers,omitempty" tf:"sntp_servers,omitempty"`
 }
 
+type DetectedObservation struct {
+	Scope *string `json:"scope,omitempty" tf:"scope,omitempty"`
+
+	Tag *string `json:"tag,omitempty" tf:"tag,omitempty"`
+}
+
+type DetectedParameters struct {
+}
+
 type ExcludedRangeObservation struct {
 
 	// The end IP Address for the range
@@ -260,6 +269,22 @@ type ExcludedRangeParameters struct {
 	// The start IP Address for the range
 	// +kubebuilder:validation:Required
 	Start *string `json:"start" tf:"start,omitempty"`
+}
+
+type IgnoreTagsObservation struct {
+
+	// Tags matching scopes to ignore
+	Detected []DetectedObservation `json:"detected,omitempty" tf:"detected,omitempty"`
+
+	// List of scopes to ignore
+	Scopes []*string `json:"scopes,omitempty" tf:"scopes,omitempty"`
+}
+
+type IgnoreTagsParameters struct {
+
+	// List of scopes to ignore
+	// +kubebuilder:validation:Required
+	Scopes []*string `json:"scopes" tf:"scopes,omitempty"`
 }
 
 type L2ExtensionObservation struct {
@@ -310,8 +335,13 @@ type PolicyFixedSegmentObservation struct {
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	IgnoreTags []IgnoreTagsObservation `json:"ignoreTags,omitempty" tf:"ignore_tags,omitempty"`
+
 	// Configuration for extending Segment through L2 VPN
 	L2Extension []L2ExtensionObservation `json:"l2Extension,omitempty" tf:"l2_extension,omitempty"`
+
+	// Metadata Proxy Configuration Paths
+	MetadataProxyPaths []*string `json:"metadataProxyPaths,omitempty" tf:"metadata_proxy_paths,omitempty"`
 
 	// NSX ID for this resource
 	NsxID *string `json:"nsxId,omitempty" tf:"nsx_id,omitempty"`
@@ -375,9 +405,16 @@ type PolicyFixedSegmentParameters struct {
 	// +kubebuilder:validation:Optional
 	DomainName *string `json:"domainName,omitempty" tf:"domain_name,omitempty"`
 
+	// +kubebuilder:validation:Optional
+	IgnoreTags []IgnoreTagsParameters `json:"ignoreTags,omitempty" tf:"ignore_tags,omitempty"`
+
 	// Configuration for extending Segment through L2 VPN
 	// +kubebuilder:validation:Optional
 	L2Extension []L2ExtensionParameters `json:"l2Extension,omitempty" tf:"l2_extension,omitempty"`
+
+	// Metadata Proxy Configuration Paths
+	// +kubebuilder:validation:Optional
+	MetadataProxyPaths []*string `json:"metadataProxyPaths,omitempty" tf:"metadata_proxy_paths,omitempty"`
 
 	// NSX ID for this resource
 	// +kubebuilder:validation:Optional

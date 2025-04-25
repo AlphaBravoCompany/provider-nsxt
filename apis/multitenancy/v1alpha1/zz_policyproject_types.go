@@ -21,6 +21,8 @@ type PolicyProjectObservation struct {
 	// Display name for this resource
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
 
+	ExternalIPv4Blocks []*string `json:"externalIpv4Blocks,omitempty" tf:"external_ipv4_blocks,omitempty"`
+
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// NSX ID for this resource
@@ -51,6 +53,9 @@ type PolicyProjectParameters struct {
 	// Display name for this resource
 	// +kubebuilder:validation:Optional
 	DisplayName *string `json:"displayName,omitempty" tf:"display_name,omitempty"`
+
+	// +kubebuilder:validation:Optional
+	ExternalIPv4Blocks []*string `json:"externalIpv4Blocks,omitempty" tf:"external_ipv4_blocks,omitempty"`
 
 	// NSX ID for this resource
 	// +kubebuilder:validation:Optional

@@ -31,6 +31,9 @@ type PolicyTier1GatewayInterfaceObservation struct {
 	// Resource context
 	Context []PolicyTier1GatewayInterfaceContextObservation `json:"context,omitempty" tf:"context,omitempty"`
 
+	// Policy path for DHCP relay config
+	DHCPRelayPath *string `json:"dhcpRelayPath,omitempty" tf:"dhcp_relay_path,omitempty"`
+
 	// Description for this resource
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
@@ -81,6 +84,10 @@ type PolicyTier1GatewayInterfaceParameters struct {
 	// Resource context
 	// +kubebuilder:validation:Optional
 	Context []PolicyTier1GatewayInterfaceContextParameters `json:"context,omitempty" tf:"context,omitempty"`
+
+	// Policy path for DHCP relay config
+	// +kubebuilder:validation:Optional
+	DHCPRelayPath *string `json:"dhcpRelayPath,omitempty" tf:"dhcp_relay_path,omitempty"`
 
 	// Description for this resource
 	// +kubebuilder:validation:Optional

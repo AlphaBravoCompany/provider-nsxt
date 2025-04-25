@@ -53,6 +53,9 @@ type PolicyIpBlockObservation struct {
 
 	// Set of opaque identifiers meaningful to the user
 	Tag []PolicyIpBlockTagObservation `json:"tag,omitempty" tf:"tag,omitempty"`
+
+	// Visibility of the Ip Block. Cannot be updated once associated with other resources.
+	Visibility *string `json:"visibility,omitempty" tf:"visibility,omitempty"`
 }
 
 type PolicyIpBlockParameters struct {
@@ -80,6 +83,10 @@ type PolicyIpBlockParameters struct {
 	// Set of opaque identifiers meaningful to the user
 	// +kubebuilder:validation:Optional
 	Tag []PolicyIpBlockTagParameters `json:"tag,omitempty" tf:"tag,omitempty"`
+
+	// Visibility of the Ip Block. Cannot be updated once associated with other resources.
+	// +kubebuilder:validation:Optional
+	Visibility *string `json:"visibility,omitempty" tf:"visibility,omitempty"`
 }
 
 type PolicyIpBlockTagObservation struct {

@@ -533,6 +533,9 @@ spec:
                         nsxId:
                           description: NSX ID for this resource
                           type: string
+                        path:
+                          description: Policy path for this resource
+                          type: string
                         profiles:
                           description: List of profiles
                           items:

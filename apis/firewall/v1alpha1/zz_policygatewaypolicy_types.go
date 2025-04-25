@@ -184,6 +184,9 @@ type RuleObservation struct {
 	// NSX ID for this resource
 	NsxID *string `json:"nsxId,omitempty" tf:"nsx_id,omitempty"`
 
+	// Policy path for this resource
+	Path *string `json:"path,omitempty" tf:"path,omitempty"`
+
 	// List of profiles
 	Profiles []*string `json:"profiles,omitempty" tf:"profiles,omitempty"`
 

@@ -69,6 +69,18 @@ spec:
                 type: string
               forProvider:
                 properties:
+                  context:
+                    description: Resource context
+                    items:
+                      properties:
+                        projectId:
+                          description: Id of the project which the resource belongs
+                            to.
+                          type: string
+                      required:
+                      - projectId
+                      type: object
+                    type: array
                   criteria:
                     description: Filtering criteria for the IDS Profile
                     items:
@@ -333,6 +345,16 @@ spec:
             properties:
               atProvider:
                 properties:
+                  context:
+                    description: Resource context
+                    items:
+                      properties:
+                        projectId:
+                          description: Id of the project which the resource belongs
+                            to.
+                          type: string
+                      type: object
+                    type: array
                   criteria:
                     description: Filtering criteria for the IDS Profile
                     items:

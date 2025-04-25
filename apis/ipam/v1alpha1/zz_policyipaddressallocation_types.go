@@ -56,6 +56,9 @@ type PolicyIpAddressAllocationObservation struct {
 
 	// Set of opaque identifiers meaningful to the user
 	Tag []TagObservation `json:"tag,omitempty" tf:"tag,omitempty"`
+
+	// Realization timeout in seconds
+	Timeout *float64 `json:"timeout,omitempty" tf:"timeout,omitempty"`
 }
 
 type PolicyIpAddressAllocationParameters struct {
@@ -87,6 +90,10 @@ type PolicyIpAddressAllocationParameters struct {
 	// Set of opaque identifiers meaningful to the user
 	// +kubebuilder:validation:Optional
 	Tag []TagParameters `json:"tag,omitempty" tf:"tag,omitempty"`
+
+	// Realization timeout in seconds
+	// +kubebuilder:validation:Optional
+	Timeout *float64 `json:"timeout,omitempty" tf:"timeout,omitempty"`
 }
 
 type TagObservation struct {

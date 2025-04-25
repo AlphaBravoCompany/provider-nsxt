@@ -109,6 +109,10 @@ spec:
                   nsxId:
                     description: NSX ID for this resource
                     type: string
+                  policyBasedVpnMode:
+                    description: Policy based vpn mode match flag. DNAT and NO_DNAT
+                      only
+                    type: string
                   rulePriority:
                     description: The sequence_number decides the rule_priority of
                       a NAT rule. Valid range [0-2147483647]
@@ -145,6 +149,9 @@ spec:
                     type: array
                   translatedPorts:
                     description: Port number or port range. DNAT only
+                    type: string
+                  type:
+                    description: NAT Type
                     type: string
                 type: object
               managementPolicy:
@@ -390,6 +397,10 @@ spec:
                   path:
                     description: Policy path for this resource
                     type: string
+                  policyBasedVpnMode:
+                    description: Policy based vpn mode match flag. DNAT and NO_DNAT
+                      only
+                    type: string
                   revision:
                     description: The _revision property describes the current revision
                       of the resource. To prevent clients from overwriting each other's
@@ -434,6 +445,9 @@ spec:
                     type: array
                   translatedPorts:
                     description: Port number or port range. DNAT only
+                    type: string
+                  type:
+                    description: NAT Type
                     type: string
                 type: object
               conditions:

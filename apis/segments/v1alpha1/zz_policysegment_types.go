@@ -103,6 +103,15 @@ type DiscoveryProfileParameters struct {
 	MacDiscoveryProfilePath *string `json:"macDiscoveryProfilePath,omitempty" tf:"mac_discovery_profile_path,omitempty"`
 }
 
+type IgnoreTagsDetectedObservation struct {
+	Scope *string `json:"scope,omitempty" tf:"scope,omitempty"`
+
+	Tag *string `json:"tag,omitempty" tf:"tag,omitempty"`
+}
+
+type IgnoreTagsDetectedParameters struct {
+}
+
 type PolicySegmentAdvancedConfigObservation struct {
 
 	// Policy path to IP address pool
@@ -196,6 +205,22 @@ type PolicySegmentContextParameters struct {
 	ProjectID *string `json:"projectId" tf:"project_id,omitempty"`
 }
 
+type PolicySegmentIgnoreTagsObservation struct {
+
+	// Tags matching scopes to ignore
+	Detected []IgnoreTagsDetectedObservation `json:"detected,omitempty" tf:"detected,omitempty"`
+
+	// List of scopes to ignore
+	Scopes []*string `json:"scopes,omitempty" tf:"scopes,omitempty"`
+}
+
+type PolicySegmentIgnoreTagsParameters struct {
+
+	// List of scopes to ignore
+	// +kubebuilder:validation:Required
+	Scopes []*string `json:"scopes" tf:"scopes,omitempty"`
+}
+
 type PolicySegmentL2ExtensionObservation struct {
 
 	// Policy paths of associated L2 VPN sessions
@@ -247,8 +272,13 @@ type PolicySegmentObservation struct {
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	IgnoreTags []PolicySegmentIgnoreTagsObservation `json:"ignoreTags,omitempty" tf:"ignore_tags,omitempty"`
+
 	// Configuration for extending Segment through L2 VPN
 	L2Extension []PolicySegmentL2ExtensionObservation `json:"l2Extension,omitempty" tf:"l2_extension,omitempty"`
+
+	// Metadata Proxy Configuration Paths
+	MetadataProxyPaths []*string `json:"metadataProxyPaths,omitempty" tf:"metadata_proxy_paths,omitempty"`
 
 	// NSX ID for this resource
 	NsxID *string `json:"nsxId,omitempty" tf:"nsx_id,omitempty"`
@@ -322,9 +352,16 @@ type PolicySegmentParameters struct {
 	// +kubebuilder:validation:Optional
 	DomainName *string `json:"domainName,omitempty" tf:"domain_name,omitempty"`
 
+	// +kubebuilder:validation:Optional
+	IgnoreTags []PolicySegmentIgnoreTagsParameters `json:"ignoreTags,omitempty" tf:"ignore_tags,omitempty"`
+
 	// Configuration for extending Segment through L2 VPN
 	// +kubebuilder:validation:Optional
 	L2Extension []PolicySegmentL2ExtensionParameters `json:"l2Extension,omitempty" tf:"l2_extension,omitempty"`
+
+	// Metadata Proxy Configuration Paths
+	// +kubebuilder:validation:Optional
+	MetadataProxyPaths []*string `json:"metadataProxyPaths,omitempty" tf:"metadata_proxy_paths,omitempty"`
 
 	// NSX ID for this resource
 	// +kubebuilder:validation:Optional

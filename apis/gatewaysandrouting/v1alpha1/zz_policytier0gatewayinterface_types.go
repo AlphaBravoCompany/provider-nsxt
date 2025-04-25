@@ -69,6 +69,9 @@ type PolicyTier0GatewayInterfaceObservation struct {
 	// Vlan ID
 	AccessVlanID *float64 `json:"accessVlanId,omitempty" tf:"access_vlan_id,omitempty"`
 
+	// Policy path for DHCP relay config
+	DHCPRelayPath *string `json:"dhcpRelayPath,omitempty" tf:"dhcp_relay_path,omitempty"`
+
 	// Description for this resource
 	Description *string `json:"description,omitempty" tf:"description,omitempty"`
 
@@ -134,6 +137,10 @@ type PolicyTier0GatewayInterfaceParameters struct {
 	// Vlan ID
 	// +kubebuilder:validation:Optional
 	AccessVlanID *float64 `json:"accessVlanId,omitempty" tf:"access_vlan_id,omitempty"`
+
+	// Policy path for DHCP relay config
+	// +kubebuilder:validation:Optional
+	DHCPRelayPath *string `json:"dhcpRelayPath,omitempty" tf:"dhcp_relay_path,omitempty"`
 
 	// Description for this resource
 	// +kubebuilder:validation:Optional

@@ -88,8 +88,6 @@ import (
 	v1alpha1nsxtspoofguardswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtspoofguardswitchingprofile/v1alpha1"
 	v1alpha1nsxtstaticroute "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtstaticroute/v1alpha1"
 	v1alpha1nsxtswitchsecurityswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtswitchsecurityswitchingprofile/v1alpha1"
-	v1alpha1nsxttransportnode "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxttransportnode/v1alpha1"
-	v1alpha1nsxtuplinkhostswitchprofile "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtuplinkhostswitchprofile/v1alpha1"
 	v1alpha1nsxtvlanlogicalswitch "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtvlanlogicalswitch/v1alpha1"
 	v1alpha1nsxtvmtags "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtvmtags/v1alpha1"
 	v1alpha1segments "github.com/AlphaBravoCompany/provider-nsxt/apis/segments/v1alpha1"
@@ -178,8 +176,6 @@ func init() {
 		v1alpha1nsxtspoofguardswitchingprofile.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtstaticroute.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtswitchsecurityswitchingprofile.SchemeBuilder.AddToScheme,
-		v1alpha1nsxttransportnode.SchemeBuilder.AddToScheme,
-		v1alpha1nsxtuplinkhostswitchprofile.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtvlanlogicalswitch.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtvmtags.SchemeBuilder.AddToScheme,
 		v1alpha1segments.SchemeBuilder.AddToScheme,

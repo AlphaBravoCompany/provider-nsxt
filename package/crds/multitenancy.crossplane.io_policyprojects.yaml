@@ -73,6 +73,10 @@ spec:
                   displayName:
                     description: Display name for this resource
                     type: string
+                  externalIpv4Blocks:
+                    items:
+                      type: string
+                    type: array
                   nsxId:
                     description: NSX ID for this resource
                     type: string
@@ -304,6 +308,10 @@ spec:
                   displayName:
                     description: Display name for this resource
                     type: string
+                  externalIpv4Blocks:
+                    items:
+                      type: string
+                    type: array
                   id:
                     type: string
                   nsxId:

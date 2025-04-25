@@ -24,6 +24,9 @@ type EdgeClusterObservation struct {
 	// Edge high availability cluster profile Id
 	EdgeHaProfileID *string `json:"edgeHaProfileId,omitempty" tf:"edge_ha_profile_id,omitempty"`
 
+	// Flag to enable/disable failure domain based allocation
+	FailureDomainAllocation *string `json:"failureDomainAllocation,omitempty" tf:"failure_domain_allocation,omitempty"`
+
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
 	// Edge cluster members
@@ -55,6 +58,10 @@ type EdgeClusterParameters struct {
 	// Edge high availability cluster profile Id
 	// +kubebuilder:validation:Optional
 	EdgeHaProfileID *string `json:"edgeHaProfileId,omitempty" tf:"edge_ha_profile_id,omitempty"`
+
+	// Flag to enable/disable failure domain based allocation
+	// +kubebuilder:validation:Optional
+	FailureDomainAllocation *string `json:"failureDomainAllocation,omitempty" tf:"failure_domain_allocation,omitempty"`
 
 	// Edge cluster members
 	// +kubebuilder:validation:Optional

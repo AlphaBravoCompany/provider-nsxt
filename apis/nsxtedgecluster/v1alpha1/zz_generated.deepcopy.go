@@ -90,6 +90,11 @@ func (in *EdgeClusterObservation) DeepCopyInto(out *EdgeClusterObservation) {
 		*out = new(string)
 		**out = **in
 	}
+	if in.FailureDomainAllocation != nil {
+		in, out := &in.FailureDomainAllocation, &out.FailureDomainAllocation
+		*out = new(string)
+		**out = **in
+	}
 	if in.ID != nil {
 		in, out := &in.ID, &out.ID
 		*out = new(string)
@@ -153,6 +158,11 @@ func (in *EdgeClusterParameters) DeepCopyInto(out *EdgeClusterParameters) {
 	}
 	if in.EdgeHaProfileID != nil {
 		in, out := &in.EdgeHaProfileID, &out.EdgeHaProfileID
+		*out = new(string)
+		**out = **in
+	}
+	if in.FailureDomainAllocation != nil {
+		in, out := &in.FailureDomainAllocation, &out.FailureDomainAllocation
 		*out = new(string)
 		**out = **in
 	}

@@ -146,6 +146,18 @@ spec:
                   domainName:
                     description: DNS domain names
                     type: string
+                  ignoreTags:
+                    items:
+                      properties:
+                        scopes:
+                          description: List of scopes to ignore
+                          items:
+                            type: string
+                          type: array
+                      required:
+                      - scopes
+                      type: object
+                    type: array
                   l2Extension:
                     description: Configuration for extending Segment through L2 VPN
                     items:
@@ -159,6 +171,11 @@ spec:
                           description: Tunnel ID
                           type: number
                       type: object
+                    type: array
+                  metadataProxyPaths:
+                    description: Metadata Proxy Configuration Paths
+                    items:
+                      type: string
                     type: array
                   nsxId:
                     description: NSX ID for this resource
@@ -569,6 +586,26 @@ spec:
                     type: string
                   id:
                     type: string
+                  ignoreTags:
+                    items:
+                      properties:
+                        detected:
+                          description: Tags matching scopes to ignore
+                          items:
+                            properties:
+                              scope:
+                                type: string
+                              tag:
+                                type: string
+                            type: object
+                          type: array
+                        scopes:
+                          description: List of scopes to ignore
+                          items:
+                            type: string
+                          type: array
+                      type: object
+                    type: array
                   l2Extension:
                     description: Configuration for extending Segment through L2 VPN
                     items:
@@ -582,6 +619,11 @@ spec:
                           description: Tunnel ID
                           type: number
                       type: object
+                    type: array
+                  metadataProxyPaths:
+                    description: Metadata Proxy Configuration Paths
+                    items:
+                      type: string
                     type: array
                   nsxId:
                     description: NSX ID for this resource

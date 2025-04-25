@@ -61,6 +61,9 @@ type PolicyTier1GatewayLocaleServiceObservation struct {
 	// The path of the edge cluster connected to this gateway
 	EdgeClusterPath *string `json:"edgeClusterPath,omitempty" tf:"edge_cluster_path,omitempty"`
 
+	// NSX ID for this resource
+	NsxID *string `json:"nsxId,omitempty" tf:"nsx_id,omitempty"`
+
 	// Policy path for this resource
 	Path *string `json:"path,omitempty" tf:"path,omitempty"`
 
@@ -76,6 +79,10 @@ type PolicyTier1GatewayLocaleServiceParameters struct {
 	// The path of the edge cluster connected to this gateway
 	// +kubebuilder:validation:Required
 	EdgeClusterPath *string `json:"edgeClusterPath" tf:"edge_cluster_path,omitempty"`
+
+	// NSX ID for this resource
+	// +kubebuilder:validation:Optional
+	NsxID *string `json:"nsxId,omitempty" tf:"nsx_id,omitempty"`
 
 	// Paths of specific edge nodes
 	// +kubebuilder:validation:Optional

@@ -68,6 +68,24 @@ spec:
                 type: string
               forProvider:
                 properties:
+                  apiProbing:
+                    description: Settings that control initial node connection
+                    items:
+                      properties:
+                        delay:
+                          description: Initial delay in seconds before probing connection
+                          type: number
+                        enabled:
+                          description: Whether API probing for NSX nodes is enabled
+                          type: boolean
+                        interval:
+                          description: Connection probing interval in seconds
+                          type: number
+                        timeout:
+                          description: Timeout for connection probing in seconds
+                          type: number
+                      type: object
+                    type: array
                   node:
                     description: Nodes in the cluster
                     items:
@@ -297,6 +315,24 @@ spec:
             properties:
               atProvider:
                 properties:
+                  apiProbing:
+                    description: Settings that control initial node connection
+                    items:
+                      properties:
+                        delay:
+                          description: Initial delay in seconds before probing connection
+                          type: number
+                        enabled:
+                          description: Whether API probing for NSX nodes is enabled
+                          type: boolean
+                        interval:
+                          description: Connection probing interval in seconds
+                          type: number
+                        timeout:
+                          description: Timeout for connection probing in seconds
+                          type: number
+                      type: object
+                    type: array
                   id:
                     type: string
                   node:

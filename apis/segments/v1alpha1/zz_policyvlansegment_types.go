@@ -136,6 +136,31 @@ type PolicyVlanSegmentDiscoveryProfileParameters struct {
 	MacDiscoveryProfilePath *string `json:"macDiscoveryProfilePath,omitempty" tf:"mac_discovery_profile_path,omitempty"`
 }
 
+type PolicyVlanSegmentIgnoreTagsDetectedObservation struct {
+	Scope *string `json:"scope,omitempty" tf:"scope,omitempty"`
+
+	Tag *string `json:"tag,omitempty" tf:"tag,omitempty"`
+}
+
+type PolicyVlanSegmentIgnoreTagsDetectedParameters struct {
+}
+
+type PolicyVlanSegmentIgnoreTagsObservation struct {
+
+	// Tags matching scopes to ignore
+	Detected []PolicyVlanSegmentIgnoreTagsDetectedObservation `json:"detected,omitempty" tf:"detected,omitempty"`
+
+	// List of scopes to ignore
+	Scopes []*string `json:"scopes,omitempty" tf:"scopes,omitempty"`
+}
+
+type PolicyVlanSegmentIgnoreTagsParameters struct {
+
+	// List of scopes to ignore
+	// +kubebuilder:validation:Required
+	Scopes []*string `json:"scopes" tf:"scopes,omitempty"`
+}
+
 type PolicyVlanSegmentL2ExtensionObservation struct {
 
 	// Policy paths of associated L2 VPN sessions
@@ -184,8 +209,13 @@ type PolicyVlanSegmentObservation struct {
 
 	ID *string `json:"id,omitempty" tf:"id,omitempty"`
 
+	IgnoreTags []PolicyVlanSegmentIgnoreTagsObservation `json:"ignoreTags,omitempty" tf:"ignore_tags,omitempty"`
+
 	// Configuration for extending Segment through L2 VPN
 	L2Extension []PolicyVlanSegmentL2ExtensionObservation `json:"l2Extension,omitempty" tf:"l2_extension,omitempty"`
+
+	// Metadata Proxy Configuration Paths
+	MetadataProxyPaths []*string `json:"metadataProxyPaths,omitempty" tf:"metadata_proxy_paths,omitempty"`
 
 	// NSX ID for this resource
 	NsxID *string `json:"nsxId,omitempty" tf:"nsx_id,omitempty"`
@@ -252,9 +282,16 @@ type PolicyVlanSegmentParameters struct {
 	// +kubebuilder:validation:Optional
 	DomainName *string `json:"domainName,omitempty" tf:"domain_name,omitempty"`
 
+	// +kubebuilder:validation:Optional
+	IgnoreTags []PolicyVlanSegmentIgnoreTagsParameters `json:"ignoreTags,omitempty" tf:"ignore_tags,omitempty"`
+
 	// Configuration for extending Segment through L2 VPN
 	// +kubebuilder:validation:Optional
 	L2Extension []PolicyVlanSegmentL2ExtensionParameters `json:"l2Extension,omitempty" tf:"l2_extension,omitempty"`
+
+	// Metadata Proxy Configuration Paths
+	// +kubebuilder:validation:Optional
+	MetadataProxyPaths []*string `json:"metadataProxyPaths,omitempty" tf:"metadata_proxy_paths,omitempty"`
 
 	// NSX ID for this resource
 	// +kubebuilder:validation:Optional

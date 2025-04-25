@@ -70,7 +70,23 @@ type OverriddenSignatureParameters struct {
 	SignatureID *string `json:"signatureId" tf:"signature_id,omitempty"`
 }
 
+type PolicyInstrusionServiceProfileContextObservation struct {
+
+	// Id of the project which the resource belongs to.
+	ProjectID *string `json:"projectId,omitempty" tf:"project_id,omitempty"`
+}
+
+type PolicyInstrusionServiceProfileContextParameters struct {
+
+	// Id of the project which the resource belongs to.
+	// +kubebuilder:validation:Required
+	ProjectID *string `json:"projectId" tf:"project_id,omitempty"`
+}
+
 type PolicyInstrusionServiceProfileObservation struct {
+
+	// Resource context
+	Context []PolicyInstrusionServiceProfileContextObservation `json:"context,omitempty" tf:"context,omitempty"`
 
 	// Filtering criteria for the IDS Profile
 	Criteria []CriteriaObservation `json:"criteria,omitempty" tf:"criteria,omitempty"`
@@ -103,6 +119,10 @@ type PolicyInstrusionServiceProfileObservation struct {
 }
 
 type PolicyInstrusionServiceProfileParameters struct {
+
+	// Resource context
+	// +kubebuilder:validation:Optional
+	Context []PolicyInstrusionServiceProfileContextParameters `json:"context,omitempty" tf:"context,omitempty"`
 
 	// Filtering criteria for the IDS Profile
 	// +kubebuilder:validation:Optional
