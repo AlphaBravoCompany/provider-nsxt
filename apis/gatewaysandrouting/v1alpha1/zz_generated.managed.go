@@ -83,79 +83,79 @@ func (mg *PolicyBgpConfig) SetWriteConnectionSecretToReference(r *xpv1.SecretRef
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
-// GetCondition of this PolicyBgpMeighbor.
-func (mg *PolicyBgpMeighbor) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
+// GetCondition of this PolicyBgpNeighbor.
+func (mg *PolicyBgpNeighbor) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
 	return mg.Status.GetCondition(ct)
 }
 
-// GetDeletionPolicy of this PolicyBgpMeighbor.
-func (mg *PolicyBgpMeighbor) GetDeletionPolicy() xpv1.DeletionPolicy {
+// GetDeletionPolicy of this PolicyBgpNeighbor.
+func (mg *PolicyBgpNeighbor) GetDeletionPolicy() xpv1.DeletionPolicy {
 	return mg.Spec.DeletionPolicy
 }
 
-// GetManagementPolicy of this PolicyBgpMeighbor.
-func (mg *PolicyBgpMeighbor) GetManagementPolicy() xpv1.ManagementPolicy {
+// GetManagementPolicy of this PolicyBgpNeighbor.
+func (mg *PolicyBgpNeighbor) GetManagementPolicy() xpv1.ManagementPolicy {
 	return mg.Spec.ManagementPolicy
 }
 
-// GetProviderConfigReference of this PolicyBgpMeighbor.
-func (mg *PolicyBgpMeighbor) GetProviderConfigReference() *xpv1.Reference {
+// GetProviderConfigReference of this PolicyBgpNeighbor.
+func (mg *PolicyBgpNeighbor) GetProviderConfigReference() *xpv1.Reference {
 	return mg.Spec.ProviderConfigReference
 }
 
 /*
-GetProviderReference of this PolicyBgpMeighbor.
+GetProviderReference of this PolicyBgpNeighbor.
 Deprecated: Use GetProviderConfigReference.
 */
-func (mg *PolicyBgpMeighbor) GetProviderReference() *xpv1.Reference {
+func (mg *PolicyBgpNeighbor) GetProviderReference() *xpv1.Reference {
 	return mg.Spec.ProviderReference
 }
 
-// GetPublishConnectionDetailsTo of this PolicyBgpMeighbor.
-func (mg *PolicyBgpMeighbor) GetPublishConnectionDetailsTo() *xpv1.PublishConnectionDetailsTo {
+// GetPublishConnectionDetailsTo of this PolicyBgpNeighbor.
+func (mg *PolicyBgpNeighbor) GetPublishConnectionDetailsTo() *xpv1.PublishConnectionDetailsTo {
 	return mg.Spec.PublishConnectionDetailsTo
 }
 
-// GetWriteConnectionSecretToReference of this PolicyBgpMeighbor.
-func (mg *PolicyBgpMeighbor) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
+// GetWriteConnectionSecretToReference of this PolicyBgpNeighbor.
+func (mg *PolicyBgpNeighbor) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
 	return mg.Spec.WriteConnectionSecretToReference
 }
 
-// SetConditions of this PolicyBgpMeighbor.
-func (mg *PolicyBgpMeighbor) SetConditions(c ...xpv1.Condition) {
+// SetConditions of this PolicyBgpNeighbor.
+func (mg *PolicyBgpNeighbor) SetConditions(c ...xpv1.Condition) {
 	mg.Status.SetConditions(c...)
 }
 
-// SetDeletionPolicy of this PolicyBgpMeighbor.
-func (mg *PolicyBgpMeighbor) SetDeletionPolicy(r xpv1.DeletionPolicy) {
+// SetDeletionPolicy of this PolicyBgpNeighbor.
+func (mg *PolicyBgpNeighbor) SetDeletionPolicy(r xpv1.DeletionPolicy) {
 	mg.Spec.DeletionPolicy = r
 }
 
-// SetManagementPolicy of this PolicyBgpMeighbor.
-func (mg *PolicyBgpMeighbor) SetManagementPolicy(r xpv1.ManagementPolicy) {
+// SetManagementPolicy of this PolicyBgpNeighbor.
+func (mg *PolicyBgpNeighbor) SetManagementPolicy(r xpv1.ManagementPolicy) {
 	mg.Spec.ManagementPolicy = r
 }
 
-// SetProviderConfigReference of this PolicyBgpMeighbor.
-func (mg *PolicyBgpMeighbor) SetProviderConfigReference(r *xpv1.Reference) {
+// SetProviderConfigReference of this PolicyBgpNeighbor.
+func (mg *PolicyBgpNeighbor) SetProviderConfigReference(r *xpv1.Reference) {
 	mg.Spec.ProviderConfigReference = r
 }
 
 /*
-SetProviderReference of this PolicyBgpMeighbor.
+SetProviderReference of this PolicyBgpNeighbor.
 Deprecated: Use SetProviderConfigReference.
 */
-func (mg *PolicyBgpMeighbor) SetProviderReference(r *xpv1.Reference) {
+func (mg *PolicyBgpNeighbor) SetProviderReference(r *xpv1.Reference) {
 	mg.Spec.ProviderReference = r
 }
 
-// SetPublishConnectionDetailsTo of this PolicyBgpMeighbor.
-func (mg *PolicyBgpMeighbor) SetPublishConnectionDetailsTo(r *xpv1.PublishConnectionDetailsTo) {
+// SetPublishConnectionDetailsTo of this PolicyBgpNeighbor.
+func (mg *PolicyBgpNeighbor) SetPublishConnectionDetailsTo(r *xpv1.PublishConnectionDetailsTo) {
 	mg.Spec.PublishConnectionDetailsTo = r
 }
 
-// SetWriteConnectionSecretToReference of this PolicyBgpMeighbor.
-func (mg *PolicyBgpMeighbor) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
+// SetWriteConnectionSecretToReference of this PolicyBgpNeighbor.
+func (mg *PolicyBgpNeighbor) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 
@@ -764,82 +764,6 @@ func (mg *PolicyStaticRoute) SetPublishConnectionDetailsTo(r *xpv1.PublishConnec
 
 // SetWriteConnectionSecretToReference of this PolicyStaticRoute.
 func (mg *PolicyStaticRoute) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
-	mg.Spec.WriteConnectionSecretToReference = r
-}
-
-// GetCondition of this PolicyStaticRouteBfdPeer.
-func (mg *PolicyStaticRouteBfdPeer) GetCondition(ct xpv1.ConditionType) xpv1.Condition {
-	return mg.Status.GetCondition(ct)
-}
-
-// GetDeletionPolicy of this PolicyStaticRouteBfdPeer.
-func (mg *PolicyStaticRouteBfdPeer) GetDeletionPolicy() xpv1.DeletionPolicy {
-	return mg.Spec.DeletionPolicy
-}
-
-// GetManagementPolicy of this PolicyStaticRouteBfdPeer.
-func (mg *PolicyStaticRouteBfdPeer) GetManagementPolicy() xpv1.ManagementPolicy {
-	return mg.Spec.ManagementPolicy
-}
-
-// GetProviderConfigReference of this PolicyStaticRouteBfdPeer.
-func (mg *PolicyStaticRouteBfdPeer) GetProviderConfigReference() *xpv1.Reference {
-	return mg.Spec.ProviderConfigReference
-}
-
-/*
-GetProviderReference of this PolicyStaticRouteBfdPeer.
-Deprecated: Use GetProviderConfigReference.
-*/
-func (mg *PolicyStaticRouteBfdPeer) GetProviderReference() *xpv1.Reference {
-	return mg.Spec.ProviderReference
-}
-
-// GetPublishConnectionDetailsTo of this PolicyStaticRouteBfdPeer.
-func (mg *PolicyStaticRouteBfdPeer) GetPublishConnectionDetailsTo() *xpv1.PublishConnectionDetailsTo {
-	return mg.Spec.PublishConnectionDetailsTo
-}
-
-// GetWriteConnectionSecretToReference of this PolicyStaticRouteBfdPeer.
-func (mg *PolicyStaticRouteBfdPeer) GetWriteConnectionSecretToReference() *xpv1.SecretReference {
-	return mg.Spec.WriteConnectionSecretToReference
-}
-
-// SetConditions of this PolicyStaticRouteBfdPeer.
-func (mg *PolicyStaticRouteBfdPeer) SetConditions(c ...xpv1.Condition) {
-	mg.Status.SetConditions(c...)
-}
-
-// SetDeletionPolicy of this PolicyStaticRouteBfdPeer.
-func (mg *PolicyStaticRouteBfdPeer) SetDeletionPolicy(r xpv1.DeletionPolicy) {
-	mg.Spec.DeletionPolicy = r
-}
-
-// SetManagementPolicy of this PolicyStaticRouteBfdPeer.
-func (mg *PolicyStaticRouteBfdPeer) SetManagementPolicy(r xpv1.ManagementPolicy) {
-	mg.Spec.ManagementPolicy = r
-}
-
-// SetProviderConfigReference of this PolicyStaticRouteBfdPeer.
-func (mg *PolicyStaticRouteBfdPeer) SetProviderConfigReference(r *xpv1.Reference) {
-	mg.Spec.ProviderConfigReference = r
-}
-
-/*
-SetProviderReference of this PolicyStaticRouteBfdPeer.
-Deprecated: Use SetProviderConfigReference.
-*/
-func (mg *PolicyStaticRouteBfdPeer) SetProviderReference(r *xpv1.Reference) {
-	mg.Spec.ProviderReference = r
-}
-
-// SetPublishConnectionDetailsTo of this PolicyStaticRouteBfdPeer.
-func (mg *PolicyStaticRouteBfdPeer) SetPublishConnectionDetailsTo(r *xpv1.PublishConnectionDetailsTo) {
-	mg.Spec.PublishConnectionDetailsTo = r
-}
-
-// SetWriteConnectionSecretToReference of this PolicyStaticRouteBfdPeer.
-func (mg *PolicyStaticRouteBfdPeer) SetWriteConnectionSecretToReference(r *xpv1.SecretReference) {
 	mg.Spec.WriteConnectionSecretToReference = r
 }
 

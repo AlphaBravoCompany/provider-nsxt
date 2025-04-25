@@ -91,6 +91,7 @@ import (
 	v1alpha1nsxtswitchsecurityswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtswitchsecurityswitchingprofile/v1alpha1"
 	v1alpha1nsxtvlanlogicalswitch "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtvlanlogicalswitch/v1alpha1"
 	v1alpha1nsxtvmtags "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtvmtags/v1alpha1"
+	v1alpha1policy "github.com/AlphaBravoCompany/provider-nsxt/apis/policy/v1alpha1"
 	v1alpha1segments "github.com/AlphaBravoCompany/provider-nsxt/apis/segments/v1alpha1"
 	v1alpha1apis "github.com/AlphaBravoCompany/provider-nsxt/apis/v1alpha1"
 	v1beta1 "github.com/AlphaBravoCompany/provider-nsxt/apis/v1beta1"
@@ -180,6 +181,7 @@ func init() {
 		v1alpha1nsxtswitchsecurityswitchingprofile.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtvlanlogicalswitch.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtvmtags.SchemeBuilder.AddToScheme,
+		v1alpha1policy.SchemeBuilder.AddToScheme,
 		v1alpha1segments.SchemeBuilder.AddToScheme,
 		v1alpha1apis.SchemeBuilder.AddToScheme,
 		v1beta1.SchemeBuilder.AddToScheme,

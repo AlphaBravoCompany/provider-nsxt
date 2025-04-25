@@ -32,7 +32,7 @@ import (
 	policysecuritypolicyrule "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/firewall/policysecuritypolicyrule"
 	policyservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/firewall/policyservice"
 	policybgpconfig "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/gatewaysandrouting/policybgpconfig"
-	policybgpmeighbor "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/gatewaysandrouting/policybgpmeighbor"
+	policybgpneighbor "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/gatewaysandrouting/policybgpneighbor"
 	policygatewaycommunitylist "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/gatewaysandrouting/policygatewaycommunitylist"
 	policygatewayprefixlist "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/gatewaysandrouting/policygatewayprefixlist"
 	policygatewayqosprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/gatewaysandrouting/policygatewayqosprofile"
@@ -41,7 +41,6 @@ import (
 	policynatrule "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/gatewaysandrouting/policynatrule"
 	policyospfconfig "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/gatewaysandrouting/policyospfconfig"
 	policystaticroute "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/gatewaysandrouting/policystaticroute"
-	policystaticroutebfdpeer "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/gatewaysandrouting/policystaticroutebfdpeer"
 	policytier0gateway "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/gatewaysandrouting/policytier0gateway"
 	policytier0gatewayhavipconfig "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/gatewaysandrouting/policytier0gatewayhavipconfig"
 	policytier0gatewayinterface "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/gatewaysandrouting/policytier0gatewayinterface"
@@ -131,6 +130,7 @@ import (
 	switchsecurityswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtswitchsecurityswitchingprofile/switchsecurityswitchingprofile"
 	vlanlogicalswitch "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtvlanlogicalswitch/vlanlogicalswitch"
 	vmtags "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtvmtags/vmtags"
+	staticroutebfdpeer "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/policy/staticroutebfdpeer"
 	providerconfig "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/providerconfig"
 	policyfixedsegment "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/segments/policyfixedsegment"
 	policyipdiscoveryprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/segments/policyipdiscoveryprofile"
@@ -169,7 +169,7 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		policysecuritypolicyrule.Setup,
 		policyservice.Setup,
 		policybgpconfig.Setup,
-		policybgpmeighbor.Setup,
+		policybgpneighbor.Setup,
 		policygatewaycommunitylist.Setup,
 		policygatewayprefixlist.Setup,
 		policygatewayqosprofile.Setup,
@@ -178,7 +178,6 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		policynatrule.Setup,
 		policyospfconfig.Setup,
 		policystaticroute.Setup,
-		policystaticroutebfdpeer.Setup,
 		policytier0gateway.Setup,
 		policytier0gatewayhavipconfig.Setup,
 		policytier0gatewayinterface.Setup,
@@ -268,6 +267,7 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		switchsecurityswitchingprofile.Setup,
 		vlanlogicalswitch.Setup,
 		vmtags.Setup,
+		staticroutebfdpeer.Setup,
 		providerconfig.Setup,
 		policyfixedsegment.Setup,
 		policyipdiscoveryprofile.Setup,

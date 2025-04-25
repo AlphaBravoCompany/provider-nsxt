@@ -13,7 +13,7 @@ import (
 	v1 "github.com/crossplane/crossplane-runtime/apis/common/v1"
 )
 
-type PolicyStaticRouteBfdPeerObservation struct {
+type StaticRouteBfdPeerObservation struct {
 
 	// Policy path for BFD Profile
 	BfdProfilePath *string `json:"bfdProfilePath,omitempty" tf:"bfd_profile_path,omitempty"`
@@ -48,10 +48,10 @@ type PolicyStaticRouteBfdPeerObservation struct {
 	SourceAddresses []*string `json:"sourceAddresses,omitempty" tf:"source_addresses,omitempty"`
 
 	// Set of opaque identifiers meaningful to the user
-	Tag []PolicyStaticRouteBfdPeerTagObservation `json:"tag,omitempty" tf:"tag,omitempty"`
+	Tag []TagObservation `json:"tag,omitempty" tf:"tag,omitempty"`
 }
 
-type PolicyStaticRouteBfdPeerParameters struct {
+type StaticRouteBfdPeerParameters struct {
 
 	// Policy path for BFD Profile
 	// +kubebuilder:validation:Optional
@@ -87,16 +87,16 @@ type PolicyStaticRouteBfdPeerParameters struct {
 
 	// Set of opaque identifiers meaningful to the user
 	// +kubebuilder:validation:Optional
-	Tag []PolicyStaticRouteBfdPeerTagParameters `json:"tag,omitempty" tf:"tag,omitempty"`
+	Tag []TagParameters `json:"tag,omitempty" tf:"tag,omitempty"`
 }
 
-type PolicyStaticRouteBfdPeerTagObservation struct {
+type TagObservation struct {
 	Scope *string `json:"scope,omitempty" tf:"scope,omitempty"`
 
 	Tag *string `json:"tag,omitempty" tf:"tag,omitempty"`
 }
 
-type PolicyStaticRouteBfdPeerTagParameters struct {
+type TagParameters struct {
 
 	// +kubebuilder:validation:Optional
 	Scope *string `json:"scope,omitempty" tf:"scope,omitempty"`
@@ -105,55 +105,55 @@ type PolicyStaticRouteBfdPeerTagParameters struct {
 	Tag *string `json:"tag,omitempty" tf:"tag,omitempty"`
 }
 
-// PolicyStaticRouteBfdPeerSpec defines the desired state of PolicyStaticRouteBfdPeer
-type PolicyStaticRouteBfdPeerSpec struct {
+// StaticRouteBfdPeerSpec defines the desired state of StaticRouteBfdPeer
+type StaticRouteBfdPeerSpec struct {
 	v1.ResourceSpec `json:",inline"`
-	ForProvider     PolicyStaticRouteBfdPeerParameters `json:"forProvider"`
+	ForProvider     StaticRouteBfdPeerParameters `json:"forProvider"`
 }
 
-// PolicyStaticRouteBfdPeerStatus defines the observed state of PolicyStaticRouteBfdPeer.
-type PolicyStaticRouteBfdPeerStatus struct {
+// StaticRouteBfdPeerStatus defines the observed state of StaticRouteBfdPeer.
+type StaticRouteBfdPeerStatus struct {
 	v1.ResourceStatus `json:",inline"`
-	AtProvider        PolicyStaticRouteBfdPeerObservation `json:"atProvider,omitempty"`
+	AtProvider        StaticRouteBfdPeerObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true
 
-// PolicyStaticRouteBfdPeer is the Schema for the PolicyStaticRouteBfdPeers API. <no value>
+// StaticRouteBfdPeer is the Schema for the StaticRouteBfdPeers API. <no value>
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"
 // +kubebuilder:printcolumn:name="AGE",type="date",JSONPath=".metadata.creationTimestamp"
 // +kubebuilder:subresource:status
 // +kubebuilder:resource:scope=Cluster,categories={crossplane,managed,nsxt}
-type PolicyStaticRouteBfdPeer struct {
+type StaticRouteBfdPeer struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	// +kubebuilder:validation:XValidation:rule="self.managementPolicy == 'ObserveOnly' || has(self.forProvider.bfdProfilePath)",message="bfdProfilePath is a required parameter"
 	// +kubebuilder:validation:XValidation:rule="self.managementPolicy == 'ObserveOnly' || has(self.forProvider.displayName)",message="displayName is a required parameter"
 	// +kubebuilder:validation:XValidation:rule="self.managementPolicy == 'ObserveOnly' || has(self.forProvider.gatewayPath)",message="gatewayPath is a required parameter"
 	// +kubebuilder:validation:XValidation:rule="self.managementPolicy == 'ObserveOnly' || has(self.forProvider.peerAddress)",message="peerAddress is a required parameter"
-	Spec   PolicyStaticRouteBfdPeerSpec   `json:"spec"`
-	Status PolicyStaticRouteBfdPeerStatus `json:"status,omitempty"`
+	Spec   StaticRouteBfdPeerSpec   `json:"spec"`
+	Status StaticRouteBfdPeerStatus `json:"status,omitempty"`
 }
 
 // +kubebuilder:object:root=true
 
-// PolicyStaticRouteBfdPeerList contains a list of PolicyStaticRouteBfdPeers
-type PolicyStaticRouteBfdPeerList struct {
+// StaticRouteBfdPeerList contains a list of StaticRouteBfdPeers
+type StaticRouteBfdPeerList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []PolicyStaticRouteBfdPeer `json:"items"`
+	Items           []StaticRouteBfdPeer `json:"items"`
 }
 
 // Repository type metadata.
 var (
-	PolicyStaticRouteBfdPeer_Kind             = "PolicyStaticRouteBfdPeer"
-	PolicyStaticRouteBfdPeer_GroupKind        = schema.GroupKind{Group: CRDGroup, Kind: PolicyStaticRouteBfdPeer_Kind}.String()
-	PolicyStaticRouteBfdPeer_KindAPIVersion   = PolicyStaticRouteBfdPeer_Kind + "." + CRDGroupVersion.String()
-	PolicyStaticRouteBfdPeer_GroupVersionKind = CRDGroupVersion.WithKind(PolicyStaticRouteBfdPeer_Kind)
+	StaticRouteBfdPeer_Kind             = "StaticRouteBfdPeer"
+	StaticRouteBfdPeer_GroupKind        = schema.GroupKind{Group: CRDGroup, Kind: StaticRouteBfdPeer_Kind}.String()
+	StaticRouteBfdPeer_KindAPIVersion   = StaticRouteBfdPeer_Kind + "." + CRDGroupVersion.String()
+	StaticRouteBfdPeer_GroupVersionKind = CRDGroupVersion.WithKind(StaticRouteBfdPeer_Kind)
 )
 
 func init() {
-	SchemeBuilder.Register(&PolicyStaticRouteBfdPeer{}, &PolicyStaticRouteBfdPeerList{})
+	SchemeBuilder.Register(&StaticRouteBfdPeer{}, &StaticRouteBfdPeerList{})
 }

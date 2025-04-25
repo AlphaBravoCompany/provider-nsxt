@@ -16,8 +16,8 @@ func (l *PolicyBgpConfigList) GetItems() []resource.Managed {
 	return items
 }
 
-// GetItems of this PolicyBgpMeighborList.
-func (l *PolicyBgpMeighborList) GetItems() []resource.Managed {
+// GetItems of this PolicyBgpNeighborList.
+func (l *PolicyBgpNeighborList) GetItems() []resource.Managed {
 	items := make([]resource.Managed, len(l.Items))
 	for i := range l.Items {
 		items[i] = &l.Items[i]
@@ -81,15 +81,6 @@ func (l *PolicyNatRuleList) GetItems() []resource.Managed {
 
 // GetItems of this PolicyOspfConfigList.
 func (l *PolicyOspfConfigList) GetItems() []resource.Managed {
-	items := make([]resource.Managed, len(l.Items))
-	for i := range l.Items {
-		items[i] = &l.Items[i]
-	}
-	return items
-}
-
-// GetItems of this PolicyStaticRouteBfdPeerList.
-func (l *PolicyStaticRouteBfdPeerList) GetItems() []resource.Managed {
 	items := make([]resource.Managed, len(l.Items))
 	for i := range l.Items {
 		items[i] = &l.Items[i]

@@ -87,18 +87,18 @@ func (tr *PolicyBgpConfig) GetTerraformSchemaVersion() int {
 	return 0
 }
 
-// GetTerraformResourceType returns Terraform resource type for this PolicyBgpMeighbor
-func (mg *PolicyBgpMeighbor) GetTerraformResourceType() string {
+// GetTerraformResourceType returns Terraform resource type for this PolicyBgpNeighbor
+func (mg *PolicyBgpNeighbor) GetTerraformResourceType() string {
 	return "nsxt_policy_bgp_neighbor"
 }
 
-// GetConnectionDetailsMapping for this PolicyBgpMeighbor
-func (tr *PolicyBgpMeighbor) GetConnectionDetailsMapping() map[string]string {
+// GetConnectionDetailsMapping for this PolicyBgpNeighbor
+func (tr *PolicyBgpNeighbor) GetConnectionDetailsMapping() map[string]string {
 	return map[string]string{"password": "spec.forProvider.passwordSecretRef"}
 }
 
-// GetObservation of this PolicyBgpMeighbor
-func (tr *PolicyBgpMeighbor) GetObservation() (map[string]any, error) {
+// GetObservation of this PolicyBgpNeighbor
+func (tr *PolicyBgpNeighbor) GetObservation() (map[string]any, error) {
 	o, err := json.TFParser.Marshal(tr.Status.AtProvider)
 	if err != nil {
 		return nil, err
@@ -107,8 +107,8 @@ func (tr *PolicyBgpMeighbor) GetObservation() (map[string]any, error) {
 	return base, json.TFParser.Unmarshal(o, &base)
 }
 
-// SetObservation for this PolicyBgpMeighbor
-func (tr *PolicyBgpMeighbor) SetObservation(obs map[string]any) error {
+// SetObservation for this PolicyBgpNeighbor
+func (tr *PolicyBgpNeighbor) SetObservation(obs map[string]any) error {
 	p, err := json.TFParser.Marshal(obs)
 	if err != nil {
 		return err
@@ -116,16 +116,16 @@ func (tr *PolicyBgpMeighbor) SetObservation(obs map[string]any) error {
 	return json.TFParser.Unmarshal(p, &tr.Status.AtProvider)
 }
 
-// GetID returns ID of underlying Terraform resource of this PolicyBgpMeighbor
-func (tr *PolicyBgpMeighbor) GetID() string {
+// GetID returns ID of underlying Terraform resource of this PolicyBgpNeighbor
+func (tr *PolicyBgpNeighbor) GetID() string {
 	if tr.Status.AtProvider.ID == nil {
 		return ""
 	}
 	return *tr.Status.AtProvider.ID
 }
 
-// GetParameters of this PolicyBgpMeighbor
-func (tr *PolicyBgpMeighbor) GetParameters() (map[string]any, error) {
+// GetParameters of this PolicyBgpNeighbor
+func (tr *PolicyBgpNeighbor) GetParameters() (map[string]any, error) {
 	p, err := json.TFParser.Marshal(tr.Spec.ForProvider)
 	if err != nil {
 		return nil, err
@@ -134,8 +134,8 @@ func (tr *PolicyBgpMeighbor) GetParameters() (map[string]any, error) {
 	return base, json.TFParser.Unmarshal(p, &base)
 }
 
-// SetParameters for this PolicyBgpMeighbor
-func (tr *PolicyBgpMeighbor) SetParameters(params map[string]any) error {
+// SetParameters for this PolicyBgpNeighbor
+func (tr *PolicyBgpNeighbor) SetParameters(params map[string]any) error {
 	p, err := json.TFParser.Marshal(params)
 	if err != nil {
 		return err
@@ -143,10 +143,10 @@ func (tr *PolicyBgpMeighbor) SetParameters(params map[string]any) error {
 	return json.TFParser.Unmarshal(p, &tr.Spec.ForProvider)
 }
 
-// LateInitialize this PolicyBgpMeighbor using its observed tfState.
+// LateInitialize this PolicyBgpNeighbor using its observed tfState.
 // returns True if there are any spec changes for the resource.
-func (tr *PolicyBgpMeighbor) LateInitialize(attrs []byte) (bool, error) {
-	params := &PolicyBgpMeighborParameters{}
+func (tr *PolicyBgpNeighbor) LateInitialize(attrs []byte) (bool, error) {
+	params := &PolicyBgpNeighborParameters{}
 	if err := json.TFParser.Unmarshal(attrs, params); err != nil {
 		return false, errors.Wrap(err, "failed to unmarshal Terraform state parameters for late-initialization")
 	}
@@ -157,7 +157,7 @@ func (tr *PolicyBgpMeighbor) LateInitialize(attrs []byte) (bool, error) {
 }
 
 // GetTerraformSchemaVersion returns the associated Terraform schema version
-func (tr *PolicyBgpMeighbor) GetTerraformSchemaVersion() int {
+func (tr *PolicyBgpNeighbor) GetTerraformSchemaVersion() int {
 	return 0
 }
 
@@ -750,80 +750,6 @@ func (tr *PolicyStaticRoute) LateInitialize(attrs []byte) (bool, error) {
 
 // GetTerraformSchemaVersion returns the associated Terraform schema version
 func (tr *PolicyStaticRoute) GetTerraformSchemaVersion() int {
-	return 0
-}
-
-// GetTerraformResourceType returns Terraform resource type for this PolicyStaticRouteBfdPeer
-func (mg *PolicyStaticRouteBfdPeer) GetTerraformResourceType() string {
-	return "nsxt_policy_static_route_bfd_peer"
-}
-
-// GetConnectionDetailsMapping for this PolicyStaticRouteBfdPeer
-func (tr *PolicyStaticRouteBfdPeer) GetConnectionDetailsMapping() map[string]string {
-	return nil
-}
-
-// GetObservation of this PolicyStaticRouteBfdPeer
-func (tr *PolicyStaticRouteBfdPeer) GetObservation() (map[string]any, error) {
-	o, err := json.TFParser.Marshal(tr.Status.AtProvider)
-	if err != nil {
-		return nil, err
-	}
-	base := map[string]any{}
-	return base, json.TFParser.Unmarshal(o, &base)
-}
-
-// SetObservation for this PolicyStaticRouteBfdPeer
-func (tr *PolicyStaticRouteBfdPeer) SetObservation(obs map[string]any) error {
-	p, err := json.TFParser.Marshal(obs)
-	if err != nil {
-		return err
-	}
-	return json.TFParser.Unmarshal(p, &tr.Status.AtProvider)
-}
-
-// GetID returns ID of underlying Terraform resource of this PolicyStaticRouteBfdPeer
-func (tr *PolicyStaticRouteBfdPeer) GetID() string {
-	if tr.Status.AtProvider.ID == nil {
-		return ""
-	}
-	return *tr.Status.AtProvider.ID
-}
-
-// GetParameters of this PolicyStaticRouteBfdPeer
-func (tr *PolicyStaticRouteBfdPeer) GetParameters() (map[string]any, error) {
-	p, err := json.TFParser.Marshal(tr.Spec.ForProvider)
-	if err != nil {
-		return nil, err
-	}
-	base := map[string]any{}
-	return base, json.TFParser.Unmarshal(p, &base)
-}
-
-// SetParameters for this PolicyStaticRouteBfdPeer
-func (tr *PolicyStaticRouteBfdPeer) SetParameters(params map[string]any) error {
-	p, err := json.TFParser.Marshal(params)
-	if err != nil {
-		return err
-	}
-	return json.TFParser.Unmarshal(p, &tr.Spec.ForProvider)
-}
-
-// LateInitialize this PolicyStaticRouteBfdPeer using its observed tfState.
-// returns True if there are any spec changes for the resource.
-func (tr *PolicyStaticRouteBfdPeer) LateInitialize(attrs []byte) (bool, error) {
-	params := &PolicyStaticRouteBfdPeerParameters{}
-	if err := json.TFParser.Unmarshal(attrs, params); err != nil {
-		return false, errors.Wrap(err, "failed to unmarshal Terraform state parameters for late-initialization")
-	}
-	opts := []resource.GenericLateInitializerOption{resource.WithZeroValueJSONOmitEmptyFilter(resource.CNameWildcard)}
-
-	li := resource.NewGenericLateInitializer(opts...)
-	return li.LateInitialize(&tr.Spec.ForProvider, params)
-}
-
-// GetTerraformSchemaVersion returns the associated Terraform schema version
-func (tr *PolicyStaticRouteBfdPeer) GetTerraformSchemaVersion() int {
 	return 0
 }
 

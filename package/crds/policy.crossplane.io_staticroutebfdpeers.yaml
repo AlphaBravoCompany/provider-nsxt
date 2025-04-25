@@ -5,18 +5,18 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.11.3
   creationTimestamp: null
-  name: policybgpmeighbors.gatewaysandrouting.crossplane.io
+  name: staticroutebfdpeers.policy.crossplane.io
 spec:
-  group: gatewaysandrouting.crossplane.io
+  group: policy.crossplane.io
   names:
     categories:
     - crossplane
     - managed
     - nsxt
-    kind: PolicyBgpMeighbor
-    listKind: PolicyBgpMeighborList
-    plural: policybgpmeighbors
-    singular: policybgpmeighbor
+    kind: StaticRouteBfdPeer
+    listKind: StaticRouteBfdPeerList
+    plural: staticroutebfdpeers
+    singular: staticroutebfdpeer
   scope: Cluster
   versions:
   - additionalPrinterColumns:
@@ -35,8 +35,8 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: PolicyBgpMeighbor is the Schema for the PolicyBgpMeighbors API.
-          <no value>
+        description: StaticRouteBfdPeer is the Schema for the StaticRouteBfdPeers
+          API. <no value>
         properties:
           apiVersion:
             description: 'APIVersion defines the versioned schema of this representation
@@ -51,7 +51,7 @@ spec:
           metadata:
             type: object
           spec:
-            description: PolicyBgpMeighborSpec defines the desired state of PolicyBgpMeighbor
+            description: StaticRouteBfdPeerSpec defines the desired state of StaticRouteBfdPeer
             properties:
               deletionPolicy:
                 default: Delete
@@ -68,28 +68,8 @@ spec:
                 type: string
               forProvider:
                 properties:
-                  allowAsIn:
-                    description: Flag to enable allowas_in option for BGP neighbor
-                    type: boolean
-                  bfdConfig:
-                    description: BFD configuration for failure detection
-                    items:
-                      properties:
-                        enabled:
-                          description: Flag to enable/disable BFD configuration
-                          type: boolean
-                        interval:
-                          description: Time interval between heartbeat packets in
-                            milliseconds
-                          type: number
-                        multiple:
-                          description: Number of times heartbeat packet is missed
-                            before BFD declares the neighbor is down
-                          type: number
-                      type: object
-                    type: array
-                  bgpPath:
-                    description: Policy path to the BGP for this neighbor
+                  bfdProfilePath:
+                    description: Policy path for BFD Profile
                     type: string
                   description:
                     description: Description for this resource
@@ -97,70 +77,20 @@ spec:
                   displayName:
                     description: Display name for this resource
                     type: string
-                  gracefulRestartMode:
-                    description: BGP Graceful Restart Configuration Mode
-                    type: string
-                  holdDownTime:
-                    description: Wait time in seconds before declaring peer dead
-                    type: number
-                  keepAliveTime:
-                    description: Interval between keep alive messages sent to peer
-                    type: number
-                  maximumHopLimit:
-                    description: Maximum number of hops allowed to reach BGP neighbor
-                    type: number
-                  neighborAddress:
-                    description: Neighbor IP Address
+                  enabled:
+                    description: Flag to enable/disable this peer
+                    type: boolean
+                  gatewayPath:
+                    description: Policy path for Tier0 gateway
                     type: string
                   nsxId:
                     description: NSX ID for this resource
                     type: string
-                  passwordSecretRef:
-                    description: Password for BGP neighbor authentication
-                    properties:
-                      key:
-                        description: The key to select.
-                        type: string
-                      name:
-                        description: Name of the secret.
-                        type: string
-                      namespace:
-                        description: Namespace of the secret.
-                        type: string
-                    required:
-                    - key
-                    - name
-                    - namespace
-                    type: object
-                  remoteAsNum:
-                    description: ASN of the neighbor in ASPLAIN or ASDOT Format
+                  peerAddress:
+                    description: IPv4 Address of the peer
                     type: string
-                  routeFiltering:
-                    description: Enable address families and route filtering in each
-                      direction
-                    items:
-                      properties:
-                        addressFamily:
-                          description: Address family type
-                          type: string
-                        enabled:
-                          description: Flag to enable/disable address family
-                          type: boolean
-                        inRouteFilter:
-                          description: Prefix-list or route map path for IN direction
-                          type: string
-                        maximumRoutes:
-                          description: Maximum number of routes for the address family
-                          type: number
-                        outRouteFilter:
-                          description: Prefix-list or route map path for OUT direction
-                          type: string
-                      required:
-                      - addressFamily
-                      type: object
-                    type: array
                   sourceAddresses:
-                    description: Source IP Addresses for BGP peering
+                    description: Array of Tier0 external interface IP addresses
                     items:
                       type: string
                     type: array
@@ -362,41 +292,21 @@ spec:
             - forProvider
             type: object
             x-kubernetes-validations:
-            - message: bgpPath is a required parameter
-              rule: self.managementPolicy == 'ObserveOnly' || has(self.forProvider.bgpPath)
+            - message: bfdProfilePath is a required parameter
+              rule: self.managementPolicy == 'ObserveOnly' || has(self.forProvider.bfdProfilePath)
             - message: displayName is a required parameter
               rule: self.managementPolicy == 'ObserveOnly' || has(self.forProvider.displayName)
-            - message: neighborAddress is a required parameter
-              rule: self.managementPolicy == 'ObserveOnly' || has(self.forProvider.neighborAddress)
-            - message: remoteAsNum is a required parameter
-              rule: self.managementPolicy == 'ObserveOnly' || has(self.forProvider.remoteAsNum)
+            - message: gatewayPath is a required parameter
+              rule: self.managementPolicy == 'ObserveOnly' || has(self.forProvider.gatewayPath)
+            - message: peerAddress is a required parameter
+              rule: self.managementPolicy == 'ObserveOnly' || has(self.forProvider.peerAddress)
           status:
-            description: PolicyBgpMeighborStatus defines the observed state of PolicyBgpMeighbor.
+            description: StaticRouteBfdPeerStatus defines the observed state of StaticRouteBfdPeer.
             properties:
               atProvider:
                 properties:
-                  allowAsIn:
-                    description: Flag to enable allowas_in option for BGP neighbor
-                    type: boolean
-                  bfdConfig:
-                    description: BFD configuration for failure detection
-                    items:
-                      properties:
-                        enabled:
-                          description: Flag to enable/disable BFD configuration
-                          type: boolean
-                        interval:
-                          description: Time interval between heartbeat packets in
-                            milliseconds
-                          type: number
-                        multiple:
-                          description: Number of times heartbeat packet is missed
-                            before BFD declares the neighbor is down
-                          type: number
-                      type: object
-                    type: array
-                  bgpPath:
-                    description: Policy path to the BGP for this neighbor
+                  bfdProfilePath:
+                    description: Policy path for BFD Profile
                     type: string
                   description:
                     description: Description for this resource
@@ -404,22 +314,13 @@ spec:
                   displayName:
                     description: Display name for this resource
                     type: string
-                  gracefulRestartMode:
-                    description: BGP Graceful Restart Configuration Mode
+                  enabled:
+                    description: Flag to enable/disable this peer
+                    type: boolean
+                  gatewayPath:
+                    description: Policy path for Tier0 gateway
                     type: string
-                  holdDownTime:
-                    description: Wait time in seconds before declaring peer dead
-                    type: number
                   id:
-                    type: string
-                  keepAliveTime:
-                    description: Interval between keep alive messages sent to peer
-                    type: number
-                  maximumHopLimit:
-                    description: Maximum number of hops allowed to reach BGP neighbor
-                    type: number
-                  neighborAddress:
-                    description: Neighbor IP Address
                     type: string
                   nsxId:
                     description: NSX ID for this resource
@@ -427,8 +328,8 @@ spec:
                   path:
                     description: Policy path for this resource
                     type: string
-                  remoteAsNum:
-                    description: ASN of the neighbor in ASPLAIN or ASDOT Format
+                  peerAddress:
+                    description: IPv4 Address of the peer
                     type: string
                   revision:
                     description: The _revision property describes the current revision
@@ -438,30 +339,8 @@ spec:
                       If the _revision provided in a PUT request is missing or stale,
                       the operation will be rejected
                     type: number
-                  routeFiltering:
-                    description: Enable address families and route filtering in each
-                      direction
-                    items:
-                      properties:
-                        addressFamily:
-                          description: Address family type
-                          type: string
-                        enabled:
-                          description: Flag to enable/disable address family
-                          type: boolean
-                        inRouteFilter:
-                          description: Prefix-list or route map path for IN direction
-                          type: string
-                        maximumRoutes:
-                          description: Maximum number of routes for the address family
-                          type: number
-                        outRouteFilter:
-                          description: Prefix-list or route map path for OUT direction
-                          type: string
-                      type: object
-                    type: array
                   sourceAddresses:
-                    description: Source IP Addresses for BGP peering
+                    description: Array of Tier0 external interface IP addresses
                     items:
                       type: string
                     type: array

@@ -40,7 +40,7 @@ type BfdConfigParameters struct {
 	Multiple *float64 `json:"multiple,omitempty" tf:"multiple,omitempty"`
 }
 
-type PolicyBgpMeighborObservation struct {
+type PolicyBgpNeighborObservation struct {
 
 	// Flag to enable allowas_in option for BGP neighbor
 	AllowAsIn *bool `json:"allowAsIn,omitempty" tf:"allow_as_in,omitempty"`
@@ -93,10 +93,10 @@ type PolicyBgpMeighborObservation struct {
 	SourceAddresses []*string `json:"sourceAddresses,omitempty" tf:"source_addresses,omitempty"`
 
 	// Set of opaque identifiers meaningful to the user
-	Tag []PolicyBgpMeighborTagObservation `json:"tag,omitempty" tf:"tag,omitempty"`
+	Tag []PolicyBgpNeighborTagObservation `json:"tag,omitempty" tf:"tag,omitempty"`
 }
 
-type PolicyBgpMeighborParameters struct {
+type PolicyBgpNeighborParameters struct {
 
 	// Flag to enable allowas_in option for BGP neighbor
 	// +kubebuilder:validation:Optional
@@ -160,16 +160,16 @@ type PolicyBgpMeighborParameters struct {
 
 	// Set of opaque identifiers meaningful to the user
 	// +kubebuilder:validation:Optional
-	Tag []PolicyBgpMeighborTagParameters `json:"tag,omitempty" tf:"tag,omitempty"`
+	Tag []PolicyBgpNeighborTagParameters `json:"tag,omitempty" tf:"tag,omitempty"`
 }
 
-type PolicyBgpMeighborTagObservation struct {
+type PolicyBgpNeighborTagObservation struct {
 	Scope *string `json:"scope,omitempty" tf:"scope,omitempty"`
 
 	Tag *string `json:"tag,omitempty" tf:"tag,omitempty"`
 }
 
-type PolicyBgpMeighborTagParameters struct {
+type PolicyBgpNeighborTagParameters struct {
 
 	// +kubebuilder:validation:Optional
 	Scope *string `json:"scope,omitempty" tf:"scope,omitempty"`
@@ -219,55 +219,55 @@ type RouteFilteringParameters struct {
 	OutRouteFilter *string `json:"outRouteFilter,omitempty" tf:"out_route_filter,omitempty"`
 }
 
-// PolicyBgpMeighborSpec defines the desired state of PolicyBgpMeighbor
-type PolicyBgpMeighborSpec struct {
+// PolicyBgpNeighborSpec defines the desired state of PolicyBgpNeighbor
+type PolicyBgpNeighborSpec struct {
 	v1.ResourceSpec `json:",inline"`
-	ForProvider     PolicyBgpMeighborParameters `json:"forProvider"`
+	ForProvider     PolicyBgpNeighborParameters `json:"forProvider"`
 }
 
-// PolicyBgpMeighborStatus defines the observed state of PolicyBgpMeighbor.
-type PolicyBgpMeighborStatus struct {
+// PolicyBgpNeighborStatus defines the observed state of PolicyBgpNeighbor.
+type PolicyBgpNeighborStatus struct {
 	v1.ResourceStatus `json:",inline"`
-	AtProvider        PolicyBgpMeighborObservation `json:"atProvider,omitempty"`
+	AtProvider        PolicyBgpNeighborObservation `json:"atProvider,omitempty"`
 }
 
 // +kubebuilder:object:root=true
 
-// PolicyBgpMeighbor is the Schema for the PolicyBgpMeighbors API. <no value>
+// PolicyBgpNeighbor is the Schema for the PolicyBgpNeighbors API. <no value>
 // +kubebuilder:printcolumn:name="READY",type="string",JSONPath=".status.conditions[?(@.type=='Ready')].status"
 // +kubebuilder:printcolumn:name="SYNCED",type="string",JSONPath=".status.conditions[?(@.type=='Synced')].status"
 // +kubebuilder:printcolumn:name="EXTERNAL-NAME",type="string",JSONPath=".metadata.annotations.crossplane\\.io/external-name"
 // +kubebuilder:printcolumn:name="AGE",type="date",JSONPath=".metadata.creationTimestamp"
 // +kubebuilder:subresource:status
 // +kubebuilder:resource:scope=Cluster,categories={crossplane,managed,nsxt}
-type PolicyBgpMeighbor struct {
+type PolicyBgpNeighbor struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	// +kubebuilder:validation:XValidation:rule="self.managementPolicy == 'ObserveOnly' || has(self.forProvider.bgpPath)",message="bgpPath is a required parameter"
 	// +kubebuilder:validation:XValidation:rule="self.managementPolicy == 'ObserveOnly' || has(self.forProvider.displayName)",message="displayName is a required parameter"
 	// +kubebuilder:validation:XValidation:rule="self.managementPolicy == 'ObserveOnly' || has(self.forProvider.neighborAddress)",message="neighborAddress is a required parameter"
 	// +kubebuilder:validation:XValidation:rule="self.managementPolicy == 'ObserveOnly' || has(self.forProvider.remoteAsNum)",message="remoteAsNum is a required parameter"
-	Spec   PolicyBgpMeighborSpec   `json:"spec"`
-	Status PolicyBgpMeighborStatus `json:"status,omitempty"`
+	Spec   PolicyBgpNeighborSpec   `json:"spec"`
+	Status PolicyBgpNeighborStatus `json:"status,omitempty"`
 }
 
 // +kubebuilder:object:root=true
 
-// PolicyBgpMeighborList contains a list of PolicyBgpMeighbors
-type PolicyBgpMeighborList struct {
+// PolicyBgpNeighborList contains a list of PolicyBgpNeighbors
+type PolicyBgpNeighborList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []PolicyBgpMeighbor `json:"items"`
+	Items           []PolicyBgpNeighbor `json:"items"`
 }
 
 // Repository type metadata.
 var (
-	PolicyBgpMeighbor_Kind             = "PolicyBgpMeighbor"
-	PolicyBgpMeighbor_GroupKind        = schema.GroupKind{Group: CRDGroup, Kind: PolicyBgpMeighbor_Kind}.String()
-	PolicyBgpMeighbor_KindAPIVersion   = PolicyBgpMeighbor_Kind + "." + CRDGroupVersion.String()
-	PolicyBgpMeighbor_GroupVersionKind = CRDGroupVersion.WithKind(PolicyBgpMeighbor_Kind)
+	PolicyBgpNeighbor_Kind             = "PolicyBgpNeighbor"
+	PolicyBgpNeighbor_GroupKind        = schema.GroupKind{Group: CRDGroup, Kind: PolicyBgpNeighbor_Kind}.String()
+	PolicyBgpNeighbor_KindAPIVersion   = PolicyBgpNeighbor_Kind + "." + CRDGroupVersion.String()
+	PolicyBgpNeighbor_GroupVersionKind = CRDGroupVersion.WithKind(PolicyBgpNeighbor_Kind)
 )
 
 func init() {
-	SchemeBuilder.Register(&PolicyBgpMeighbor{}, &PolicyBgpMeighborList{})
+	SchemeBuilder.Register(&PolicyBgpNeighbor{}, &PolicyBgpNeighborList{})
 }
