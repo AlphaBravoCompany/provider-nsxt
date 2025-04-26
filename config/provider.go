@@ -15,6 +15,7 @@ import (
 	dhcp "github.com/AlphaBravoCompany/provider-nsxt/config/dhcp"
 	dns "github.com/AlphaBravoCompany/provider-nsxt/config/dns"
 	evpn "github.com/AlphaBravoCompany/provider-nsxt/config/evpn"
+	fabric "github.com/AlphaBravoCompany/provider-nsxt/config/fabric"
 	firewall "github.com/AlphaBravoCompany/provider-nsxt/config/firewall"
 	gatewaysandrouting "github.com/AlphaBravoCompany/provider-nsxt/config/gateways_and_routing"
 	groupingandtagging "github.com/AlphaBravoCompany/provider-nsxt/config/grouping_and_tagging"
@@ -52,6 +53,7 @@ func GetProvider() *ujconfig.Provider {
 		dhcp.Configure,
 		dns.Configure,
 		evpn.Configure,
+		fabric.Configure,
 		firewall.Configure,
 		gatewaysandrouting.Configure,
 		groupingandtagging.Configure,

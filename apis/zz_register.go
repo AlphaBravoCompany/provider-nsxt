@@ -15,6 +15,7 @@ import (
 	v1alpha1dhcp "github.com/AlphaBravoCompany/provider-nsxt/apis/dhcp/v1alpha1"
 	v1alpha1dns "github.com/AlphaBravoCompany/provider-nsxt/apis/dns/v1alpha1"
 	v1alpha1evpn "github.com/AlphaBravoCompany/provider-nsxt/apis/evpn/v1alpha1"
+	v1alpha1fabric "github.com/AlphaBravoCompany/provider-nsxt/apis/fabric/v1alpha1"
 	v1alpha1firewall "github.com/AlphaBravoCompany/provider-nsxt/apis/firewall/v1alpha1"
 	v1alpha1gatewaysandrouting "github.com/AlphaBravoCompany/provider-nsxt/apis/gatewaysandrouting/v1alpha1"
 	v1alpha1groupingandtagging "github.com/AlphaBravoCompany/provider-nsxt/apis/groupingandtagging/v1alpha1"
@@ -35,6 +36,7 @@ func init() {
 		v1alpha1dhcp.SchemeBuilder.AddToScheme,
 		v1alpha1dns.SchemeBuilder.AddToScheme,
 		v1alpha1evpn.SchemeBuilder.AddToScheme,
+		v1alpha1fabric.SchemeBuilder.AddToScheme,
 		v1alpha1firewall.SchemeBuilder.AddToScheme,
 		v1alpha1gatewaysandrouting.SchemeBuilder.AddToScheme,
 		v1alpha1groupingandtagging.SchemeBuilder.AddToScheme,

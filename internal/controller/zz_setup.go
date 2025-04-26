@@ -105,6 +105,13 @@ import (
 	policyevpntenant "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/evpn/policyevpntenant"
 	policyevpntunnelendpoint "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/evpn/policyevpntunnelendpoint"
 	policyvnipool "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/evpn/policyvnipool"
+	edgehighavailabilityprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/fabric/edgehighavailabilityprofile"
+	edgetransportnode "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/fabric/edgetransportnode"
+	policycomputesubcluster "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/fabric/policycomputesubcluster"
+	policyhosttransportnode "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/fabric/policyhosttransportnode"
+	policyhosttransportnodecollection "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/fabric/policyhosttransportnodecollection"
+	policyuplinkhostswitchprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/fabric/policyuplinkhostswitchprofile"
+	policyvtephahostswitchprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/fabric/policyvtephahostswitchprofile"
 	policycontextprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/firewall/policycontextprofile"
 	policycontextprofilecustomattribute "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/firewall/policycontextprofilecustomattribute"
 	policyfirewallexcludelistmember "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/firewall/policyfirewallexcludelistmember"
@@ -265,6 +272,13 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		policyevpntenant.Setup,
 		policyevpntunnelendpoint.Setup,
 		policyvnipool.Setup,
+		edgehighavailabilityprofile.Setup,
+		edgetransportnode.Setup,
+		policycomputesubcluster.Setup,
+		policyhosttransportnode.Setup,
+		policyhosttransportnodecollection.Setup,
+		policyuplinkhostswitchprofile.Setup,
+		policyvtephahostswitchprofile.Setup,
 		policycontextprofile.Setup,
 		policycontextprofilecustomattribute.Setup,
 		policyfirewallexcludelistmember.Setup,
