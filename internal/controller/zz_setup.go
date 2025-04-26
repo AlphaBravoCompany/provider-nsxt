@@ -118,13 +118,6 @@ import (
 	nsgroup "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtnsgroup/nsgroup"
 	nsservicegroup "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtnsservicegroup/nsservicegroup"
 	policyhosttransportnodeprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtpolicyhosttransportnodeprofile/policyhosttransportnodeprofile"
-	policyipsecvpndpdprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtpolicyipsecvpndpdprofile/policyipsecvpndpdprofile"
-	policyipsecvpnikeprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtpolicyipsecvpnikeprofile/policyipsecvpnikeprofile"
-	policyipsecvpnlocalendpoint "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtpolicyipsecvpnlocalendpoint/policyipsecvpnlocalendpoint"
-	policyipsecvpnservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtpolicyipsecvpnservice/policyipsecvpnservice"
-	policyipsecvpnsession "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtpolicyipsecvpnsession/policyipsecvpnsession"
-	policyipsecvpntunnelprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtpolicyipsecvpntunnelprofile/policyipsecvpntunnelprofile"
-	policyl2vpnsession "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtpolicyl2vpnsession/policyl2vpnsession"
 	policytransportzone "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtpolicytransportzone/policytransportzone"
 	qosswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtqosswitchingprofile/qosswitchingprofile"
 	spoofguardswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtspoofguardswitchingprofile/spoofguardswitchingprofile"
@@ -141,6 +134,14 @@ import (
 	policysegmentsecurityprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/segments/policysegmentsecurityprofile"
 	policyspoofguardprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/segments/policyspoofguardprofile"
 	policyvlansegment "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/segments/policyvlansegment"
+	policyipsecvpndpdprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/vpn/policyipsecvpndpdprofile"
+	policyipsecvpnikeprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/vpn/policyipsecvpnikeprofile"
+	policyipsecvpnlocalendpoint "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/vpn/policyipsecvpnlocalendpoint"
+	policyipsecvpnservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/vpn/policyipsecvpnservice"
+	policyipsecvpnsession "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/vpn/policyipsecvpnsession"
+	policyipsecvpntunnelprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/vpn/policyipsecvpntunnelprofile"
+	policyl2vpnservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/vpn/policyl2vpnservice"
+	policyl2vpnsession "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/vpn/policyl2vpnsession"
 )
 
 // Setup creates all controllers with the supplied logger and adds them to
@@ -256,13 +257,6 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		nsgroup.Setup,
 		nsservicegroup.Setup,
 		policyhosttransportnodeprofile.Setup,
-		policyipsecvpndpdprofile.Setup,
-		policyipsecvpnikeprofile.Setup,
-		policyipsecvpnlocalendpoint.Setup,
-		policyipsecvpnservice.Setup,
-		policyipsecvpnsession.Setup,
-		policyipsecvpntunnelprofile.Setup,
-		policyl2vpnsession.Setup,
 		policytransportzone.Setup,
 		qosswitchingprofile.Setup,
 		spoofguardswitchingprofile.Setup,
@@ -279,6 +273,14 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		policysegmentsecurityprofile.Setup,
 		policyspoofguardprofile.Setup,
 		policyvlansegment.Setup,
+		policyipsecvpndpdprofile.Setup,
+		policyipsecvpnikeprofile.Setup,
+		policyipsecvpnlocalendpoint.Setup,
+		policyipsecvpnservice.Setup,
+		policyipsecvpnsession.Setup,
+		policyipsecvpntunnelprofile.Setup,
+		policyl2vpnservice.Setup,
+		policyl2vpnsession.Setup,
 	} {
 		if err := setup(mgr, o); err != nil {
 			return err

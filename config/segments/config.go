@@ -24,6 +24,7 @@ func Configure(p *config.Provider) {
 		r.Kind = "PolicyMacDiscoveryProfile"
 		r.Version = version
 	})
+
 	p.AddResourceConfigurator("nsxt_policy_qos_profile", func(r *config.Resource) {
 		r.ShortGroup = shortGroup
 		r.Kind = "PolicyQosProfile"
@@ -41,6 +42,7 @@ func Configure(p *config.Provider) {
 		r.Kind = "PolicySegmentSecurityProfile"
 		r.Version = version
 	})
+
 	p.AddResourceConfigurator("nsxt_policy_spoof_guard_profile", func(r *config.Resource) {
 		r.ShortGroup = shortGroup
 		r.Kind = "PolicySpoofGuardProfile"
@@ -50,7 +52,6 @@ func Configure(p *config.Provider) {
 	p.AddResourceConfigurator("nsxt_policy_vlan_segment", func(r *config.Resource) {
 		r.ShortGroup = shortGroup
 		r.Kind = "PolicyVlanSegment"
-		r.Version = "v1alpha1"
+		r.Version = version
 	})
-
 }

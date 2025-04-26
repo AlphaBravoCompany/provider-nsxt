@@ -77,13 +77,6 @@ import (
 	v1alpha1nsxtnsgroup "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtnsgroup/v1alpha1"
 	v1alpha1nsxtnsservicegroup "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtnsservicegroup/v1alpha1"
 	v1alpha1nsxtpolicyhosttransportnodeprofile "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtpolicyhosttransportnodeprofile/v1alpha1"
-	v1alpha1nsxtpolicyipsecvpndpdprofile "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtpolicyipsecvpndpdprofile/v1alpha1"
-	v1alpha1nsxtpolicyipsecvpnikeprofile "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtpolicyipsecvpnikeprofile/v1alpha1"
-	v1alpha1nsxtpolicyipsecvpnlocalendpoint "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtpolicyipsecvpnlocalendpoint/v1alpha1"
-	v1alpha1nsxtpolicyipsecvpnservice "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtpolicyipsecvpnservice/v1alpha1"
-	v1alpha1nsxtpolicyipsecvpnsession "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtpolicyipsecvpnsession/v1alpha1"
-	v1alpha1nsxtpolicyipsecvpntunnelprofile "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtpolicyipsecvpntunnelprofile/v1alpha1"
-	v1alpha1nsxtpolicyl2vpnsession "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtpolicyl2vpnsession/v1alpha1"
 	v1alpha1nsxtpolicytransportzone "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtpolicytransportzone/v1alpha1"
 	v1alpha1nsxtqosswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtqosswitchingprofile/v1alpha1"
 	v1alpha1nsxtspoofguardswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtspoofguardswitchingprofile/v1alpha1"
@@ -94,6 +87,7 @@ import (
 	v1alpha1segments "github.com/AlphaBravoCompany/provider-nsxt/apis/segments/v1alpha1"
 	v1alpha1apis "github.com/AlphaBravoCompany/provider-nsxt/apis/v1alpha1"
 	v1beta1 "github.com/AlphaBravoCompany/provider-nsxt/apis/v1beta1"
+	v1alpha1vpn "github.com/AlphaBravoCompany/provider-nsxt/apis/vpn/v1alpha1"
 )
 
 func init() {
@@ -166,13 +160,6 @@ func init() {
 		v1alpha1nsxtnsgroup.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtnsservicegroup.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtpolicyhosttransportnodeprofile.SchemeBuilder.AddToScheme,
-		v1alpha1nsxtpolicyipsecvpndpdprofile.SchemeBuilder.AddToScheme,
-		v1alpha1nsxtpolicyipsecvpnikeprofile.SchemeBuilder.AddToScheme,
-		v1alpha1nsxtpolicyipsecvpnlocalendpoint.SchemeBuilder.AddToScheme,
-		v1alpha1nsxtpolicyipsecvpnservice.SchemeBuilder.AddToScheme,
-		v1alpha1nsxtpolicyipsecvpnsession.SchemeBuilder.AddToScheme,
-		v1alpha1nsxtpolicyipsecvpntunnelprofile.SchemeBuilder.AddToScheme,
-		v1alpha1nsxtpolicyl2vpnsession.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtpolicytransportzone.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtqosswitchingprofile.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtspoofguardswitchingprofile.SchemeBuilder.AddToScheme,
@@ -183,6 +170,7 @@ func init() {
 		v1alpha1segments.SchemeBuilder.AddToScheme,
 		v1alpha1apis.SchemeBuilder.AddToScheme,
 		v1beta1.SchemeBuilder.AddToScheme,
+		v1alpha1vpn.SchemeBuilder.AddToScheme,
 	)
 }
 
