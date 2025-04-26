@@ -37,6 +37,64 @@ import (
 	upgradeprecheckacknowledge "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/upgradeprecheckacknowledge"
 	upgradeprepare "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/upgradeprepare"
 	upgraderun "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/upgraderun"
+	algorithmtypensservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/algorithmtypensservice"
+	dhcprelayprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/dhcprelayprofile"
+	dhcprelayservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/dhcprelayservice"
+	dhcpserverippool "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/dhcpserverippool"
+	dhcpserverprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/dhcpserverprofile"
+	ethertypensservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/ethertypensservice"
+	firewallsection "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/firewallsection"
+	icmptypensservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/icmptypensservice"
+	igmptypensservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/igmptypensservice"
+	ipblock "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/ipblock"
+	ipblocksubnet "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/ipblocksubnet"
+	ipdiscoveryswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/ipdiscoveryswitchingprofile"
+	ippool "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/ippool"
+	ippoolallocationipaddress "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/ippoolallocationipaddress"
+	ipprotocolnsservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/ipprotocolnsservice"
+	ipset "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/ipset"
+	l4portsetnsservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/l4portsetnsservice"
+	lbclientsslprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/lbclientsslprofile"
+	lbcookiepersistenceprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/lbcookiepersistenceprofile"
+	lbfasttcpapplicationprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/lbfasttcpapplicationprofile"
+	lbfastudpapplicationprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/lbfastudpapplicationprofile"
+	lbhttpapplicationprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/lbhttpapplicationprofile"
+	lbhttpforwardingrule "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/lbhttpforwardingrule"
+	lbhttpmonitor "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/lbhttpmonitor"
+	lbhttprequestrewriterule "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/lbhttprequestrewriterule"
+	lbhttpresponserewriterule "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/lbhttpresponserewriterule"
+	lbhttpsmonitor "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/lbhttpsmonitor"
+	lbhttpvirtualserver "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/lbhttpvirtualserver"
+	lbicmpmonitor "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/lbicmpmonitor"
+	lbpassivemonitor "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/lbpassivemonitor"
+	lbpool "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/lbpool"
+	lbserversslprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/lbserversslprofile"
+	lbservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/lbservice"
+	lbsourceippersistenceprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/lbsourceippersistenceprofile"
+	lbtcpmonitor "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/lbtcpmonitor"
+	lbtcpvirtualserver "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/lbtcpvirtualserver"
+	lbudpmonitor "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/lbudpmonitor"
+	lbudpvirtualserver "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/lbudpvirtualserver"
+	logicaldhcpport "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/logicaldhcpport"
+	logicaldhcpserver "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/logicaldhcpserver"
+	logicalport "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/logicalport"
+	logicalroutercentralizedserviceport "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/logicalroutercentralizedserviceport"
+	logicalrouterdownlinkport "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/logicalrouterdownlinkport"
+	logicalrouterlinkportontier0 "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/logicalrouterlinkportontier0"
+	logicalrouterlinkportontier1 "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/logicalrouterlinkportontier1"
+	logicalswitch "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/logicalswitch"
+	logicaltier0router "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/logicaltier0router"
+	logicaltier1router "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/logicaltier1router"
+	macmanagementswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/macmanagementswitchingprofile"
+	natrule "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/natrule"
+	nsgroup "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/nsgroup"
+	nsservicegroup "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/nsservicegroup"
+	qosswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/qosswitchingprofile"
+	spoofguardswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/spoofguardswitchingprofile"
+	staticroute "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/staticroute"
+	switchsecurityswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/switchsecurityswitchingprofile"
+	vlanlogicalswitch "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/vlanlogicalswitch"
+	vmtags "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/deprecated/vmtags"
 	policydhcprelay "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/dhcp/policydhcprelay"
 	policydhcpserver "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/dhcp/policydhcpserver"
 	policydhcpv4staticbinding "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/dhcp/policydhcpv4staticbinding"
@@ -88,64 +146,6 @@ import (
 	policyproject "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/multitenancy/policyproject"
 	policyshare "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/multitenancy/policyshare"
 	policysharedresource "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/multitenancy/policysharedresource"
-	algorithmtypensservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtalgorithmtypensservice/algorithmtypensservice"
-	dhcprelayprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtdhcprelayprofile/dhcprelayprofile"
-	dhcprelayservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtdhcprelayservice/dhcprelayservice"
-	dhcpserverippool "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtdhcpserverippool/dhcpserverippool"
-	dhcpserverprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtdhcpserverprofile/dhcpserverprofile"
-	ethertypensservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtethertypensservice/ethertypensservice"
-	firewallsection "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtfirewallsection/firewallsection"
-	icmptypensservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxticmptypensservice/icmptypensservice"
-	igmptypensservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtigmptypensservice/igmptypensservice"
-	ipblock "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtipblock/ipblock"
-	ipblocksubnet "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtipblocksubnet/ipblocksubnet"
-	ipdiscoveryswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtipdiscoveryswitchingprofile/ipdiscoveryswitchingprofile"
-	ippool "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtippool/ippool"
-	ippoolallocationipaddress "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtippoolallocationipaddress/ippoolallocationipaddress"
-	ipprotocolnsservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtipprotocolnsservice/ipprotocolnsservice"
-	ipset "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtipset/ipset"
-	l4portsetnsservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtl4portsetnsservice/l4portsetnsservice"
-	lbclientsslprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlbclientsslprofile/lbclientsslprofile"
-	lbcookiepersistenceprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlbcookiepersistenceprofile/lbcookiepersistenceprofile"
-	lbfasttcpapplicationprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlbfasttcpapplicationprofile/lbfasttcpapplicationprofile"
-	lbfastudpapplicationprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlbfastudpapplicationprofile/lbfastudpapplicationprofile"
-	lbhttpapplicationprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlbhttpapplicationprofile/lbhttpapplicationprofile"
-	lbhttpforwardingrule "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlbhttpforwardingrule/lbhttpforwardingrule"
-	lbhttpmonitor "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlbhttpmonitor/lbhttpmonitor"
-	lbhttprequestrewriterule "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlbhttprequestrewriterule/lbhttprequestrewriterule"
-	lbhttpresponserewriterule "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlbhttpresponserewriterule/lbhttpresponserewriterule"
-	lbhttpsmonitor "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlbhttpsmonitor/lbhttpsmonitor"
-	lbhttpvirtualserver "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlbhttpvirtualserver/lbhttpvirtualserver"
-	lbicmpmonitor "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlbicmpmonitor/lbicmpmonitor"
-	lbpassivemonitor "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlbpassivemonitor/lbpassivemonitor"
-	lbpool "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlbpool/lbpool"
-	lbserversslprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlbserversslprofile/lbserversslprofile"
-	lbservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlbservice/lbservice"
-	lbsourceippersistenceprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlbsourceippersistenceprofile/lbsourceippersistenceprofile"
-	lbtcpmonitor "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlbtcpmonitor/lbtcpmonitor"
-	lbtcpvirtualserver "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlbtcpvirtualserver/lbtcpvirtualserver"
-	lbudpmonitor "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlbudpmonitor/lbudpmonitor"
-	lbudpvirtualserver "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlbudpvirtualserver/lbudpvirtualserver"
-	logicaldhcpport "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlogicaldhcpport/logicaldhcpport"
-	logicaldhcpserver "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlogicaldhcpserver/logicaldhcpserver"
-	logicalport "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlogicalport/logicalport"
-	logicalroutercentralizedserviceport "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlogicalroutercentralizedserviceport/logicalroutercentralizedserviceport"
-	logicalrouterdownlinkport "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlogicalrouterdownlinkport/logicalrouterdownlinkport"
-	logicalrouterlinkportontier0 "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlogicalrouterlinkportontier0/logicalrouterlinkportontier0"
-	logicalrouterlinkportontier1 "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlogicalrouterlinkportontier1/logicalrouterlinkportontier1"
-	logicalswitch "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlogicalswitch/logicalswitch"
-	logicaltier0router "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlogicaltier0router/logicaltier0router"
-	logicaltier1router "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlogicaltier1router/logicaltier1router"
-	macmanagementswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtmacmanagementswitchingprofile/macmanagementswitchingprofile"
-	natrule "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtnatrule/natrule"
-	nsgroup "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtnsgroup/nsgroup"
-	nsservicegroup "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtnsservicegroup/nsservicegroup"
-	qosswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtqosswitchingprofile/qosswitchingprofile"
-	spoofguardswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtspoofguardswitchingprofile/spoofguardswitchingprofile"
-	staticroute "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtstaticroute/staticroute"
-	switchsecurityswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtswitchsecurityswitchingprofile/switchsecurityswitchingprofile"
-	vlanlogicalswitch "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtvlanlogicalswitch/vlanlogicalswitch"
-	vmtags "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtvmtags/vmtags"
 	providerconfig "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/providerconfig"
 	policyfixedsegment "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/segments/policyfixedsegment"
 	policyipdiscoveryprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/segments/policyipdiscoveryprofile"
@@ -197,57 +197,6 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		upgradeprecheckacknowledge.Setup,
 		upgradeprepare.Setup,
 		upgraderun.Setup,
-		policydhcprelay.Setup,
-		policydhcpserver.Setup,
-		policydhcpv4staticbinding.Setup,
-		policydhcpv6staticbinding.Setup,
-		policydnsforwarderzone.Setup,
-		policygatewaydnsforwarder.Setup,
-		policyevpnconfig.Setup,
-		policyevpntenant.Setup,
-		policyevpntunnelendpoint.Setup,
-		policyvnipool.Setup,
-		policycontextprofile.Setup,
-		policycontextprofilecustomattribute.Setup,
-		policyfirewallexcludelistmember.Setup,
-		policygatewaypolicy.Setup,
-		policyintrusionservicepolicy.Setup,
-		policyintrusionserviceprofile.Setup,
-		policyparentsecuritypolicy.Setup,
-		policypredefinedgatewaypolicy.Setup,
-		policypredefinedsecuritypolicy.Setup,
-		policysecuritypolicy.Setup,
-		policysecuritypolicyrule.Setup,
-		policyservice.Setup,
-		policybgpconfig.Setup,
-		policybgpneighbor.Setup,
-		policygatewaycommunitylist.Setup,
-		policygatewayprefixlist.Setup,
-		policygatewayqosprofile.Setup,
-		policygatewayredistributionconfig.Setup,
-		policygatewayroutemap.Setup,
-		policynatrule.Setup,
-		policyospfconfig.Setup,
-		policystaticroute.Setup,
-		policytier0gateway.Setup,
-		policytier0gatewayhavipconfig.Setup,
-		policytier0gatewayinterface.Setup,
-		policytier1gateway.Setup,
-		policytier1gatewayinterface.Setup,
-		policydomain.Setup,
-		policygroup.Setup,
-		policyvmtags.Setup,
-		policyipaddressallocation.Setup,
-		policyipblock.Setup,
-		policyippool.Setup,
-		policyippoolblocksubnet.Setup,
-		policyippoolstaticsubnet.Setup,
-		policylbpool.Setup,
-		policylbservice.Setup,
-		policylbvirtualserver.Setup,
-		policyproject.Setup,
-		policyshare.Setup,
-		policysharedresource.Setup,
 		algorithmtypensservice.Setup,
 		dhcprelayprofile.Setup,
 		dhcprelayservice.Setup,
@@ -306,6 +255,57 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		switchsecurityswitchingprofile.Setup,
 		vlanlogicalswitch.Setup,
 		vmtags.Setup,
+		policydhcprelay.Setup,
+		policydhcpserver.Setup,
+		policydhcpv4staticbinding.Setup,
+		policydhcpv6staticbinding.Setup,
+		policydnsforwarderzone.Setup,
+		policygatewaydnsforwarder.Setup,
+		policyevpnconfig.Setup,
+		policyevpntenant.Setup,
+		policyevpntunnelendpoint.Setup,
+		policyvnipool.Setup,
+		policycontextprofile.Setup,
+		policycontextprofilecustomattribute.Setup,
+		policyfirewallexcludelistmember.Setup,
+		policygatewaypolicy.Setup,
+		policyintrusionservicepolicy.Setup,
+		policyintrusionserviceprofile.Setup,
+		policyparentsecuritypolicy.Setup,
+		policypredefinedgatewaypolicy.Setup,
+		policypredefinedsecuritypolicy.Setup,
+		policysecuritypolicy.Setup,
+		policysecuritypolicyrule.Setup,
+		policyservice.Setup,
+		policybgpconfig.Setup,
+		policybgpneighbor.Setup,
+		policygatewaycommunitylist.Setup,
+		policygatewayprefixlist.Setup,
+		policygatewayqosprofile.Setup,
+		policygatewayredistributionconfig.Setup,
+		policygatewayroutemap.Setup,
+		policynatrule.Setup,
+		policyospfconfig.Setup,
+		policystaticroute.Setup,
+		policytier0gateway.Setup,
+		policytier0gatewayhavipconfig.Setup,
+		policytier0gatewayinterface.Setup,
+		policytier1gateway.Setup,
+		policytier1gatewayinterface.Setup,
+		policydomain.Setup,
+		policygroup.Setup,
+		policyvmtags.Setup,
+		policyipaddressallocation.Setup,
+		policyipblock.Setup,
+		policyippool.Setup,
+		policyippoolblocksubnet.Setup,
+		policyippoolstaticsubnet.Setup,
+		policylbpool.Setup,
+		policylbservice.Setup,
+		policylbvirtualserver.Setup,
+		policyproject.Setup,
+		policyshare.Setup,
+		policysharedresource.Setup,
 		providerconfig.Setup,
 		policyfixedsegment.Setup,
 		policyipdiscoveryprofile.Setup,
