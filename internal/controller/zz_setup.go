@@ -162,6 +162,11 @@ import (
 	policysegmentsecurityprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/segments/policysegmentsecurityprofile"
 	policyspoofguardprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/segments/policyspoofguardprofile"
 	policyvlansegment "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/segments/policyvlansegment"
+	nodeuser "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/usermanagement/nodeuser"
+	policyldapidentitysource "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/usermanagement/policyldapidentitysource"
+	policyusermanagementrole "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/usermanagement/policyusermanagementrole"
+	policyusermanagementrolebinding "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/usermanagement/policyusermanagementrolebinding"
+	principalidentity "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/usermanagement/principalidentity"
 	policyipsecvpndpdprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/vpn/policyipsecvpndpdprofile"
 	policyipsecvpnikeprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/vpn/policyipsecvpnikeprofile"
 	policyipsecvpnlocalendpoint "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/vpn/policyipsecvpnlocalendpoint"
@@ -329,6 +334,11 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		policysegmentsecurityprofile.Setup,
 		policyspoofguardprofile.Setup,
 		policyvlansegment.Setup,
+		nodeuser.Setup,
+		policyldapidentitysource.Setup,
+		policyusermanagementrole.Setup,
+		policyusermanagementrolebinding.Setup,
+		principalidentity.Setup,
 		policyipsecvpndpdprofile.Setup,
 		policyipsecvpnikeprofile.Setup,
 		policyipsecvpnlocalendpoint.Setup,

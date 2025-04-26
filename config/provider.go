@@ -24,6 +24,7 @@ import (
 	multitenancy "github.com/AlphaBravoCompany/provider-nsxt/config/multitenancy"
 	ospf "github.com/AlphaBravoCompany/provider-nsxt/config/ospf"
 	segments "github.com/AlphaBravoCompany/provider-nsxt/config/segments"
+	usermanagement "github.com/AlphaBravoCompany/provider-nsxt/config/user_management"
 	vpn "github.com/AlphaBravoCompany/provider-nsxt/config/vpn"
 )
 
@@ -62,6 +63,7 @@ func GetProvider() *ujconfig.Provider {
 		multitenancy.Configure,
 		ospf.Configure,
 		segments.Configure,
+		usermanagement.Configure,
 		vpn.Configure,
 		beta.Configure,
 		deprecated.Configure,

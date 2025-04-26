@@ -23,6 +23,7 @@ import (
 	v1alpha1loadbalancer "github.com/AlphaBravoCompany/provider-nsxt/apis/loadbalancer/v1alpha1"
 	v1alpha1multitenancy "github.com/AlphaBravoCompany/provider-nsxt/apis/multitenancy/v1alpha1"
 	v1alpha1segments "github.com/AlphaBravoCompany/provider-nsxt/apis/segments/v1alpha1"
+	v1alpha1usermanagement "github.com/AlphaBravoCompany/provider-nsxt/apis/usermanagement/v1alpha1"
 	v1alpha1apis "github.com/AlphaBravoCompany/provider-nsxt/apis/v1alpha1"
 	v1beta1 "github.com/AlphaBravoCompany/provider-nsxt/apis/v1beta1"
 	v1alpha1vpn "github.com/AlphaBravoCompany/provider-nsxt/apis/vpn/v1alpha1"
@@ -44,6 +45,7 @@ func init() {
 		v1alpha1loadbalancer.SchemeBuilder.AddToScheme,
 		v1alpha1multitenancy.SchemeBuilder.AddToScheme,
 		v1alpha1segments.SchemeBuilder.AddToScheme,
+		v1alpha1usermanagement.SchemeBuilder.AddToScheme,
 		v1alpha1apis.SchemeBuilder.AddToScheme,
 		v1beta1.SchemeBuilder.AddToScheme,
 		v1alpha1vpn.SchemeBuilder.AddToScheme,
