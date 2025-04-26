@@ -167,6 +167,9 @@ import (
 	policyusermanagementrole "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/usermanagement/policyusermanagementrole"
 	policyusermanagementrolebinding "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/usermanagement/policyusermanagementrolebinding"
 	principalidentity "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/usermanagement/principalidentity"
+	vpcgatewaypolicy "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/vpc/vpcgatewaypolicy"
+	vpcgroup "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/vpc/vpcgroup"
+	vpcsecuritypolicy "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/vpc/vpcsecuritypolicy"
 	policyipsecvpndpdprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/vpn/policyipsecvpndpdprofile"
 	policyipsecvpnikeprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/vpn/policyipsecvpnikeprofile"
 	policyipsecvpnlocalendpoint "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/vpn/policyipsecvpnlocalendpoint"
@@ -339,6 +342,9 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		policyusermanagementrole.Setup,
 		policyusermanagementrolebinding.Setup,
 		principalidentity.Setup,
+		vpcgatewaypolicy.Setup,
+		vpcgroup.Setup,
+		vpcsecuritypolicy.Setup,
 		policyipsecvpndpdprofile.Setup,
 		policyipsecvpnikeprofile.Setup,
 		policyipsecvpnlocalendpoint.Setup,

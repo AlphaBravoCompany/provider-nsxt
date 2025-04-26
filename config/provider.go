@@ -25,6 +25,7 @@ import (
 	ospf "github.com/AlphaBravoCompany/provider-nsxt/config/ospf"
 	segments "github.com/AlphaBravoCompany/provider-nsxt/config/segments"
 	usermanagement "github.com/AlphaBravoCompany/provider-nsxt/config/user_management"
+	vpc "github.com/AlphaBravoCompany/provider-nsxt/config/vpc"
 	vpn "github.com/AlphaBravoCompany/provider-nsxt/config/vpn"
 )
 
@@ -64,6 +65,7 @@ func GetProvider() *ujconfig.Provider {
 		ospf.Configure,
 		segments.Configure,
 		usermanagement.Configure,
+		vpc.Configure,
 		vpn.Configure,
 		beta.Configure,
 		deprecated.Configure,

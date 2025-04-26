@@ -179,6 +179,9 @@ var ExternalNameConfigs = map[string]config.ExternalName{
 	"nsxt_uplink_host_switch_profile":                          config.IdentifierFromProvider,
 	"nsxt_vlan_logical_switch":                                 config.IdentifierFromProvider,
 	"nsxt_vm_tags":                                             config.IdentifierFromProvider,
+	"nsxt_vpc_gateway_policy":                                  config.IdentifierFromProvider,
+	"nsxt_vpc_group":                                           config.IdentifierFromProvider,
+	"nsxt_vpc_security_policy":                                 config.IdentifierFromProvider,
 }
 
 // ExternalNameConfigurations applies all external name configs listed in the

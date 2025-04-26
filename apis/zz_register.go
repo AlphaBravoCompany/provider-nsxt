@@ -26,6 +26,7 @@ import (
 	v1alpha1usermanagement "github.com/AlphaBravoCompany/provider-nsxt/apis/usermanagement/v1alpha1"
 	v1alpha1apis "github.com/AlphaBravoCompany/provider-nsxt/apis/v1alpha1"
 	v1beta1 "github.com/AlphaBravoCompany/provider-nsxt/apis/v1beta1"
+	v1alpha1vpc "github.com/AlphaBravoCompany/provider-nsxt/apis/vpc/v1alpha1"
 	v1alpha1vpn "github.com/AlphaBravoCompany/provider-nsxt/apis/vpn/v1alpha1"
 )
 
@@ -48,6 +49,7 @@ func init() {
 		v1alpha1usermanagement.SchemeBuilder.AddToScheme,
 		v1alpha1apis.SchemeBuilder.AddToScheme,
 		v1beta1.SchemeBuilder.AddToScheme,
+		v1alpha1vpc.SchemeBuilder.AddToScheme,
 		v1alpha1vpn.SchemeBuilder.AddToScheme,
 	)
 }
