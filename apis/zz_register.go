@@ -10,7 +10,8 @@ package apis
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 
-	v1alpha1 "github.com/AlphaBravoCompany/provider-nsxt/apis/dhcp/v1alpha1"
+	v1alpha1 "github.com/AlphaBravoCompany/provider-nsxt/apis/beta/v1alpha1"
+	v1alpha1dhcp "github.com/AlphaBravoCompany/provider-nsxt/apis/dhcp/v1alpha1"
 	v1alpha1dns "github.com/AlphaBravoCompany/provider-nsxt/apis/dns/v1alpha1"
 	v1alpha1evpn "github.com/AlphaBravoCompany/provider-nsxt/apis/evpn/v1alpha1"
 	v1alpha1firewall "github.com/AlphaBravoCompany/provider-nsxt/apis/firewall/v1alpha1"
@@ -20,15 +21,11 @@ import (
 	v1alpha1loadbalancer "github.com/AlphaBravoCompany/provider-nsxt/apis/loadbalancer/v1alpha1"
 	v1alpha1multitenancy "github.com/AlphaBravoCompany/provider-nsxt/apis/multitenancy/v1alpha1"
 	v1alpha1nsxtalgorithmtypensservice "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtalgorithmtypensservice/v1alpha1"
-	v1alpha1nsxtclustervirtualip "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtclustervirtualip/v1alpha1"
-	v1alpha1nsxtcomputemanager "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtcomputemanager/v1alpha1"
 	v1alpha1nsxtdhcprelayprofile "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtdhcprelayprofile/v1alpha1"
 	v1alpha1nsxtdhcprelayservice "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtdhcprelayservice/v1alpha1"
 	v1alpha1nsxtdhcpserverippool "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtdhcpserverippool/v1alpha1"
 	v1alpha1nsxtdhcpserverprofile "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtdhcpserverprofile/v1alpha1"
-	v1alpha1nsxtedgecluster "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtedgecluster/v1alpha1"
 	v1alpha1nsxtethertypensservice "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtethertypensservice/v1alpha1"
-	v1alpha1nsxtfailuredomain "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtfailuredomain/v1alpha1"
 	v1alpha1nsxtfirewallsection "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtfirewallsection/v1alpha1"
 	v1alpha1nsxticmptypensservice "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxticmptypensservice/v1alpha1"
 	v1alpha1nsxtigmptypensservice "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtigmptypensservice/v1alpha1"
@@ -72,12 +69,9 @@ import (
 	v1alpha1nsxtlogicaltier0router "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtlogicaltier0router/v1alpha1"
 	v1alpha1nsxtlogicaltier1router "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtlogicaltier1router/v1alpha1"
 	v1alpha1nsxtmacmanagementswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtmacmanagementswitchingprofile/v1alpha1"
-	v1alpha1nsxtmanagercluster "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtmanagercluster/v1alpha1"
 	v1alpha1nsxtnatrule "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtnatrule/v1alpha1"
 	v1alpha1nsxtnsgroup "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtnsgroup/v1alpha1"
 	v1alpha1nsxtnsservicegroup "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtnsservicegroup/v1alpha1"
-	v1alpha1nsxtpolicyhosttransportnodeprofile "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtpolicyhosttransportnodeprofile/v1alpha1"
-	v1alpha1nsxtpolicytransportzone "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtpolicytransportzone/v1alpha1"
 	v1alpha1nsxtqosswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtqosswitchingprofile/v1alpha1"
 	v1alpha1nsxtspoofguardswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtspoofguardswitchingprofile/v1alpha1"
 	v1alpha1nsxtstaticroute "github.com/AlphaBravoCompany/provider-nsxt/apis/nsxtstaticroute/v1alpha1"
@@ -94,6 +88,7 @@ func init() {
 	// Register the types with the Scheme so the components can map objects to GroupVersionKinds and back
 	AddToSchemes = append(AddToSchemes,
 		v1alpha1.SchemeBuilder.AddToScheme,
+		v1alpha1dhcp.SchemeBuilder.AddToScheme,
 		v1alpha1dns.SchemeBuilder.AddToScheme,
 		v1alpha1evpn.SchemeBuilder.AddToScheme,
 		v1alpha1firewall.SchemeBuilder.AddToScheme,
@@ -103,15 +98,11 @@ func init() {
 		v1alpha1loadbalancer.SchemeBuilder.AddToScheme,
 		v1alpha1multitenancy.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtalgorithmtypensservice.SchemeBuilder.AddToScheme,
-		v1alpha1nsxtclustervirtualip.SchemeBuilder.AddToScheme,
-		v1alpha1nsxtcomputemanager.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtdhcprelayprofile.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtdhcprelayservice.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtdhcpserverippool.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtdhcpserverprofile.SchemeBuilder.AddToScheme,
-		v1alpha1nsxtedgecluster.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtethertypensservice.SchemeBuilder.AddToScheme,
-		v1alpha1nsxtfailuredomain.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtfirewallsection.SchemeBuilder.AddToScheme,
 		v1alpha1nsxticmptypensservice.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtigmptypensservice.SchemeBuilder.AddToScheme,
@@ -155,12 +146,9 @@ func init() {
 		v1alpha1nsxtlogicaltier0router.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtlogicaltier1router.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtmacmanagementswitchingprofile.SchemeBuilder.AddToScheme,
-		v1alpha1nsxtmanagercluster.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtnatrule.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtnsgroup.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtnsservicegroup.SchemeBuilder.AddToScheme,
-		v1alpha1nsxtpolicyhosttransportnodeprofile.SchemeBuilder.AddToScheme,
-		v1alpha1nsxtpolicytransportzone.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtqosswitchingprofile.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtspoofguardswitchingprofile.SchemeBuilder.AddToScheme,
 		v1alpha1nsxtstaticroute.SchemeBuilder.AddToScheme,

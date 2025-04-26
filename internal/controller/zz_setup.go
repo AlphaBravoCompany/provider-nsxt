@@ -9,6 +9,34 @@ import (
 
 	"github.com/upbound/upjet/pkg/controller"
 
+	clustervirtualip "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/clustervirtualip"
+	computemanager "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/computemanager"
+	edgecluster "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/edgecluster"
+	edgetransportnodertep "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/edgetransportnodertep"
+	failuredomain "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/failuredomain"
+	managercluster "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/managercluster"
+	policydistributedfloodprotectionprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/policydistributedfloodprotectionprofile"
+	policydistributedfloodprotectionprofilebinding "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/policydistributedfloodprotectionprofilebinding"
+	policygatewayfloodprotectionprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/policygatewayfloodprotectionprofile"
+	policygatewayfloodprotectionprofilebinding "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/policygatewayfloodprotectionprofilebinding"
+	policyglobalmanager "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/policyglobalmanager"
+	policyhosttransportnodeprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/policyhosttransportnodeprofile"
+	policylbclientsslprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/policylbclientsslprofile"
+	policylbhttpapplicationprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/policylbhttpapplicationprofile"
+	policylbhttpmonitorprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/policylbhttpmonitorprofile"
+	policylbhttpsmonitorprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/policylbhttpsmonitorprofile"
+	policylbicmpmonitorprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/policylbicmpmonitorprofile"
+	policylbpassivemonitorprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/policylbpassivemonitorprofile"
+	policylbtcpmonitorprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/policylbtcpmonitorprofile"
+	policylbudpmonitorprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/policylbudpmonitorprofile"
+	policymetadataproxy "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/policymetadataproxy"
+	policysite "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/policysite"
+	policytier0gatewaygretunnel "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/policytier0gatewaygretunnel"
+	policytier0intervrfrouting "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/policytier0intervrfrouting"
+	policytransportzone "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/policytransportzone"
+	upgradeprecheckacknowledge "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/upgradeprecheckacknowledge"
+	upgradeprepare "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/upgradeprepare"
+	upgraderun "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/beta/upgraderun"
 	policydhcprelay "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/dhcp/policydhcprelay"
 	policydhcpserver "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/dhcp/policydhcpserver"
 	policydhcpv4staticbinding "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/dhcp/policydhcpv4staticbinding"
@@ -61,15 +89,11 @@ import (
 	policyshare "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/multitenancy/policyshare"
 	policysharedresource "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/multitenancy/policysharedresource"
 	algorithmtypensservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtalgorithmtypensservice/algorithmtypensservice"
-	clustervirtualip "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtclustervirtualip/clustervirtualip"
-	computemanager "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtcomputemanager/computemanager"
 	dhcprelayprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtdhcprelayprofile/dhcprelayprofile"
 	dhcprelayservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtdhcprelayservice/dhcprelayservice"
 	dhcpserverippool "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtdhcpserverippool/dhcpserverippool"
 	dhcpserverprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtdhcpserverprofile/dhcpserverprofile"
-	edgecluster "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtedgecluster/edgecluster"
 	ethertypensservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtethertypensservice/ethertypensservice"
-	failuredomain "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtfailuredomain/failuredomain"
 	firewallsection "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtfirewallsection/firewallsection"
 	icmptypensservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxticmptypensservice/icmptypensservice"
 	igmptypensservice "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtigmptypensservice/igmptypensservice"
@@ -113,12 +137,9 @@ import (
 	logicaltier0router "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlogicaltier0router/logicaltier0router"
 	logicaltier1router "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtlogicaltier1router/logicaltier1router"
 	macmanagementswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtmacmanagementswitchingprofile/macmanagementswitchingprofile"
-	managercluster "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtmanagercluster/managercluster"
 	natrule "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtnatrule/natrule"
 	nsgroup "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtnsgroup/nsgroup"
 	nsservicegroup "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtnsservicegroup/nsservicegroup"
-	policyhosttransportnodeprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtpolicyhosttransportnodeprofile/policyhosttransportnodeprofile"
-	policytransportzone "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtpolicytransportzone/policytransportzone"
 	qosswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtqosswitchingprofile/qosswitchingprofile"
 	spoofguardswitchingprofile "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtspoofguardswitchingprofile/spoofguardswitchingprofile"
 	staticroute "github.com/AlphaBravoCompany/provider-nsxt/internal/controller/nsxtstaticroute/staticroute"
@@ -148,6 +169,34 @@ import (
 // the supplied manager.
 func Setup(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
+		clustervirtualip.Setup,
+		computemanager.Setup,
+		edgecluster.Setup,
+		edgetransportnodertep.Setup,
+		failuredomain.Setup,
+		managercluster.Setup,
+		policydistributedfloodprotectionprofile.Setup,
+		policydistributedfloodprotectionprofilebinding.Setup,
+		policygatewayfloodprotectionprofile.Setup,
+		policygatewayfloodprotectionprofilebinding.Setup,
+		policyglobalmanager.Setup,
+		policyhosttransportnodeprofile.Setup,
+		policylbclientsslprofile.Setup,
+		policylbhttpapplicationprofile.Setup,
+		policylbhttpmonitorprofile.Setup,
+		policylbhttpsmonitorprofile.Setup,
+		policylbicmpmonitorprofile.Setup,
+		policylbpassivemonitorprofile.Setup,
+		policylbtcpmonitorprofile.Setup,
+		policylbudpmonitorprofile.Setup,
+		policymetadataproxy.Setup,
+		policysite.Setup,
+		policytier0gatewaygretunnel.Setup,
+		policytier0intervrfrouting.Setup,
+		policytransportzone.Setup,
+		upgradeprecheckacknowledge.Setup,
+		upgradeprepare.Setup,
+		upgraderun.Setup,
 		policydhcprelay.Setup,
 		policydhcpserver.Setup,
 		policydhcpv4staticbinding.Setup,
@@ -200,15 +249,11 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		policyshare.Setup,
 		policysharedresource.Setup,
 		algorithmtypensservice.Setup,
-		clustervirtualip.Setup,
-		computemanager.Setup,
 		dhcprelayprofile.Setup,
 		dhcprelayservice.Setup,
 		dhcpserverippool.Setup,
 		dhcpserverprofile.Setup,
-		edgecluster.Setup,
 		ethertypensservice.Setup,
-		failuredomain.Setup,
 		firewallsection.Setup,
 		icmptypensservice.Setup,
 		igmptypensservice.Setup,
@@ -252,12 +297,9 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		logicaltier0router.Setup,
 		logicaltier1router.Setup,
 		macmanagementswitchingprofile.Setup,
-		managercluster.Setup,
 		natrule.Setup,
 		nsgroup.Setup,
 		nsservicegroup.Setup,
-		policyhosttransportnodeprofile.Setup,
-		policytransportzone.Setup,
 		qosswitchingprofile.Setup,
 		spoofguardswitchingprofile.Setup,
 		staticroute.Setup,
